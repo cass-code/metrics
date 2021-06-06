@@ -1,0 +1,56 @@
+---
+title: "Test doc"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 6, fig.height = 5, fig.pos="H", fig.pos = 'H')
+# Note: Include = FALSE implies the code is executed, but not printed in your pdf.
+# warning and message = FALSE implies ugly messages and warnings are removed from your pdf.
+# These should be picked up when you execute the command chunks (code sections below) in your rmd, not printed in your paper!
+
+#Reading in the data
+
+library(tidyverse)
+
+list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+
+ind <- read_table("C:/Users/Cassandra/OneDrive/Documents/2021 Academics/Metrics/Time Series Project/R stuffs/Write_Up/data/files/ind.dat")
+
+view(ind)
+
+dfplot <-
+    ind %>% mutate(ENTRY = as.factor(ENTRY)) %>%
+    mutate(rex = real_exchange(INDEX, INDCPI, USCPI))
+
+view(dfplot)
+```
+
+
+```{r Figure1, warning =  FALSE, fig.align = 'center', fig.cap = "Caption Here \\label{Figure2}", fig.height = 3, fig.width = 6, dev = 'png'}
+g <- rex_line_plot(ind) 
+g
+
+```
+
+
+
+```{r}
+dfplot <-
+        ind %>% mutate(ENTRY = as.factor(ENTRY)) %>%
+        mutate(rex = real_exchange(INDEX, INDCPI, USCPI))
+
+library(randtests)
+n1 <- 183
+# runs.test(ind, alternative, threshold, pvalue, plot)
+rand_test(dfplot$rex, "t", threshold = mean(dfplot$rex))
+runs.test(dfplot$rex, "t", threshold = mean(dfplot$rex))
+runs.test(dfplot$rex, "two.sided", threshold = n1,"normal",FALSE)
+
+
+```
+```{r}
+install.packages("plm", repos="http://R-Forge.R-project.org")
+```
+
+
