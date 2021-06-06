@@ -1,0 +1,27 @@
+{
+    "id": "678B1A4A",
+    "path": "~/GitHub/metrics/rex.R",
+    "project_path": "rex.R",
+    "type": "r_source",
+    "hash": "1302334248",
+    "contents": "",
+    "dirty": false,
+    "created": 1622977009121.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "tempName": "Untitled2",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "28,0",
+        "scrollLine": "11"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1622979418,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1622979418860,
+    "read_only": false,
+    "read_only_alternatives": []
+}
