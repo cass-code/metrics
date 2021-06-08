@@ -1,0 +1,27 @@
+{
+    "id": "59060279",
+    "path": "~/GitHub/metrics/Testing.Rmd",
+    "project_path": "Testing.Rmd",
+    "type": "r_markdown",
+    "hash": "200692703",
+    "contents": "",
+    "dirty": false,
+    "created": 1622976480841.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "38,0",
+        "scrollLine": "26",
+        "last_setup_crc32": "C715C5B6c43cfe09"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1623011972,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1623011973262,
+    "read_only": false,
+    "read_only_alternatives": []
+}

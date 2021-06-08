@@ -156,7 +156,13 @@ runs.test(dfplot$rex)
 <!-- # Start Writing here: -->
 <!-- ############################## -->
 
+# Notes
+
+1974:11 there is a mistake in the MNR data 
+1975:09 there is a mistake in the PHL data
+
 # Introduction \label{Introduction}
+
 
 
 

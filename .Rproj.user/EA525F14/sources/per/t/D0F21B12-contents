@@ -1,0 +1,17 @@
+
+
+ADF <- function(pdata, lagg){
+
+    #libraries
+    library(tidyverse)
+    library(devtools)
+    #install_github("cran/plm")
+    library(plm)
+    library(tseries)
+
+    #Augmented Dickey-Fuller test for panel data
+   ADF <- adf.test(pdata, lagg)
+
+   ADF
+
+}

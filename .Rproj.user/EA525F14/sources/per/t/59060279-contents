@@ -1,0 +1,69 @@
+---
+title: "Test doc"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 6, fig.height = 5, fig.pos="H", fig.pos = 'H')
+# Note: Include = FALSE implies the code is executed, but not printed in your pdf.
+# warning and message = FALSE implies ugly messages and warnings are removed from your pdf.
+# These should be picked up when you execute the command chunks (code sections below) in your rmd, not printed in your paper!
+
+#Reading in the data
+
+library(tidyverse)
+
+list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+
+pdata1 <- pdata %>% tidyr::gather(Country, rex, -ENTRY) %>% 
+    arrange(ENTRY)
+
+pdata1 <- pdata %>% tidyr::gather(Country, rex, -ENTRY) %>% 
+    arrange(Country)
+view(pdata1)
+
+pdata2 <- pdata %>% select(-ENTRY)
+view(pdata2)
+
+pdata3 <- pdata1 %>% select(-ENTRY, -Country)
+view(pdata3)
+
+A <- ADF(pdata, 8)
+
+library(plm)
+
+A <- purtest(pdata2, exo = "intercept", test = "ips" , lags = 0, pmax = 10, ips.stat = "tbar")
+A
+
+
+```
+
+
+
+
+```{r Figure1, warning =  FALSE, fig.align = 'center', fig.cap = "Caption Here \\label{Figure2}", fig.height = 3, fig.width = 6, dev = 'png'}
+g <- rex_line_plot(ind) 
+g
+
+```
+
+
+
+```{r}
+dfplot <-
+        ind %>% mutate(ENTRY = as.factor(ENTRY)) %>%
+        mutate(rex = real_exchange(INDEX, INDCPI, USCPI))
+
+library(randtests)
+# runs.test(ind, alternative, threshold, pvalue, plot)
+rand_test(dfplot$rex, "t", threshold = mean(dfplot$rex))
+runs.test(dfplot$rex, "t", threshold = mean(dfplot$rex))
+runs.test(dfplot$rex, "two.sided", threshold = n1,"normal",FALSE)
+
+
+```
+```{r}
+install.packages("plm", repos="http://R-Forge.R-project.org")
+```
+
+
