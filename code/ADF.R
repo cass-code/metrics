@@ -1,5 +1,3 @@
-
-
 ADF <- function(pdata){
 
     #libraries
@@ -34,9 +32,9 @@ ADF <- function(pdata){
 
 
     ADFF <- bind_rows(adfInd$statistic, adfLNK$statistic, adfMAL$statistic,
-                         adfMNR$statistic, adfPAK$statistic, adfPHL$statistic, adfTHI$statistic)
+                      adfMNR$statistic, adfPAK$statistic, adfPHL$statistic, adfTHI$statistic)
     FullADF <- bind_cols(names, ADFF)
 
-
+    FullADF
 
 }

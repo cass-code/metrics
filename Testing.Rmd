@@ -6,26 +6,56 @@ output: pdf_document
 # IPS Tests \label{IPS}
 
 ```{r}
-
+library(tidyverse)
 library(plm)
+library (tseries)
+
+list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+
+#dickey fuller test with average t stats
+
+D <- DF(dm)
+D
 
 A <- purtest(dm, exo = "trend", test = "ips" , lags = c(0, 0, 1, 0, 0, 0, 1), pmax = 10, ips.stat ="Ztbar")
 A
 
 dm <- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean)
 
-
+adf.test(dm, 0)
 
 index <- data.frame(index = c(1:nrow(pdata))) 
 
 dat <- pdata %>% select(-ENTRY)
 # pseries <- bind_cols(index, dm)
-pseries <- pdata.frame(pdata1, index = c("Country", "ENTRY"), drop.index = TRUE, row.names=TRUE)
+#pseries <- pdata.frame(pdata1, index = c("Country", "ENTRY"), drop.index = TRUE, row.names=TRUE)
+pseries <- pdata.frame(pdata1, index = c("Country", "ENTRY"))
+
+pdata1 <- pdata %>% tidyr::gather(Country, rex, -ENTRY) %>% 
+    arrange(Country)
+#%>% mutate(ENTRY = replace(ENTRY, ENTRY grepl(":"), )   mutate(x1 = replace(x1, x1 == 2, 99))
+pdata1$Country <- as.factor(pdata1$Country)
+pdata1$ENTRY <- as.character(pdata1$ENTRY)
+
+pdata1$ENTRY <- pdata1$ENTRY %>% mutate_if(grepl(':',.), ~replace(., grepl(":", .), "0"))
+
 
 p <- pseries$rex  
+p
+??cips
+
+p <- pseries$rex
+
+pdata.frame(p)
+
+Produc <- pdata.frame(Produc, index=c("state", "year"))
+
+cipstest(Produc$gsp, type = "trend")
+
+cipstest(pseries$rex, type = "trend")
 
 cips <- cipstest(
-p,
+pseries$rex,
 lags = 1,
 type = "none",
 #type = c("trend", "drift", "none"),
