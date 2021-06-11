@@ -1,0 +1,14 @@
+@article{10.2307/2678529,
+ ISSN = {08837252, 10991255},
+ URL = {http://www.jstor.org/stable/2678529},
+ abstract = {The behaviour of real exchange rates (relative to the US dollar) is examined using monthly data obtained from the black markets for foreign exchange of eight Asian developing countries. The data span is 31 years. The black market real exchange rates do not show excess volatility during the recent float which is in sharp contrast to the results reported elsewhere. Unit root tests in heterogeneous panels and variance ratio tests confirm their stationarity. Thus, we find support for PPP but not for the 'survivorship' bias (Froot and Rogoff, 1995). There is little evidence of segmented trends. Issues raised by Rogoff (1996)-of whether PPP would hold across countries with differing growth experience-and Lothian and Taylor (1996)-of whether the degree of relative price volatility may bias results in favour of mean reverting real exchange rates-are addressed.},
+ author = {Kul B. Luintel},
+ journal = {Journal of Applied Econometrics},
+ number = {2},
+ pages = {161--185},
+ publisher = {Wiley},
+ title = {Real Exchange Rate Behaviour: Evidence from Black Markets},
+ volume = {15},
+ year = {2000}
+}
+

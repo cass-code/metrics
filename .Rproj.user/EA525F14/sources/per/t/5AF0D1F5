@@ -1,0 +1,26 @@
+{
+    "id": "5AF0D1F5",
+    "path": "~/GitHub/metrics/code/plot_rex.R",
+    "project_path": "code/plot_rex.R",
+    "type": "r_source",
+    "hash": "710985078",
+    "contents": "",
+    "dirty": false,
+    "created": 1623275116354.0,
+    "source_on_save": false,
+    "relative_order": 12,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "0,34",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1623275661,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1623275661206,
+    "read_only": false,
+    "read_only_alternatives": []
+}

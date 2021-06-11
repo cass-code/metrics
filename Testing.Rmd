@@ -3,10 +3,45 @@ title: "Test doc"
 output: pdf_document
 ---
 
-# IPS Tests \label{IPS}
+#Structural break test \label{struc}
+
+http://svitsrv25.epfl.ch/R-doc/library/strucchange/doc/strucchange-intro.pdf
+strucchange pacakge
+
+# Variance Ratio Tests \label{Var}
 
 ```{r}
+library(vrtest)
 library(tidyverse)
+help(vrtest)
+
+
+list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+
+a <- cvar_table(pdata)
+a
+vtest <- cvar_ratio(pdata$rexIND,190)
+vtest
+cvar_ratio1(pdata$rexIND,190)
+cvar_ratio1(pdata$rexLNK,190)
+cvar_ratio(xx,190)
+
+xx <-random(378)
+xx
+
+vars <- pdata %>% select(-ENTRY)
+
+AutoBoot.test(vars$rexIND, nboot=100, "normal", prob=c(0.025,0.975))
+
+```
+
+
+# IPS Tests \label{IPS}
+
+NOTE: https://www.aptech.com/blog/panel-data-structural-breaks-and-unit-root-testing/ has an example of LM bar!!!
+```{r}
+library(tidyverse)
+install.packages("vrtest")
 library(plm)
 library (tseries)
 
@@ -71,51 +106,13 @@ cips
 
 
 # Dickey Fuller Tests {dick}
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 6, fig.height = 5, fig.pos="H", fig.pos = 'H')
-# Note: Include = FALSE implies the code is executed, but not printed in your pdf.
-# warning and message = FALSE implies ugly messages and warnings are removed from your pdf.
-# These should be picked up when you execute the command chunks (code sections below) in your rmd, not printed in your paper!
 
+
+```{r Figure4, echo = FALSE, include= TRUE, warning =  FALSE, fig.height= 8, fig.align = 'center', fig.cap = "Caption Here \\label{Figure1}", fig.ext = 'png'}
 
 library(tidyverse)
-library(tseries)
-
-adfInd <- adf.test(pdata$rexIND, alternative = "stationary", k=0)
-adfInd #Indian Rupee
-
-adfLNK <- adf.test(pdata$rexLNK, alternative = "stationary", k=0)
-adfLNK
-
-adfMAL <- adf.test(pdata$rexMAL, alternative = "stationary", k=2)
-adfMAL # Ringgit
-
-adfPAK <- adf.test(pdata$rexPAK, alternative = "stationary", k=0)
-adfPAK
-
-adfPAK <- adf.test(pdata$rexPAK, alternative = "stationary", k=0)
-adfPAK
-
-
-
-
-list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
-
-pdata1 <- pdata %>% tidyr::gather(Country, rex, -ENTRY) %>% 
-    arrange(ENTRY)
-
-pdata1 <- pdata %>% tidyr::gather(Country, rex, -ENTRY) %>% 
-    arrange(Country)
-view(pdata1)
-
-pdata2 <- pdata %>% select(-ENTRY)
-view(pdata2)
-
-pdata3 <- pdata1 %>% select(-ENTRY, -Country)
-view(pdata3)
-
-A <- ADF(pdata, 8)
-
+h <- rex_plots_combined1(pdata)
+h
 ```
 
 # Plotting Exchange rates \label{plot}

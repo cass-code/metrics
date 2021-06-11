@@ -1,0 +1,5 @@
+"0","AutoBoot.test(vars$rexIND, nboot=100, ""normal"", prob=c(0.025,0.975))
+"
+"2","Error in quantile.default(statmat1, prob) : 
+  missing values and NaN's not allowed if 'na.rm' is FALSE
+"

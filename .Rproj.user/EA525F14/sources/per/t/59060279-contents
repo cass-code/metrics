@@ -3,15 +3,134 @@ title: "Test doc"
 output: pdf_document
 ---
 
+#Structural break test \label{struc}
+
+http://svitsrv25.epfl.ch/R-doc/library/strucchange/doc/strucchange-intro.pdf
+strucchange pacakge
+
+# Variance Ratio Tests \label{Var}
+
+```{r}
+library(vrtest)
+library(tidyverse)
+help(vrtest)
+
+
+list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+
+vtest <- cvar_ratio(pdata$rexIND,190)
+vtest
+cvar_ratio(pdata$rexLNK,190)
+
+cvar_ratio(xx,190)
+
+xx <-random(378)
+xx
+
+vars <- pdata %>% select(-ENTRY)
+
+AutoBoot.test(vars$rexIND, nboot=100, "normal", prob=c(0.025,0.975))
+
+```
+
+
+# IPS Tests \label{IPS}
+
+NOTE: https://www.aptech.com/blog/panel-data-structural-breaks-and-unit-root-testing/ has an example of LM bar!!!
+```{r}
+library(tidyverse)
+install.packages("vrtest")
+library(plm)
+library (tseries)
+
+list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+
+#dickey fuller test with average t stats
+
+D <- DF(dm)
+D
+
+A <- purtest(dm, exo = "trend", test = "ips" , lags = c(0, 0, 1, 0, 0, 0, 1), pmax = 10, ips.stat ="Ztbar")
+A
+
+dm <- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean)
+
+adf.test(dm, 0)
+
+index <- data.frame(index = c(1:nrow(pdata))) 
+
+dat <- pdata %>% select(-ENTRY)
+# pseries <- bind_cols(index, dm)
+#pseries <- pdata.frame(pdata1, index = c("Country", "ENTRY"), drop.index = TRUE, row.names=TRUE)
+pseries <- pdata.frame(pdata1, index = c("Country", "ENTRY"))
+
+pdata1 <- pdata %>% tidyr::gather(Country, rex, -ENTRY) %>% 
+    arrange(Country)
+#%>% mutate(ENTRY = replace(ENTRY, ENTRY grepl(":"), )   mutate(x1 = replace(x1, x1 == 2, 99))
+pdata1$Country <- as.factor(pdata1$Country)
+pdata1$ENTRY <- as.character(pdata1$ENTRY)
+
+pdata1$ENTRY <- pdata1$ENTRY %>% mutate_if(grepl(':',.), ~replace(., grepl(":", .), "0"))
+
+
+p <- pseries$rex  
+p
+??cips
+
+p <- pseries$rex
+
+pdata.frame(p)
+
+Produc <- pdata.frame(Produc, index=c("state", "year"))
+
+cipstest(Produc$gsp, type = "trend")
+
+cipstest(pseries$rex, type = "trend")
+
+cips <- cipstest(
+pseries$rex,
+lags = 1,
+type = "none",
+#type = c("trend", "drift", "none"),
+model = "dmg",
+#model = c("cmg", "mg", "dmg"),
+truncated = FALSE
+)
+
+cips
+
+```
+
+
+
+# Dickey Fuller Tests {dick}
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 6, fig.height = 5, fig.pos="H", fig.pos = 'H')
 # Note: Include = FALSE implies the code is executed, but not printed in your pdf.
 # warning and message = FALSE implies ugly messages and warnings are removed from your pdf.
 # These should be picked up when you execute the command chunks (code sections below) in your rmd, not printed in your paper!
 
-#Reading in the data
 
 library(tidyverse)
+library(tseries)
+
+adfInd <- adf.test(pdata$rexIND, alternative = "stationary", k=0)
+adfInd #Indian Rupee
+
+adfLNK <- adf.test(pdata$rexLNK, alternative = "stationary", k=0)
+adfLNK
+
+adfMAL <- adf.test(pdata$rexMAL, alternative = "stationary", k=2)
+adfMAL # Ringgit
+
+adfPAK <- adf.test(pdata$rexPAK, alternative = "stationary", k=0)
+adfPAK
+
+adfPAK <- adf.test(pdata$rexPAK, alternative = "stationary", k=0)
+adfPAK
+
+
+
 
 list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
 
@@ -30,33 +149,38 @@ view(pdata3)
 
 A <- ADF(pdata, 8)
 
-library(plm)
-
-A <- purtest(pdata2, exo = "intercept", test = "ips" , lags = 0, pmax = 10, ips.stat = "tbar")
-A
-
-
 ```
 
-
+# Plotting Exchange rates \label{plot}
 
 
 ```{r Figure1, warning =  FALSE, fig.align = 'center', fig.cap = "Caption Here \\label{Figure2}", fig.height = 3, fig.width = 6, dev = 'png'}
+
+# 
 g <- rex_line_plot(ind) 
 g
 
+e <- plot_rex(pdata$ENTRY,pdata$rexMNR) 
+e
 ```
 
+# The Wald-Wolfowitz tests \label{wald}
 
 
 ```{r}
-dfplot <-
-        ind %>% mutate(ENTRY = as.factor(ENTRY)) %>%
-        mutate(rex = real_exchange(INDEX, INDCPI, USCPI))
+# The Wald-Wolfowitz tests
 
 library(randtests)
 # runs.test(ind, alternative, threshold, pvalue, plot)
-rand_test(dfplot$rex, "t", threshold = mean(dfplot$rex))
+rand_test(pdata$rexIND)
+rand_test(pdata$rexLNK)
+rand_test(pdata$rexMAL)
+rand_test(pdata$rexMNR)
+rand_test(pdata$rexPAK)
+rand_test(pdata$rexPHL)
+rand_test(pdata$rexTHI)
+rand_test(pdata$rexIND, "t", threshold = quantile(pdata$rexIND, probs = 0.5))
+rand_test(pdata$rexIND, "t", threshold = median(pdata$rexIND))
 runs.test(dfplot$rex, "t", threshold = mean(dfplot$rex))
 runs.test(dfplot$rex, "two.sided", threshold = n1,"normal",FALSE)
 

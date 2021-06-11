@@ -1,15 +1,15 @@
 plot_rex <- function(ENTRY, rex, xaxis_size = 5, xaxis_rows = 3){
-  
+
   g <-
     ggplot() +
     geom_line(aes(x = ENTRY, y = rex, group=1)) +
-    
+
     theme_bw() +
     scale_x_discrete(breaks = levels(ENTRY)[floor(seq(1,
-                                                             nlevels(ENTRY),
-                                                             length.out = 15))]) +
+                                                      nlevels(ENTRY),
+                                                      length.out = 15))]) +
     #scale_x_discrete(guide = guide_axis(n.dodge = xaxis_rows)) +
-    labs(title = "Real Exchange Rate", subtitle = "Some subtitle", caption = "brah", x = "Time", y = "Real Exchange Rate") +
+    #labs(title = "Real Exchange Rate", subtitle = "Some subtitle", caption = "brah", x = "Time", y = "Real Exchange Rate") +
     theme(legend.position = "top", legend.title = element_blank()) +
     theme(plot.title = element_text(size = 14),
           plot.subtitle = element_text(size = 12),
@@ -17,8 +17,8 @@ plot_rex <- function(ENTRY, rex, xaxis_size = 5, xaxis_rows = 3){
     guides(color = F)
   # If you wanted to make the x-axis vertical:
   # theme(axis.text.x=element_text(angle = 90, hjust = 1))
-  
+
   g
-  
-  
+
+
 }

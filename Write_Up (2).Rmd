@@ -1,0 +1,468 @@
+---
+# IMPORTANT: Change settings here, but DO NOT change the spacing.
+# Remove comments and add values where applicable.
+# The descriptions below should be self-explanatory
+
+# title: "Real Exchange Rate Behaviour: A Replication and Robustness Check
+#subtitle: "This will appear as Right Header"
+
+documentclass: "elsarticle"
+
+# --------- Thesis title (Optional - set to FALSE by default).
+# You can move the details below around as you please.
+Thesis_FP: TRUE
+Entry1: "Real Exchange Rate Behaviour: A Replication and Robustness Check"
+Entry2: "Cassandra Pengelly | 20346212" # textbf for bold
+Entry3: "Econometrics 871: Time Series Project"
+Uni_Logo: Tex/Logo.png # Place a logo in the indicated location (from your root, e.g. defaults to ~/Tex/Logo.png) and uncomment this line. Leave uncommented for no image
+Logo_width: 0.5
+# Entry4: "Under the supervision of: \\vfill Prof. Joe Smith and Dr. Frank Smith"
+# Entry5: "Stellenbosch University"
+# Entry6: April 2020
+# Entry7:
+# Entry8:
+
+# --------- Front Page
+# Comment: ----- Follow this pattern for up to 5 authors
+# AddTitle: TRUE # Use FALSE when submitting to peer reviewed platform. This will remove author names.
+# Author1: "Nico Katzke^[__Contributions:__  \\newline _The authors would like to thank no institution for money donated to this project. Thank you sincerely._]"  # First Author - note the thanks message displayed as an italic footnote of first page.
+# Ref1: "Prescient Securities, Cape Town, South Africa" # First Author's Affiliation
+# Email1: "nfkatzke\\@gmail.com" # First Author's Email address
+# 
+# Author2: "John Smith"
+# Ref2: "Some other Institution, Cape Town, South Africa"
+# Email2: "John\\@gmail.com"
+# CommonAffiliation_12: TRUE # If Author 1 and 2 have a common affiliation. Works with _13, _23, etc.
+# 
+# Author3: "John Doe"
+# Email3: "Joe\\@gmail.com"
+# 
+# CorrespAuthor_1: TRUE  # If corresponding author is author 3, e.g., use CorrespAuthor_3: TRUE
+# 
+# # Comment out below to remove both. JEL Codes only given if keywords also given.
+# keywords: "Multivariate GARCH \\sep Kalman Filter \\sep Copula" # Use \\sep to separate
+# JELCodes: "L250 \\sep L100"
+
+# ----- Manage headers and footers:
+#BottomLFooter: $Title$
+#BottomCFooter:
+#TopLHeader: \leftmark # Adds section name at topleft. Remove comment to add it.
+BottomRFooter: "\\footnotesize Page \\thepage" # Add a '#' before this line to remove footer.
+addtoprule: TRUE
+addfootrule: TRUE               # Use if footers added. Add '#' to remove line.
+
+# --------- page margins:
+margin: 2.3 # Sides
+bottom: 2 # bottom
+top: 2.5 # Top
+HardSet_layout: TRUE # Hard-set the spacing of words in your document. This will stop LaTeX squashing text to fit on pages, e.g.
+# This is done by hard-setting the spacing dimensions. Set to FALSE if you want LaTeX to optimize this for your paper.
+
+# --------- Line numbers
+linenumbers: FALSE # Used when submitting to journal
+
+# ---------- References settings:
+# You can download cls format here: https://www.zotero.org/ - simply search for your institution. You can also edit and save cls formats here: https://editor.citationstyles.org/about/
+# Hit download, store it in Tex/ folder, and change reference below - easy.
+bibliography: Tex/ref.bib       # Do not edit: Keep this naming convention and location.
+csl: Tex/harvard-stellenbosch-university.csl # referencing format used.
+# By default, the bibliography only displays the cited references. If you want to change this, you can comment out one of the following:
+#nocite: '@*' # Add all items in bibliography, whether cited or not
+# nocite: |  # add specific references that aren't cited
+#  @grinold2000
+#  @Someoneelse2010
+
+# ---------- General:
+RemovePreprintSubmittedTo: TRUE  # Removes the 'preprint submitted to...' at bottom of titlepage
+Journal: "Journal of Finance"   # Journal that the paper will be submitting to, if RemovePreprintSubmittedTo is set to TRUE.
+toc: TRUE                       # Add a table of contents
+numbersections: TRUE             # Should sections (and thus figures and tables) be numbered?
+fontsize: 11pt                  # Set fontsize
+linestretch: 1.2                # Set distance between lines.
+link-citations: TRUE            # This creates dynamic links to the papers in reference list.
+
+### Adding additional latex packages:
+# header-includes:
+#    - \usepackage{colortbl} # Add additional packages here.
+
+output:
+  pdf_document:
+    keep_tex: TRUE
+    template: Tex/TexDefault.txt
+    fig_width: 3.5 # Adjust default figure sizes. This can also be done in the chunks of the text.
+    fig_height: 3.5
+# abstract: |
+#   Abstract to be written here. The abstract should not be too long and should provide the reader with a good understanding what you are writing about. Academic papers are not like novels where you keep the reader in suspense. To be effective in getting others to read your paper, be as open and concise about your findings here as possible. Ideally, upon reading your abstract, the reader should feel he / she must read your paper in entirety.
+---
+
+<!-- First: Set your default preferences for chunk options: -->
+
+<!-- If you want a chunk's code to be printed, set echo = TRUE. message = FALSE stops R printing ugly package loading details in your final paper too. I also suggest setting warning = FALSE and checking for warnings in R, else you might find ugly warnings in your paper. -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 6, fig.height = 5, fig.pos="H", fig.pos = 'H')
+# Note: Include = FALSE implies the code is executed, but not printed in your pdf.
+# warning and message = FALSE implies ugly messages and warnings are removed from your pdf.
+# These should be picked up when you execute the command chunks (code sections below) in your rmd, not printed in your paper!
+# Loading packages used
+if(!require("tidyverse")) install.packages("tidyverse")
+if(!require("plm")) install.packages("plm")
+
+library(tidyverse)
+list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+Example_data <- Texevier::Ex_Dat
+
+ind <- read_table("C:/Users/Cassandra/OneDrive/Documents/2021 Academics/Metrics/Time Series Project/R stuffs/Write_Up/data/files/ind.dat")
+lnk <- read_table("C:/Users/Cassandra/OneDrive/Documents/2021 Academics/Metrics/Time Series Project/R stuffs/Write_Up/data/files/lnk.dat")
+mal <- read_table("C:/Users/Cassandra/OneDrive/Documents/2021 Academics/Metrics/Time Series Project/R stuffs/Write_Up/data/files/mal.dat")
+mnr <- read_table("C:/Users/Cassandra/OneDrive/Documents/2021 Academics/Metrics/Time Series Project/R stuffs/Write_Up/data/files/mnr.dat")
+pak <- read_table("C:/Users/Cassandra/OneDrive/Documents/2021 Academics/Metrics/Time Series Project/R stuffs/Write_Up/data/files/pak.dat")
+phl <- read_table("C:/Users/Cassandra/OneDrive/Documents/2021 Academics/Metrics/Time Series Project/R stuffs/Write_Up/data/files/phl.dat")
+thi <- read_table("C:/Users/Cassandra/OneDrive/Documents/2021 Academics/Metrics/Time Series Project/R stuffs/Write_Up/data/files/thi.dat")
+
+# adding in a column to each data set for the real exchange rate
+
+rexIND <- ind %>% mutate(ENTRY = as.factor(ENTRY)) %>% mutate(rexIND = real_exchange(INDEX, INDCPI, USCPI)) %>% select(ENTRY, rexIND)
+rexLNK <- lnk %>% mutate(ENTRY = as.factor(ENTRY)) %>% mutate(rexLNK = real_exchange(LNKEX, LNKCPI, USCPI)) %>% select(rexLNK)
+rexMAL <- mal %>% mutate(ENTRY = as.factor(ENTRY)) %>% mutate(rexMAL = real_exchange(MALEX, MALCPI, USCPI)) %>% select(rexMAL)
+rexMNR <- mnr %>% mutate(ENTRY = as.factor(ENTRY)) %>% mutate(MNREX = replace(MNREX, 203, 16.5)) %>% mutate(rexMNR = real_exchange(MNREX, MNRCPI, USCPI)) %>% select(rexMNR) #replaced the value for the exchange rate for 1974:11 with 16.5 (was 1.45)
+rexPAK <- pak %>% mutate(ENTRY = as.factor(ENTRY)) %>% mutate(rexPAK = real_exchange(PAKEX, PAKCPI, USCPI)) %>% select(rexPAK)
+rexPHL <- phl %>% mutate(ENTRY = as.factor(ENTRY)) %>% mutate(PHLEX = replace(PHLEX, 213, 7.7)) %>% mutate(rexPHL = real_exchange(PHLEX, PHLCPI, USCPI)) %>% select(rexPHL) #replaced the value for the exchange rate for 1975:09 with 7.7 (was 0.7)
+rexTHI <- thi %>% mutate(ENTRY = as.factor(ENTRY)) %>% mutate(rexTHI = real_exchange(THIEX, THICPI, USCPI)) %>% select(rexTHI)
+
+# binding the columns together for a panel data setof real exchange rates
+
+pdata <- bind_cols(rexIND,rexLNK, rexMAL, rexMNR,  rexPAK,  rexPHL,  rexTHI)
+
+# Notice that as you are working in a .Rproj file (I am assuming you are) - the relative paths of your directories start at your specified root.
+# This means that when working in a .Rproj file, you never need to use getwd() - it is assumed as your base root automatically.
+write_rds(Example_data, path = "data/Example_data.rds")
+
+```
+
+
+<!-- ############################## -->
+<!-- # Start Writing here: -->
+<!-- ############################## -->
+
+# Introduction \label{Introduction}
+
+How do we compare living standards and economic productivity between countries? This is one of the questions that macroeconomics attempts to answers and a number of tools have been developed within the field to this end. One of these tools is the Purchasing Power Parity (PPP) theory, which uses a basket of goods to compare the currencies of different countries. This theory has been widely tested using data, and the results have been divisive and somewhat puzzling.@puz.
+
+In this essay, I replicate^[More accurately, try my best to replicate] the paper "Real Exchange Rate Behaviour: Evidence from Black Markets" by @Kul, which tests the PPP hypothesis. I include some other tests in addition to those in the paper as a robustness check on the results. 
+
+This essay^[This essay was written in R using the package by @Texevier] is organised as follows. Section \ref{Context} contextualises Luintel's paper and discusses the robustness checks. Section \ref{Data} discusses the data and reports the results of the Wald-Wolfowitz tests. Section \ref{Unit} deals with the unit root tests. Section \ref{Var} reports the results of the variance ratio test and section \ref{Struc} presents the structural break tests.
+
+
+# Context and Evaluation \label{Context}
+
+provide a brief section that outlines the context and questions of the replicated study:
+The first part should outline what the authors do, how they motivate the question as of economic interest and/or importance, how they motivate their methods and how they argue that their contribution is novel
+
+The second part can be a critical evaluation of their approach and choices which leads to your choices of robustness checks/extensions
+
+
+
+Over the past decade, the purchasing-power parity (PPP) puzzle has taken two forms.  Its early form arose from early tests of unit roots in real exchange rates, which failed to reject  the  null  hypothesis,  thus  casting  doubts  on  the  long-term  PPP  hypothesis  of  real  exchange  rates'  mean  reversion.  Following  the  development  of  more  powerful  tests  that  resulted in rejections of unit roots, the PPP-puzzle re-surfaced in the form of surprisingly slow rates of convergence of real exchange rates to their long-run means. Rogoff (1996) expressed  this  puzzle  in  terms  of  the  estimated  "half-life"  of  real  exchange  rate  shocks  being 3 to 5 years. Recent research has attempted to solve that second form of the puzzle by adopting non-linear stochastic models of real exchange rates. Despite this introduction of  non-linearities,  the  literature  has  continued  to  focus  on  the  notion  of  "half-life"  as  a  measure of persistence.  
+
+
+
+The theory of purchasing power parity (PPP) is one of the most widely tested economics. The overall findings can be summarized as follows. Studies based data wholly reject PPP.1 Rogoff (1996, p. 644) calls this set of evidence 'the abject law of one price. Time-series studies based on aggregate price indices for also largely reject PPP and suggest that the real exchange rate behaves as random walk hypothesis implies that shocks to the real exchange rate are persistent is no tendency for PPP to hold in the short run or in the long run. Rogoff summarizes this set of findings as 'something of an embarrassment' to the argues that every 'reasonable' theoretical model suggests a mean reverting real the long run.3
+
+
+
+The behaviour of real exchange rates (relative to the US dollar) is examined using monthly from the black markets for foreign exchange of eight Asian developing countries. The data The black market real exchange rates do not show excess volatility during the recent float contrast to the results reported elsewhere. Unit root tests in heterogeneous panels and variance confirm their stationarity. Thus, we find support for PPP but not for the 'survivorship' Rogoff, 1995). There is little evidence of segmented trends. Issues raised by Rogoff (1996) would hold across countries with differing growth experience-and Lothian and Taylor whether the degree of relative price volatility may bias results in favour of mean reverting rates -are addressed. Copyright © 2000 John Wiley & Sons, Ltd. 1. INTRODUCTION 
+
+References are to be made as follows: @fama1997[p. 33] and @grinold2000 Such authors could also be referenced in brackets [@grinold2000] and together [@fama1997 \& @grinold2000]. 
+
+# Data \label{Data}
+
+The data used for the analysis is a series on black market nominal exchange rates and consumer price indices (CPI) for 8 developing Asian countries, namely: India, Sri Lanka, Myanmar, Malaysia, Pakistan, Philippines, Taiwan and Thailand. I take a subset of these countries by excluding Taiwan^[I excluded Taiwan because there is some data missing from the set and I don't know how to adjust an unbalanced panel. However, it is also interesting to test if the results hold when taking a subset] from the analysis. @Kul sources data from various issues of *Pick's Currency Year Book* and *World Currency Year Book*. The data used for Luintel's paper is accessible through the Journal of Applied Econometrics archive, which is where I attained my data. The sample period runs for 31 periods from January 1958 to June 1989. This sample period is split into two parts: Bretton Woods and after Bretton Woods (also referred to as pre-float period and the float period).
+
+The nominal exchange rates are units currencies per unit of US dollar. There were two mistakes in the nominal exchange rate datasets: for Myanmar November 1974,  there was a value of 1.45, which I replaced with 16.5 (based on interpolation). And for the Philippines in September 1975,  there was a value of 0.7 with which I replaced with 7.7 (based on interpolation).^[I discovered these mistakes when there was a dramatic difference in my plots of the real exchange rates and Luintel's plots.] Luintel sources the CPI figures from issues of International Financial Statistics (which are included in Luintel's dataset available in the JAE data archives).  
+
+To calculate the real exchange rates, I follow the lead of @Kul and apply the following formula to the nominal exchange rates:
+
+$$
+rex = log(Nominal Exchange Rate) - log(CPI) + log(United States CPI)
+$$
+
+I plot the real exchange rate series below in \ref{Figure1}. The plots below match those of @Kul [p. 166] and indicate that the real exchange rates are trending. Additionally, the graphs show that the black market exchange rates are somewhat volatile. As expected, we see that after the first oil shock of 1973 the currencies appreciated and then slowly reverted. The plots suggest that the trends are segmented. I test this hypothesis using formal tests, reported below the plots in 
+
+1980s. TDollar is the only currency which appreciated against the sample period; the rest depreciated over time. Peso shows a blip (sharp devaluation) These plots indicate segmented trends. However, formal tests (reported below) structural breaks than there appear visually. Another interesting aspect of these are no discernible patterns of volatility between pre- and
+
+
+```{r Figure1, echo = FALSE, include= TRUE, warning =  FALSE, fig.height= 9, fig.align = 'center', fig.ext = 'png'}
+
+library(tidyverse)
+g <- rex_plots_combined(pdata)
+
+```
+```{r Figure2, echo = FALSE, include= TRUE, warning =  FALSE, fig.height= 9, fig.align = 'center', fig.cap = "Plot of Real Exchange Rates over Time\\label{Figure1}", fig.ext = 'png'}
+
+library(tidyverse)
+h <- rex_plots_combined1(pdata)
+
+# had an issue with some extra grob table information printing - resolved this by including grid.draw and not including "h" here in the chunk
+```
+
+```{r Figure3, echo = FALSE, include= TRUE, warning =  FALSE, fig.height= 5, fig.align = 'center', fig.cap = "Wald-Wolfowitz Tests\\label{Figure3}", fig.ext = 'png'}
+# The Wald-Wolfowitz tests
+
+h <- knitr::kable(wald(pdata), digits = 3)
+h
+
+
+```
+
+# Unit Root Tests \label{Unit}
+
+```{r Figure5, echo = FALSE, include= TRUE, warning =  FALSE}
+library(devtools)
+library(tidyverse)
+#install.packages("kableExtra")
+#devtools::install_github("haozhu233/kableExtra")
+library(kableExtra)
+A <- knitr::kable(ADF(pdata)) %>% 
+kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+A
+
+```
+
+# Variance Ratio Test \label{Var}
+
+```{r}
+cvar_table(pdata)
+```
+
+
+# Structural Break Test \label{Struc}
+
+
+
+<!-- The following is a code chunk. It must have its own unique name (after the r), or no name. After the comma follows commands for R which are self-explanatory. By default, the code and messages will not be printed in your pdf, just the output: -->
+
+
+
+To make your graphs look extra nice in latex world, you could use Tikz device. Replace dev - 'png' with 'tikz' in the chunk below. Notice this makes the build time longer and produces extra tex files - so if you are comfortable with this, set your device to Tikz and try it out:
+
+```{r, warning =  FALSE, fig.align = 'center', fig.cap = "Caption Here ", fig.height = 3, fig.width = 6, dev = 'png'}
+
+# Although the functions above are really simple, the principle is simple: containing calculations and data wrangling in their own functions will make this template much cleaner and more manageable.
+# When you start working, delete these meaningless functions and replace with your own...
+
+```
+
+To reference the plot above, add a ``\\label'' after the caption in the chunk heading, as done above. Then reference the plot as such: As can be seen, Figures \ref{Figure1}  and \ref{Figure2} are excellent, with Figure \ref{Figure2} being particularly aesthetically pleasing due to its device setting of Tikz. The nice thing now is that it correctly numbers all your figures (and sections or tables) and will update if it moves. The links are also dynamic.
+
+I very strongly suggest using ggplot2 (ideally in combination with dplyr) using the ggtheme package to change the themes of your figures.
+
+Also note the information that I have placed above the chunks in the code chunks for the figures. You can edit any of these easily - visit the Rmarkdown webpage for more information.
+
+# Splitting a page
+
+You can also very easily split a page using built-in Pandoc formatting. I comment this out in the code (as this has caused issues building the pdf for some users - which I presume to be a Pandoc issue), but you are welcome to try it out yourself by commenting out the following section in your Rmd file.
+
+
+<!-- :::::: {.columns data-latex="[T]"} -->
+<!-- ::: {.column data-latex="{0.7\textwidth}"} -->
+<!-- ```{r, echo=FALSE, fig.width=4, fig.height=4} -->
+<!-- par(mar = c(4, 4, .2, .1)) -->
+<!-- plot(cars, pch = 19) -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: {.column data-latex="{0.05\textwidth}"} -->
+<!-- \ -->
+<!-- ::: -->
+<!-- ::: {.column data-latex="{0.2\textwidth}"} -->
+<!-- \scriptsize -->
+
+<!-- ## Data {-} -->
+<!-- The figure on the left-hand side shows the `cars` data. -->
+<!-- ::: -->
+<!-- :::::: -->
+
+
+
+#  Methodology \label{Meth}
+
+## Subsection
+Ideally do not overuse subsections. It equates to bad writing.^[This is an example of a footnote by the way. Something that should also not be overused.]
+
+## Math section
+
+Equations should be written as such:
+
+\begin{align}
+\beta = \sum_{i = 1}^{\infty}\frac{\alpha^2}{\sigma_{t-1}^2} \label{eq1} \\
+\int_{x = 1}^{\infty}x_{i} = 1 \notag
+\end{align}
+
+If you would like to see the equations as you type in Rmarkdown, use $ symbols instead (see this for yourself by adjusted the equation):
+
+$$
+\beta = \sum_{i = 1}^{\infty}\frac{\alpha^2}{\sigma_{t-1}^2} \\
+\int_{x = 1}^{\infty}x_{i} = 1
+$$
+
+Note again the reference to equation \ref{eq1}. Writing nice math requires practice. Note I used a forward slashes to make a space in the equations. I can also align equations using  __\&__, and set to numbering only the first line. Now I will have to type ``begin equation'' which is a native \LaTeX command. Here follows a more complicated equation:
+
+
+\begin{align}
+	y_t &= c + B(L) y_{t-1} + e_t   \label{eq2}    \\ \notag
+	e_t &= H_t^{1/2}  z_t ; \quad z_t \sim  N(0,I_N) \quad \& \quad H_t = D_tR_tD_t \\ \notag
+		D_t^2 &= {\sigma_{1,t}, \dots, \sigma_{N,t}}   \\ \notag
+		\sigma_{i,t}^2 &= \gamma_i+\kappa_{i,t}  v_{i, t-1}^2 +\eta_i  \sigma_{i, t-1}^2, \quad \forall i \\ \notag
+		R_{t, i, j} &= {diag(Q_{t, i, j}}^{-1}) . Q_{t, i, j} . diag(Q_{t, i, j}^{-1})  \\ \notag
+		Q_{t, i, j} &= (1-\alpha-\beta)  \bar{Q} + \alpha  z_t  z_t'  + \beta  Q_{t, i, j} \notag
+\end{align}
+
+Note that in \ref{eq2} I have aligned the equations by the equal signs. I also want only one tag, and I create spaces using ``quads''.
+
+See if you can figure out how to do complex math using the two examples provided in \ref{eq1} and \ref{eq2}.
+
+<!-- $$ -->
+<!-- This is a commented out section in the writing part. -->
+<!-- Comments are created by highlighting text, amnd pressing CTL+C -->
+<!-- \\begin{align} -->
+<!-- \\beta = \\alpha^2 -->
+<!-- \end{align} -->
+<!-- $$ -->
+
+# Results
+
+Tables can be included as follows. Use the _xtable_ (or kable) package for tables. Table placement = H implies Latex tries to place the table Here, and not on a new page (there are, however, very many ways to skin this cat. Luckily there are many forums online!).
+
+
+```{r ShortTable, results = 'asis'}
+
+library(xtable)
+data <- mtcars[1:5,] %>% tibble::as_tibble()
+
+table <- xtable(data, caption = "Short Table Example \\label{tab1}")
+  print.xtable(table,
+             # tabular.environment = "longtable",
+             floating = TRUE,
+             table.placement = 'H',
+             # scalebox = 0.3,
+             comment = FALSE,
+             caption.placement = 'bottom'
+             )
+
+```
+
+To reference calculations __in text__, _do this:_ From table \ref{tab1} we see the average value of mpg is `r mean(mtcars[1:5,]$mpg)`.
+
+Including tables that span across pages, use the following (note that I add below the table: ``continue on the next page''). This is a neat way of splitting your table across a page.
+
+Use the following default settings to build your own possibly long tables. Note that the following will fit on one page if it can, but cleanly spreads over multiple pages:
+
+```{r LongTable, results = 'asis'}
+
+library(xtable)
+
+data = mtcars %>% tibble::as_tibble()
+  addtorow          <- list()
+  addtorow$pos      <- list()
+  addtorow$pos[[1]] <- c(0)
+  addtorow$command  <- c(paste("\\hline \n",
+                               "\\endhead \n",
+                               "\\hline \n",
+                               "{\\footnotesize Continued on next page} \n",
+                               "\\endfoot \n",
+                               "\\endlastfoot \n",sep=""))
+table <- xtable(data, caption = "Long Table Example")
+  print.xtable(table,
+             tabular.environment = "longtable",
+             floating = FALSE, # Leave this as is.
+             table.placement = 'H', # Leave this as is.
+             booktabs = T, # Aesthetics
+             include.rownames = FALSE,  # Typically you don't want this in a table.
+             add.to.row = addtorow, # For adding the Continued on next page part...
+             comment = FALSE,
+             caption.placement = 'top',  # Where do you want the caption?
+             size="\\fontsize{12pt}{13pt}\\selectfont"  # Size of text in table..
+             )
+# See https://cran.r-project.org/web/packages/xtable/vignettes/xtableGallery.pdf for table inspiration
+```
+
+\hfill
+
+<!-- hfill can be used to create a space, like here between text and table. -->
+
+
+## Huxtable
+
+Huxtable is a very nice package for making working with tables between Rmarkdown and Tex easier.
+
+This cost some adjustment to the Tex templates to make it work, but it now works nicely.
+
+See documentation for this package [here](https://hughjonesd.github.io/huxtable/huxtable.html). A particularly nice addition of this package is for making the printing of regression results a joy (see [here](https://hughjonesd.github.io/huxtable/huxtable.html#creating-a-regression-table)). Here follows an example:
+
+
+If you are eager to use huxtable, comment out the Huxtable table in the Rmd template, and uncomment the colortbl package in your Rmd's root.
+
+Note that I do not include this in the ordinary template, as some latex users have complained it breaks when they build their Rmds (especially those using tidytex - I don't have this problem as I have the full Miktex installed on mine). Up to you, but I strongly recommend installing the package manually and using huxtable. To make this work, uncomment the _Adding additional latex packages_ part in yaml at the top of the Rmd file. Then comment out the huxtable example in the template below this line. Reknit, and enjoy.
+
+```{r, results = 'asis'}
+
+if(!require(huxtable)) install.packages(huxtable)
+library(huxtable)
+data(diamonds, package = 'ggplot2')
+Title <- "Regression Output"
+Label <- "Reg01"
+lm1 <- lm(price ~ carat, diamonds)
+lm2 <- lm(price ~ depth, diamonds)
+lm3 <- lm(price ~ carat + depth, diamonds)
+htab <-
+huxreg(lm1, lm2, lm3,
+                statistics = c(N = "nobs", R2 = "r.squared"),
+                note = "%stars%.") %>%
+  set_caption(Title) %>%
+  set_label(Label)
+# More settings:
+font_size(htab) <- 12
+# Let's change regression names: this is slightly hacky, but works. Comment out this section to see what the default looks like:
+  Names <- c( "Reg1", "Reg2", "Reg3")
+  for(i in 1:length(Names)) {
+    htab[1,][[1+i]] <- Names[i]
+  }
+# Now simply call the table:
+htab
+
+```
+
+FYI - R also recently introduced the gt package, which is worthwhile exploring too.
+
+# Lists
+
+To add lists, simply using the following notation
+
+* This is really simple
+
+    + Just note the spaces here - writing in R you have to sometimes be pedantic about spaces...
+
+* Note that Rmarkdown notation removes the pain of defining \LaTeX environments!
+
+# Conclusion
+
+
+
+<!-- Make title of bibliography here: -->
+<!-- \newpage -->
+
+\newpage
+
+# References {-}
+
+<div id="refs"></div>
+
+
+# Appendix {-}
+
+## Appendix A {-}
+
+Some appendix information here
+
+## Appendix B {-}
+

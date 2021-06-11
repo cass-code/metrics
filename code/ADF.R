@@ -5,7 +5,6 @@ ADF <- function(pdata){
     library(tseries)
 
     #Augmented Dickey-Fuller test for panel data
-    library(tseries)
 
     adfInd <- adf.test(pdata$rexIND, alternative = "stationary", k=0)
     adfInd #Indian Rupee
@@ -28,7 +27,7 @@ ADF <- function(pdata){
     adfTHI <- adf.test(pdata$rexTHI, alternative = "stationary", k=1)
     adfTHI #Thailand Baht
 
-    names <- data.frame("countries" = c("India Rupee", "Sri Lanka Rupee", "Malaysia Ringgit", "Myanmar Kyat", "Pakistan Rupee", "Phillipines Peso", "Thailand Baht"))
+    names <- data.frame("Countries" = c("India (Rupee)", "Sri Lanka (Rupee)", "Malaysia (Ringgit)", "Myanmar (Kyat)", "Pakistan (Rupee)", "Phillipines (Peso)", "Thailand (Baht)"))
 
 
     ADFF <- bind_rows(adfInd$statistic, adfLNK$statistic, adfMAL$statistic,
