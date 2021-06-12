@@ -157,7 +157,7 @@ Practically, the paper has two main aims: the first is to determine whether ther
 
 @Kul makes use of (more) powerful unit root tests for heterogeneous panels, and finds that real exchange rates are mean-reverting. This was novel for the time as most time-series studies rejected PPP and concluded that the real exchange rate followed a random walk. This suggested that any shocks to the real exchange rate were persistent and there was no mean-reversion either in the short or long term (@rog). @Kul finds that the black market real exchange rates do not behave in an excessively volatile manner, which conflicted with the findings of the literature at that time. Additionally, the findings of the study implied that such empirical investigation may not necessarily suffer from survivorship bias.
 
-In order to conclude that 
+A critical part of Luintel's paper is testing for unit roots in the panel data, specifically the paper makes use of the Im-Pesaran-Shin T-bar test. In addition to replicating this test, I implement several other unit root tests as a robustness check and find that the results are mixed. @Kul [p.70] defends the choice of the IPS tests well, citing that they allow for the dynamics and error variances across groups, and the T-bar tests based on meaned regressions are valid. Additionally, these tests may have better small sample propoerties. I run the IPS tests using @Kul's specified lags, and the AIC method. I then implement the panel stationarity tests proposed by @lev, @wu, @had, as well as a bootstrapped panel unit root test from @pal.   
 
 # Data \label{Data}
 

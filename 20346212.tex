@@ -325,7 +325,26 @@ literature at that time. Additionally, the findings of the study implied
 that such empirical investigation may not necessarily suffer from
 survivorship bias.
 
-In order to conclude that
+A critical part of Luintel's paper is testing for unit roots in the
+panel data, specifically the paper makes use of the Im-Pesaran-Shin
+T-bar test. In addition to replicating this test, I implement several
+other unit root tests as a robustness check and find that the results
+are mixed. \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000: 70}) defends the choice of the IPS
+tests well, citing that they allow for the dynamics and error variances
+across groups, and the T-bar tests based on meaned regressions are
+valid. Additionally, these tests may have better small sample
+propoerties. I run the IPS tests using
+\protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000})'s specified lags, and the AIC
+method. I then implement the panel stationarity tests proposed by
+\protect\hyperlink{ref-lev}{Levin, Lin \& James Chu}
+(\protect\hyperlink{ref-lev}{2002}), \protect\hyperlink{ref-wu}{Maddala
+\& Wu} (\protect\hyperlink{ref-wu}{1999}),
+\protect\hyperlink{ref-had}{Hadri} (\protect\hyperlink{ref-had}{2002}),
+as well as a bootstrapped panel unit root test from
+\protect\hyperlink{ref-pal}{Palm, Smeekes \& Urbain}
+(\protect\hyperlink{ref-pal}{2011}).
 
 \hypertarget{data}{%
 \section{\texorpdfstring{Data \label{Data}}{Data }}\label{data}}
@@ -454,14 +473,17 @@ T-bar test), and the test rejects the null hypothesis at a 1\% level,
 both when including and excluding a trend. This supports the results of
 \protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000:
 173}). I use the same lags as \protect\hyperlink{ref-Kul}{Luintel}
-(\protect\hyperlink{ref-Kul}{2000})
+(\protect\hyperlink{ref-Kul}{2000}) for the first IPS T-bar test, are
+for the full sample: Malaysia(l) and Thailand(1), for the Bretton Woods
+period: Thailand(1), and for the post Bretton Woods period: Malaysia(l)
+and Thailand(1).
 
 The first unit root test I employ is the Im-Pesaran-Shin t-bar test to
 replicate \protect\hyperlink{ref-Kul}{Luintel}
 (\protect\hyperlink{ref-Kul}{2000}) test. The results below show that
 the null hypothesis (there exists a unit root) is rejected at the
 conventional levels of significance\footnote{I found out this is a fancy
-  way of saying reject at 1\% and 5\%} \ref{ips} also \ref{IPS}
+  way of saying reject at 1\% and 5\%} \ref{ips}
 
 \begingroup\fontsize{12pt}{13pt}\selectfont
 \begin{longtable}{llrll}
@@ -587,19 +609,41 @@ El-Gamal, M.A. \& Ryu, D. 2006. Short-memory and the PPP hypothesis.
 {[}Online{]}, Available:
 \url{http://www.sciencedirect.com/science/article/B6V85-4HD8B3Y-1/1/b7865989592c6f1ee4b79a80036183c9}.
 
+\leavevmode\hypertarget{ref-had}{}%
+Hadri, K. 2002. Testing for stationarity in heterogeneous panel data.
+\emph{The Econometrics Journal}. 3(2):148--161.
+
 \leavevmode\hypertarget{ref-Texevier}{}%
 Katzke, N.F. 2017. \emph{{Texevier}: {P}ackage to create elsevier
 templates for rmarkdown}. Stellenbosch, South Africa: Bureau for
 Economic Research.
+
+\leavevmode\hypertarget{ref-lev}{}%
+Levin, A., Lin, C.-F. \& James Chu, C.-S. 2002. Unit root tests in panel
+data: Asymptotic and finite-sample properties. \emph{Journal of
+Econometrics}. 108(1):1--24. {[}Online{]}, Available:
+\url{https://EconPapers.repec.org/RePEc:eee:econom:v:108:y:2002:i:1:p:1-24}.
 
 \leavevmode\hypertarget{ref-Kul}{}%
 Luintel, K.B. 2000. Real exchange rate behaviour: Evidence from black
 markets. \emph{Journal of Applied Econometrics}. 15(2):161--185.
 {[}Online{]}, Available: \url{http://www.jstor.org/stable/2678529}.
 
+\leavevmode\hypertarget{ref-wu}{}%
+Maddala, G.S. \& Wu, S. 1999. A comparative study of unit root tests
+with panel data and a new simple test. \emph{Oxford Bulletin of
+Economics and Statistics}. 61(S1):631--652. {[}Online{]}, Available:
+\url{https://EconPapers.repec.org/RePEc:bla:obuest:v:61:y:1999:i:s1:p:631-652}.
+
 \leavevmode\hypertarget{ref-plm}{}%
 Millo, G. 2017. Robust standard error estimators for panel models: A
 unifying approach. \emph{Journal of Statistical Software}. 82(3):1--27.
+
+\leavevmode\hypertarget{ref-pal}{}%
+Palm, F., Smeekes, S. \& Urbain, J.-P. 2011. Cross-sectional dependence
+robust block bootstrap panel unit root tests. \emph{Journal of
+Econometrics}. 163(1):85--104. {[}Online{]}, Available:
+\url{https://EconPapers.repec.org/RePEc:eee:econom:v:163:y:2011:i:1:p:85-104}.
 
 \leavevmode\hypertarget{ref-im}{}%
 Pasaran, M.H., Im, K.S. \& Shin, Y. 1997. \emph{Testing for unit roots
