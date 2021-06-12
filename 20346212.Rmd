@@ -107,7 +107,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width 
 # Loading packages used
 if(!require("tidyverse")) install.packages("tidyverse")
 if(!require("plm")) install.packages("plm")
-
+library(bootUR)
 library(tidyverse)
 list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
 
@@ -171,7 +171,6 @@ The theory of purchasing power parity (PPP) is one of the most widely tested eco
 
 The behaviour of real exchange rates (relative to the US dollar) is examined using monthly from the black markets for foreign exchange of eight Asian developing countries. The data The black market real exchange rates do not show excess volatility during the recent float contrast to the results reported elsewhere. Unit root tests in heterogeneous panels and variance confirm their stationarity. Thus, we find support for PPP but not for the 'survivorship' Rogoff, 1995). There is little evidence of segmented trends. Issues raised by Rogoff (1996) would hold across countries with differing growth experience-and Lothian and Taylor whether the degree of relative price volatility may bias results in favour of mean reverting rates -are addressed. Copyright © 2000 John Wiley & Sons, Ltd. 1. INTRODUCTION 
 
-References are to be made as follows: @fama1997[p. 33] and @grinold2000 Such authors could also be referenced in brackets [@grinold2000] and together [@fama1997 \& @grinold2000]. 
 
 # Data \label{Data}
 
@@ -265,7 +264,10 @@ table <- xtable(data, caption = "Augmented Dickey-Fuller Tests")
 
 ## Panel Unit Root Tests
 
-The first unit root test I employ is the Im-Pesaran-Shin t-bar test to replicate @Kul test. The results below show that the null hyothesis (there exists a unit root)
+As noted by @pes [p.18], when using country data for macroeconomic applications, there are often time series contemporaneous correlations, which is a relevant concern for testing the PPP hypothesis. There may be unobserved common factors or spatial spillover effects, which need to be accounted for in the unit root test. Modelling cross section dependence in panel data sets is still an emerging field, but @im suggest that the appropriate test statistic is the T-bar test based on cross-sectional demeaned regressions. This is the
+
+The first unit root test I employ is the Im-Pesaran-Shin t-bar test to replicate @Kul test. The results below show that the null hypothesis (there exists a unit root)
+
 ```{r IPS, echo = FALSE, include= TRUE, warning =  FALSE, results='asis'}
 
 pdata2 <- pdata %>% select(-ENTRY)
@@ -301,6 +303,28 @@ table <- xtable(data, caption = "IPS Panel Unit Root Tests (Tbar)")
 ```
 I then tests for unit roots using LLL test (I used the package by @plm for this).
 
+The function panel_test performs a test on a multivariate (panel) time series by testing the null hypothesis that all series have a unit root. A rejection is typically interpreted as evidence that a ‘significant proportion’ of the series is stationary, although how large that proportion is - or which series are stationary - is not given by the test. The test is based on averaging the individual test statistics, also called the Group-Mean (GM) test in Palm, Smeekes and Urbain (2011).
+
+```{r Panel, echo = FALSE, include= TRUE, warning =  FALSE, results='asis'}
+pdata2 <- pdata %>% select(-ENTRY)
+dm <- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean)
+
+library(xtable)
+list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+ #palm <- panel_test_table(pdata2)
+ table <- xtable(palm, caption = "Bootstrapped panel unit root tests \\label{tab1}")
+  print.xtable(table,
+             # tabular.environment = "longtable",
+             floating = TRUE,
+             table.placement = 'H',
+             include.rownames = FALSE,
+             # scalebox = 0.3,
+             comment = FALSE,
+             caption.placement = 'top'
+             )
+
+```
+
 # Variance Ratio Test \label{Var}
 
 The following table shows results of the Variance Ratio test for the full sample for up to 20 months. The results of the variance ratio test for the Bretton Woods period and post Bretton Woods period (for up to 20 months^[The results for 190 months is available upon request; it has been omitted purely to save space]) can be found in the Appendix (\ref{A})
@@ -335,10 +359,7 @@ table <- xtable(data, caption = "Variance Ratio Test for Full Sample Up to month
              size="\\fontsize{12pt}{13pt}\\selectfont"  # Size of text in table..
              )
 ```
-# Structural Break Test \label{Struc}
 
-
-To make your graphs look extra nice in latex world, you could use Tikz device. Replace dev - 'png' with 'tikz' in the chunk below. Notice this makes the build time longer and produces extra tex files - so if you are comfortable with this, set your device to Tikz and try it out:
 
 ```{r, warning =  FALSE, fig.align = 'center', fig.cap = "Caption Here ", fig.height = 3, fig.width = 6, dev = 'png'}
 
@@ -347,18 +368,6 @@ To make your graphs look extra nice in latex world, you could use Tikz device. R
 
 ```
 
-To reference the plot above, add a ``\\label'' after the caption in the chunk heading, as done above. Then reference the plot as such: As can be seen, Figures \ref{Figure1}  and \ref{Figure2} are excellent, with Figure \ref{Figure2} being particularly aesthetically pleasing due to its device setting of Tikz. The nice thing now is that it correctly numbers all your figures (and sections or tables) and will update if it moves. The links are also dynamic.
-
-I very strongly suggest using ggplot2 (ideally in combination with dplyr) using the ggtheme package to change the themes of your figures.
-
-Also note the information that I have placed above the chunks in the code chunks for the figures. You can edit any of these easily - visit the Rmarkdown webpage for more information.
-
-# Splitting a page
-
-You can also very easily split a page using built-in Pandoc formatting. I comment this out in the code (as this has caused issues building the pdf for some users - which I presume to be a Pandoc issue), but you are welcome to try it out yourself by commenting out the following section in your Rmd file.
-
-
-
 # Math section
 
 \begin{align}
@@ -366,48 +375,9 @@ You can also very easily split a page using built-in Pandoc formatting. I commen
 \int_{x = 1}^{\infty}x_{i} = 1 \notag
 \end{align}
 
-If you would like to see the equations as you type in Rmarkdown, use $ symbols instead (see this for yourself by adjusted the equation):
-
-$$
-\beta = \sum_{i = 1}^{\infty}\frac{\alpha^2}{\sigma_{t-1}^2} \\
-\int_{x = 1}^{\infty}x_{i} = 1
-$$
-
-Note again the reference to equation \ref{eq1}. Writing nice math requires practice. Note I used a forward slashes to make a space in the equations. I can also align equations using  __\&__, and set to numbering only the first line. Now I will have to type ``begin equation'' which is a native \LaTeX command. Here follows a more complicated equation:
-
-
-# Results
-
-Tables can be included as follows. Use the _xtable_ (or kable) package for tables. Table placement = H implies Latex tries to place the table Here, and not on a new page (there are, however, very many ways to skin this cat. Luckily there are many forums online!).
-
-
-```{r ShortTable, results = 'asis'}
-
-library(xtable)
-data <- mtcars[1:5,] %>% tibble::as_tibble()
-
-table <- xtable(data, caption = "Short Table Example \\label{tab1}")
-  print.xtable(table,
-             # tabular.environment = "longtable",
-             floating = TRUE,
-             table.placement = 'H',
-             # scalebox = 0.3,
-             comment = FALSE,
-             caption.placement = 'bottom'
-             )
-
-```
-
-To reference calculations __in text__, _do this:_ From table \ref{tab1} we see the average value of mpg is `r mean(mtcars[1:5,]$mpg)`.
-
-Including tables that span across pages, use the following (note that I add below the table: ``continue on the next page''). This is a neat way of splitting your table across a page.
-
-Use the following default settings to build your own possibly long tables. Note that the following will fit on one page if it can, but cleanly spreads over multiple pages:
 
 
 \hfill
-
-<!-- hfill can be used to create a space, like here between text and table. -->
 
 
 ## Huxtable

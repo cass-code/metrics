@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.7)  12 JUN 2021 15:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.7)  12 JUN 2021 17:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -757,11 +757,7 @@ Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \sift@deathcycles=\count320
 \@vwid@loff=\dimen277
 \@vwid@roff=\dimen278
-)) (./20346212.aux
-
-LaTeX Warning: Label `tab1' multiply defined.
-
-)
+)) (./20346212.aux)
 \openout1 = `20346212.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 180.
@@ -855,7 +851,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: threeparttable package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-<Tex/Logo.png, id=72, 289.08pt x 289.08pt>
+<Tex/Logo.png, id=60, 289.08pt x 289.08pt>
 File: Tex/Logo.png Graphic file (type png)
 <use Tex/Logo.png>
 Package pdftex.def Info: Tex/Logo.png  used on input line 198.
@@ -902,118 +898,85 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/p
-dftex.map} <./Tex/Logo.png>] (./20346212.toc [2
-
-
-])
+dftex.map} <./Tex/Logo.png>] (./20346212.toc)
 \tf@toc=\write5
 \openout5 = `20346212.toc'.
 
+[2
+
+
+]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 278.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 278.
+
+LaTeX Warning: Reference `Struc' on page 3 undefined on input line 291.
+
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
 26.
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [3] [4]
 
-LaTeX Warning: Reference `Figure3' on page 5 undefined on input line 425.
+LaTeX Warning: Reference `Figure3' on page 5 undefined on input line 416.
 
-<20346212_files/figure-latex/Figure1-1.png, id=159, 433.62pt x 650.43pt>
+<20346212_files/figure-latex/Figure1-1.png, id=134, 433.62pt x 650.43pt>
 File: 20346212_files/figure-latex/Figure1-1.png Graphic file (type png)
 <use 20346212_files/figure-latex/Figure1-1.png>
 Package pdftex.def Info: 20346212_files/figure-latex/Figure1-1.png  used on inp
-ut line 427.
+ut line 418.
 (pdftex.def)             Requested size: 433.61894pt x 650.4284pt.
 [5]
 Overfull \vbox (13.4958pt too high) has occurred while \output is active []
 
 [6 <./20346212_files/figure-latex/Figure1-1.png>]
-<20346212_files/figure-latex/Figure2-1.png, id=181, 433.62pt x 650.43pt>
+<20346212_files/figure-latex/Figure2-1.png, id=156, 433.62pt x 650.43pt>
 File: 20346212_files/figure-latex/Figure2-1.png Graphic file (type png)
 <use 20346212_files/figure-latex/Figure2-1.png>
 Package pdftex.def Info: 20346212_files/figure-latex/Figure2-1.png  used on inp
-ut line 430.
+ut line 421.
 (pdftex.def)             Requested size: 433.61894pt x 650.4284pt.
 
 Overfull \vbox (34.4958pt too high) has occurred while \output is active []
 
 [7 <./20346212_files/figure-latex/Figure2-1.png>]
-Overfull \hbox (35.91676pt too wide) in alignment at lines 458--463
+Overfull \hbox (35.91676pt too wide) in alignment at lines 449--454
  [] [] [] [] 
  []
 
 
-Overfull \hbox (35.91676pt too wide) in alignment at lines 463--466
+Overfull \hbox (35.91676pt too wide) in alignment at lines 454--457
  [] [] [] [] 
  []
 
 
-Overfull \hbox (35.91676pt too wide) in alignment at lines 466--467
+Overfull \hbox (35.91676pt too wide) in alignment at lines 457--458
  [] [] [] [] 
  []
 
 
-Overfull \hbox (35.91676pt too wide) in alignment at lines 467--477
+Overfull \hbox (35.91676pt too wide) in alignment at lines 458--468
  [] [] [] [] 
  []
 
-
-Overfull \hbox (24.77626pt too wide) in alignment at lines 522--527
+[8]
+Overfull \hbox (24.77626pt too wide) in alignment at lines 525--530
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 527--530
+Overfull \hbox (24.77626pt too wide) in alignment at lines 530--533
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 530--531
+Overfull \hbox (24.77626pt too wide) in alignment at lines 533--534
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 531--574
- [] [] [] [] [] [] [] [] 
- []
-
-[8]pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.574 \end{longtable}
-                      [9]
-
-LaTeX Warning: Reference `Figure2' on page 10 undefined on input line 588.
-
-
-LaTeX Warning: Reference `Figure2' on page 10 undefined on input line 589.
-
-[10] [11]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14> on input line 773.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 773.
-[12] [13]
-Overfull \hbox (24.77626pt too wide) in alignment at lines 850--855
- [] [] [] [] [] [] [] [] 
- []
-
-
-Overfull \hbox (24.77626pt too wide) in alignment at lines 855--858
- [] [] [] [] [] [] [] [] 
- []
-
-
-Overfull \hbox (24.77626pt too wide) in alignment at lines 858--859
- [] [] [] [] [] [] [] [] 
- []
-
-
-Overfull \hbox (24.77626pt too wide) in alignment at lines 859--902
+Overfull \hbox (24.77626pt too wide) in alignment at lines 534--577
  [] [] [] [] [] [] [] [] 
  []
 
@@ -1021,24 +984,54 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.902 \end{longtable}
-                      [14]
-Overfull \hbox (24.77626pt too wide) in alignment at lines 906--911
+l.577 \end{longtable}
+                      [9]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <14> on input line 693.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 693.
+[10] [11] [12]
+Overfull \hbox (24.77626pt too wide) in alignment at lines 774--779
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 911--914
+Overfull \hbox (24.77626pt too wide) in alignment at lines 779--782
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 914--915
+Overfull \hbox (24.77626pt too wide) in alignment at lines 782--783
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 915--958
+Overfull \hbox (24.77626pt too wide) in alignment at lines 783--826
+ [] [] [] [] [] [] [] [] 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.826 \end{longtable}
+                      [13]
+Overfull \hbox (24.77626pt too wide) in alignment at lines 830--835
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (24.77626pt too wide) in alignment at lines 835--838
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (24.77626pt too wide) in alignment at lines 838--839
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (24.77626pt too wide) in alignment at lines 839--882
  [] [] [] [] [] [] [] [] 
  []
 
@@ -1046,24 +1039,21 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.958 \end{longtable}
-                      [15]
+l.882 \end{longtable}
+                      [14]
 No file 20346212.bbl.
-[16] (./20346212.aux)
+[15] (./20346212.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `20346212.out' has not changed.
-(rerunfilecheck)             Checksum: 19A86CCC8BAF6913A7460FB88651C246;1953.
+(rerunfilecheck)             Checksum: 6FF523755561CD34A1DFB055AEECD8D2;1578.
  ) 
 Here is how much of TeX's memory you used:
- 16600 strings out of 480496
- 292117 string characters out of 5897570
- 606508 words of memory out of 5000000
- 33910 multiletter control sequences out of 15000+600000
+ 16585 strings out of 480496
+ 291912 string characters out of 5897570
+ 606228 words of memory out of 5000000
+ 33903 multiletter control sequences out of 15000+600000
  471015 words of font info for 78 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  72i,15n,80p,276b,911s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1090,10 +1080,10 @@ ata/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/Cassa
 ndra/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Us
 ers/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy8.pf
 b>
-Output written on 20346212.pdf (16 pages, 572834 bytes).
+Output written on 20346212.pdf (15 pages, 567187 bytes).
 PDF statistics:
- 357 PDF objects out of 1000 (max. 8388607)
- 299 compressed objects within 3 object streams
- 71 named destinations out of 1000 (max. 500000)
- 152 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 329 PDF objects out of 1000 (max. 8388607)
+ 272 compressed objects within 3 object streams
+ 63 named destinations out of 1000 (max. 500000)
+ 128 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -366,15 +366,6 @@ and Taylor whether the degree of relative price volatility may bias
 results in favour of mean reverting rates -are addressed. Copyright ©
 2000 John Wiley \& Sons, Ltd.~1. INTRODUCTION
 
-References are to be made as follows:
-\protect\hyperlink{ref-fama1997}{Fama \& French}
-(\protect\hyperlink{ref-fama1997}{1997: 33}) and
-\protect\hyperlink{ref-grinold2000}{Grinold \& Kahn}
-(\protect\hyperlink{ref-grinold2000}{2000}) Such authors could also be
-referenced in brackets (\protect\hyperlink{ref-grinold2000}{Grinold \&
-Kahn, 2000}) and together \protect\hyperlink{ref-grinold2000}{Grinold \&
-Kahn} (\protect\hyperlink{ref-grinold2000}{2000}).
-
 \hypertarget{data}{%
 \section{\texorpdfstring{Data \label{Data}}{Data }}\label{data}}
 
@@ -480,12 +471,24 @@ India (Rupee) & -2.70 & -2.07 & -3.66 \\
 \hypertarget{panel-unit-root-tests}{%
 \subsection{Panel Unit Root Tests}\label{panel-unit-root-tests}}
 
+As noted by \protect\hyperlink{ref-pes}{Breitung \& Pesaran}
+(\protect\hyperlink{ref-pes}{2005: 18}), when using country data for
+macroeconomic applications, there are often time series contemporaneous
+correlations, which is a relevant concern for testing the PPP
+hypothesis. There may be unobserved common factors or spatial spillover
+effects, which need to be accounted for in the unit root test. Modelling
+cross section dependence in panel data sets is still an emerging field,
+but \protect\hyperlink{ref-im}{Pasaran, Im \& Shin}
+(\protect\hyperlink{ref-im}{1997}) suggest that the appropriate test
+statistic is the T-bar test based on cross-sectional demeaned
+regressions. This is the
+
 The first unit root test I employ is the Im-Pesaran-Shin t-bar test to
 replicate \protect\hyperlink{ref-Kul}{Luintel}
 (\protect\hyperlink{ref-Kul}{2000}) test. The results below show that
-the null hyothesis (there exists a unit root)
-\begingroup\fontsize{12pt}{13pt}\selectfont
+the null hypothesis (there exists a unit root)
 
+\begingroup\fontsize{12pt}{13pt}\selectfont
 \begin{longtable}{lrll}
 \caption{IPS Panel Unit Root Tests (Tbar)} \\ 
   \toprule
@@ -497,7 +500,7 @@ Test & T-statistic & Trend & Outcome \\
 \endfoot 
 \endlastfoot 
  \midrule
-IPS & -0.11 & Yes & Reject H0 \\ 
+IPS & -2.97 & Yes & Reject H0 \\ 
   IPS & -2.56 & No & Reject H0 \\ 
    \bottomrule
 \end{longtable}
@@ -574,39 +577,6 @@ Months & India & SriLanka & Malaysia & Myanmar & Pakistan & Philippines & Thaila
 \end{longtable}
 \endgroup
 
-\hypertarget{structural-break-test}{%
-\section{\texorpdfstring{Structural Break Test
-\label{Struc}}{Structural Break Test }}\label{structural-break-test}}
-
-To make your graphs look extra nice in latex world, you could use Tikz
-device. Replace dev - `png' with `tikz' in the chunk below. Notice this
-makes the build time longer and produces extra tex files - so if you are
-comfortable with this, set your device to Tikz and try it out:
-
-To reference the plot above, add a ``\textbackslash label'\,' after the
-caption in the chunk heading, as done above. Then reference the plot as
-such: As can be seen, Figures \ref{Figure1} and \ref{Figure2} are
-excellent, with Figure \ref{Figure2} being particularly aesthetically
-pleasing due to its device setting of Tikz. The nice thing now is that
-it correctly numbers all your figures (and sections or tables) and will
-update if it moves. The links are also dynamic.
-
-I very strongly suggest using ggplot2 (ideally in combination with
-dplyr) using the ggtheme package to change the themes of your figures.
-
-Also note the information that I have placed above the chunks in the
-code chunks for the figures. You can edit any of these easily - visit
-the Rmarkdown webpage for more information.
-
-\hypertarget{splitting-a-page}{%
-\section{Splitting a page}\label{splitting-a-page}}
-
-You can also very easily split a page using built-in Pandoc formatting.
-I comment this out in the code (as this has caused issues building the
-pdf for some users - which I presume to be a Pandoc issue), but you are
-welcome to try it out yourself by commenting out the following section
-in your Rmd file.
-
 \hypertarget{math-section}{%
 \section{Math section}\label{math-section}}
 
@@ -614,56 +584,6 @@ in your Rmd file.
 \beta = \sum_{i = 1}^{\infty}\frac{\alpha^2}{\sigma_{t-1}^2} \label{eq1} \\
 \int_{x = 1}^{\infty}x_{i} = 1 \notag
 \end{align}
-
-If you would like to see the equations as you type in Rmarkdown, use \$
-symbols instead (see this for yourself by adjusted the equation):
-
-\[
-\beta = \sum_{i = 1}^{\infty}\frac{\alpha^2}{\sigma_{t-1}^2} \\
-\int_{x = 1}^{\infty}x_{i} = 1
-\]
-
-Note again the reference to equation \ref{eq1}. Writing nice math
-requires practice. Note I used a forward slashes to make a space in the
-equations. I can also align equations using \textbf{\&}, and set to
-numbering only the first line. Now I will have to type ``begin
-equation'\,' which is a native \LaTeX command. Here follows a more
-complicated equation:
-
-\hypertarget{results}{%
-\section{Results}\label{results}}
-
-Tables can be included as follows. Use the \emph{xtable} (or kable)
-package for tables. Table placement = H implies Latex tries to place the
-table Here, and not on a new page (there are, however, very many ways to
-skin this cat. Luckily there are many forums online!).
-
-\begin{table}[H]
-\centering
-\begin{tabular}{rrrrrrrrrrrr}
-  \hline
- & mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\ 
-  \hline
-1 & 21.00 & 6.00 & 160.00 & 110.00 & 3.90 & 2.62 & 16.46 & 0.00 & 1.00 & 4.00 & 4.00 \\ 
-  2 & 21.00 & 6.00 & 160.00 & 110.00 & 3.90 & 2.88 & 17.02 & 0.00 & 1.00 & 4.00 & 4.00 \\ 
-  3 & 22.80 & 4.00 & 108.00 & 93.00 & 3.85 & 2.32 & 18.61 & 1.00 & 1.00 & 4.00 & 1.00 \\ 
-  4 & 21.40 & 6.00 & 258.00 & 110.00 & 3.08 & 3.21 & 19.44 & 1.00 & 0.00 & 3.00 & 1.00 \\ 
-  5 & 18.70 & 8.00 & 360.00 & 175.00 & 3.15 & 3.44 & 17.02 & 0.00 & 0.00 & 3.00 & 2.00 \\ 
-   \hline
-\end{tabular}
-\caption{Short Table Example \label{tab1}} 
-\end{table}
-
-To reference calculations \textbf{in text}, \emph{do this:} From table
-\ref{tab1} we see the average value of mpg is 20.98.
-
-Including tables that span across pages, use the following (note that I
-add below the table: ``continue on the next page'\,'). This is a neat
-way of splitting your table across a page.
-
-Use the following default settings to build your own possibly long
-tables. Note that the following will fit on one page if it can, but
-cleanly spreads over multiple pages:
 
 \hfill
 
@@ -812,12 +732,10 @@ To add lists, simply using the following notation
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
-\leavevmode\hypertarget{ref-fama1997}{}%
-Fama, E.F. \& French, K.R. 1997. Industry costs of equity. \emph{Journal
-of financial economics}. 43(2):153--193.
-
-\leavevmode\hypertarget{ref-grinold2000}{}%
-Grinold, R.C. \& Kahn, R.N. 2000. Active portfolio management.
+\leavevmode\hypertarget{ref-pes}{}%
+Breitung, J. \& Pesaran, M.H. 2005. \emph{Unit roots and cointegration
+in panels}. Deutsche Bundesbank. {[}Online{]}, Available:
+\url{https://ideas.repec.org/p/zbw/bubdp1/4236.html}.
 
 \leavevmode\hypertarget{ref-Texevier}{}%
 Katzke, N.F. 2017. \emph{{Texevier}: {P}ackage to create elsevier
@@ -832,6 +750,12 @@ markets. \emph{Journal of Applied Econometrics}. 15(2):161--185.
 \leavevmode\hypertarget{ref-plm}{}%
 Millo, G. 2017. Robust standard error estimators for panel models: A
 unifying approach. \emph{Journal of Statistical Software}. 82(3):1--27.
+
+\leavevmode\hypertarget{ref-im}{}%
+Pasaran, M.H., Im, K.S. \& Shin, Y. 1997. \emph{Testing for unit roots
+in heterogeneous panels}. Faculty of Economics, University of Cambridge.
+{[}Online{]}, Available:
+\url{https://EconPapers.repec.org/RePEc:cam:camdae:9526}.
 
 \end{CSLReferences}
 
