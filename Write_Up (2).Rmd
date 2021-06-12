@@ -145,7 +145,7 @@ How do we compare living standards and economic productivity between countries? 
 
 In this essay, I replicate^[More accurately, try my best to replicate] the paper "Real Exchange Rate Behaviour: Evidence from Black Markets" by @Kul, which tests the PPP hypothesis. I include some other tests in addition to those in the paper as a robustness check on the results. 
 
-This essay^[This essay was written in R using the package by @Texevier] is organised as follows. Section \ref{Context} contextualises Luintel's paper and discusses the robustness checks. Section \ref{Data} discusses the data and reports the results of the Wald-Wolfowitz tests. Section \ref{Unit} deals with the unit root tests. Section \ref{Var} reports the results of the variance ratio test and section \ref{Struc} presents the structural break tests.
+This essay^[This essay was written in R using the package by @Texevier] is organised as follows. Section \ref{Context} contextualises Luintel's paper and discusses the robustness checks. Section \ref{Data} discusses the data and reports the results of the Wald-Wolfowitz tests. Section \ref{Unit} deals with the unit root tests. Section \ref{Var} reports the results of the variance ratio test and section \ref{Struc} presents the structural break tests.The code for this replication can be found on Github (here:)[https://github.com/cass-code/metrics.git].
 
 
 # Context and Evaluation \label{Context}
