@@ -18,7 +18,7 @@ library(lattice)
                                                               nlevels(ENTRY),
                                                               length.out = 9))]) +
             #scale_x_discrete(guide = guide_axis(n.dodge = xaxis_rows)) +
-            labs(title = TITL, caption = "Source: Own Calculations", x = "Year:month", y = "Real Exchange Rate") +
+            labs(title = TITL, caption = "Source: Own Calculations", x = "", y = "Real Exchange Rate") +
             theme(legend.position = "top", legend.title = element_blank()) +
             #theme(plot.title = element_text(size = 14),
             #  plot.subtitle = element_text(size = 12),

@@ -138,39 +138,26 @@ pdata <- bind_cols(rexIND,rexLNK, rexMAL, rexMNR,  rexPAK,  rexPHL,  rexTHI)
 <!-- ############################## -->
 <!-- # Start Writing here: -->
 <!-- ############################## -->
+\newpage
 
 # Introduction \label{Introduction}
 
-How do we compare living standards and economic productivity between countries? This is one of the questions that macroeconomics attempts to answers and a number of tools have been developed within the field to this end. One of these tools is the Purchasing Power Parity (PPP) theory, which uses a basket of goods to compare the currencies of different countries. This theory has been widely tested using data, and the results have been divisive and somewhat puzzling.@puz.
+How do we compare living standards and economic productivity between countries? This is one of the questions that macroeconomics attempts to answers and a number of tools have been developed within the field to this end. One of these tools is the Purchasing Power Parity (PPP) theory, which uses a basket of goods to compare the currencies of different countries. This theory has been widely tested using data, and the results have been divisive and somewhat puzzling (@puz).
 
-In this essay, I replicate^[More accurately, try my best to replicate] the paper "Real Exchange Rate Behaviour: Evidence from Black Markets" by @Kul, which tests the PPP hypothesis. I include some other tests in addition to those in the paper as a robustness check on the results. 
+In this essay, I replicate^[More accurately, try my best to replicate] the paper "Real Exchange Rate Behaviour: Evidence from Black Markets" by @Kul, which tests the PPP hypothesis. @Kul finds that the behaviour of the real exchange rate is mean-reverting in the long-run, which suggests that the PPP theory is empirically supported. I include some other tests in addition to those presented in the paper as a robustness check on these results. 
 
-This essay^[This essay was written in R using the package by @Texevier] is organised as follows. Section \ref{Context} contextualises Luintel's paper and discusses the robustness checks. Section \ref{Data} discusses the data and reports the results of the Wald-Wolfowitz tests. Section \ref{Unit} deals with the unit root tests. Section \ref{Var} reports the results of the variance ratio test and section \ref{Struc} presents the structural break tests.The code for this replication can be found on Github [here:](https://github.com/cass-code/metrics.git).
+This essay^[This essay was written in R using the package by @Texevier] is organised as follows. Section \ref{Context} contextualises Luintel's paper and discusses the robustness checks. Section \ref{Data} discusses the data and reports the results of the Wald-Wolfowitz tests. Section \ref{Unit} deals with the unit root tests. Section \ref{Var} reports the results of the variance ratio test.The code for this replication can be found on Github [here](https://github.com/cass-code/metrics.git).
 
 
 # Context and Evaluation \label{Context}
 
-provide a brief section that outlines the context and questions of the replicated study:
-The first part should outline what the authors do, how they motivate the question as of economic interest and/or importance, how they motivate their methods and how they argue that their contribution is novel
+@Kul investigates whether the PPP hypothesis holds empirically. To test this theory, @Kul uses monthly black market real exchange rates (in terms of the US dollar) from eight developing Asian countries: India, Sri Lanka, Myanmar, Malaysia, Pakistan, Philippines, Taiwan and Thailand. Using data from developing countries (rather than from developed countries) was a novel approach for its time. The black market rates are used as a proxy for the float rates of developing countries. 
 
-The second part can be a critical evaluation of their approach and choices which leads to your choices of robustness checks/extensions
+Practically, the paper has two main aims: the first is to determine whether there are segmented trends in the data, and the second is to test whether the panel data is stationary. At the time that this paper was written (early 2000s), the puzzle of PPP was that tests for unit roots failed to reject the null hypothesis. The null hypothesis in these cases was the presence of unit roots; these tests implied non-stationarity and discredited PPP, despite the support from economic theory(@puz). 
 
-@Kul investigates whether the PPP hypothesis holds empirically. To test this theory, @Kul uses monthly black market real exchange rates (in terms of the US dollar) from eight developing Asian countries: India, Sri Lanka, Myanmar, Malaysia, Pakistan, Philippines, Taiwan and Thailand. The paper finds that
+@Kul makes use of (more) powerful unit root tests for heterogeneous panels, and finds that real exchange rates are mean-reverting. This was novel for the time as most time-series studies rejected PPP and concluded that the real exchange rate followed a random walk. This suggested that any shocks to the real exchange rate were persistent and there was no mean-reversion either in the short or long term (@rog). @Kul finds that the black market real exchange rates do not behave in an excessively volatile manner, which conflicted with the findings of the literature at that time. Additionally, the findings of the study implied that such empirical investigation may not necessarily suffer from survivorship bias.
 
-The behaviour of real exchange rates (relative to the US dollar) is examined using monthly from the black markets for foreign exchange of eight Asian developing countries. The data The black market real exchange rates do not show excess volatility during the recent float contrast to the results reported elsewhere. Unit root tests in heterogeneous panels and variance confirm their stationarity. Thus, we find support for PPP but not for the 'survivorship' Rogoff, 1995). There is little evidence of segmented trends. Issues raised by Rogoff (1996) would hold across countries with differing growth experience-and Lothian and Taylor whether the degree of relative price volatility may bias results in favour of mean reverting rates -are addressed. Copyright © 2000 John Wiley &
-
-
-
-Over the past decade, the purchasing-power parity (PPP) puzzle has taken two forms.  Its early form arose from early tests of unit roots in real exchange rates, which failed to reject  the  null  hypothesis,  thus  casting  doubts  on  the  long-term  PPP  hypothesis  of  real  exchange  rates'  mean  reversion.  Following  the  development  of  more  powerful  tests  that  resulted in rejections of unit roots, the PPP-puzzle re-surfaced in the form of surprisingly slow rates of convergence of real exchange rates to their long-run means. Rogoff (1996) expressed  this  puzzle  in  terms  of  the  estimated  "half-life"  of  real  exchange  rate  shocks  being 3 to 5 years. Recent research has attempted to solve that second form of the puzzle by adopting non-linear stochastic models of real exchange rates. Despite this introduction of  non-linearities,  the  literature  has  continued  to  focus  on  the  notion  of  "half-life"  as  a  measure of persistence.  
-
-
-
-The theory of purchasing power parity (PPP) is one of the most widely tested economics. The overall findings can be summarized as follows. Studies based data wholly reject PPP.1 Rogoff (1996, p. 644) calls this set of evidence 'the abject law of one price. Time-series studies based on aggregate price indices for also largely reject PPP and suggest that the real exchange rate behaves as random walk hypothesis implies that shocks to the real exchange rate are persistent is no tendency for PPP to hold in the short run or in the long run. Rogoff summarizes this set of findings as 'something of an embarrassment' to the argues that every 'reasonable' theoretical model suggests a mean reverting real the long run.3
-
-
-
-The behaviour of real exchange rates (relative to the US dollar) is examined using monthly from the black markets for foreign exchange of eight Asian developing countries. The data The black market real exchange rates do not show excess volatility during the recent float contrast to the results reported elsewhere. Unit root tests in heterogeneous panels and variance confirm their stationarity. Thus, we find support for PPP but not for the 'survivorship' Rogoff, 1995). There is little evidence of segmented trends. Issues raised by Rogoff (1996) would hold across countries with differing growth experience-and Lothian and Taylor whether the degree of relative price volatility may bias results in favour of mean reverting rates -are addressed. Copyright © 2000 John Wiley & Sons, Ltd. 1. INTRODUCTION 
-
+In order to conclude that 
 
 # Data \label{Data}
 
@@ -178,13 +165,13 @@ The data used for the analysis is a series on black market nominal exchange rate
 
 The nominal exchange rates are units currencies per unit of US dollar. There were two mistakes in the nominal exchange rate datasets: for Myanmar November 1974,  there was a value of 1.45, which I replaced with 16.5 (based on interpolation). And for the Philippines in September 1975,  there was a value of 0.7 with which I replaced with 7.7 (based on interpolation).^[I discovered these mistakes when there was a dramatic difference in my plots of the real exchange rates and Luintel's plots.] Luintel sources the CPI figures from issues of International Financial Statistics (which are included in Luintel's dataset available in the JAE data archives).  
 
-To calculate the real exchange rates, I follow the lead of @Kul and apply the following formula to the nominal exchange rates:
+To calculate the real exchange rates, I follow the lead of @Kul [p. 165] and apply the following formula to the nominal exchange rates:
 
 $$
 rex = log(Nominal Exchange Rate) - log(CPI) + log(United States CPI)
 $$
 
-I plot the real exchange rate series below in \ref{Figure1}. The plots below match those of @Kul [p. 166] and indicate that the real exchange rates are trending. Additionally, the graphs show that the black market exchange rates are somewhat volatile. As expected, we see that after the first oil shock of 1973 the currencies appreciated and then slowly reverted. The plots suggest that the trends are segmented. I test this hypothesis using formal tests, reported below the plots in \ref{Figure3}.
+I plot the real exchange rate series below in \ref{Figure1}. The plots below match those of @Kul [p. 166] and indicate that the real exchange rates are trending. Additionally, the graphs show that the black market exchange rates are somewhat volatile. As expected, we see that after the first oil shock of 1973 the currencies appreciated and then slowly reverted. The plots suggest that the trends are segmented. @Kul [p. 169] tests this hypothesis using formal tests, and I follow suit - the results of the Wald-Wolfowitz Tests are reported below the plots in \ref{wald}.
 
 ```{r Figure1, echo = FALSE, include= TRUE, warning =  FALSE, fig.height= 9, fig.align = 'center', fig.ext = 'png'}
 
@@ -192,15 +179,19 @@ library(tidyverse)
 g <- rex_plots_combined(pdata)
 
 ```
+
 ```{r Figure2, echo = FALSE, include= TRUE, warning =  FALSE, fig.height= 9, fig.align = 'center', fig.cap = "Plot of Real Exchange Rates over Time\\label{Figure1}", fig.ext = 'png'}
 
 library(tidyverse)
 h <- rex_plots_combined1(pdata)
 
-# had an issue with some extra grob table information printing - resolved this by including grid.draw and not including "h" here in the chunk
+# had an issue with some extra grob table information printing - resolved this by including grid.draw in the plot function and not including "h" here in the chunk
 ```
 
-```{r Figure3, echo = FALSE, include= TRUE, warning =  FALSE, fig.height= 5, fig.align = 'center', fig.cap = "Wald-Wolfowitz Tests\\label{Figure3}", fig.ext = 'png', results='asis'}
+## Wald-Wolfowitz Tests \label{wald}
+
+```{r Figure3, echo = FALSE, include= TRUE, warning =  FALSE, fig.height= 5, fig.align = 'center', fig.ext = 'png', results='asis'}
+
 # The Wald-Wolfowitz tests
 
 library(xtable)
@@ -221,7 +212,7 @@ table <- xtable(data, caption = "Wald-Wolfowitz tests \\label{tab1}")
 
 # Unit Root Tests \label{Unit}
 
-First, I employed the Augmented Dickey-Fuller test for the individual exchange rates to see whether there was a unit root present. The test results show 
+First, I employed the Augmented Dickey-Fuller test for the individual exchange rates to see whether there was a unit root present. The test results show that the individual time series are all non-stationary.
 
 
 ```{r ADF, echo = FALSE, include= TRUE, warning =  FALSE, results='asis'}
@@ -264,20 +255,28 @@ table <- xtable(data, caption = "Augmented Dickey-Fuller Tests")
 
 ## Panel Unit Root Tests
 
-As noted by @pes [p.18], when using country data for macroeconomic applications, there are often time series contemporaneous correlations, which is a relevant concern for testing the PPP hypothesis. There may be unobserved common factors or spatial spillover effects, which need to be accounted for in the unit root test. Modelling cross section dependence in panel data sets is still an emerging field, but @im suggest that the appropriate test statistic is the T-bar test based on cross-sectional demeaned regressions. This is the
+As noted by @pes [p.18], when using country data for macroeconomic applications, there are often contemporaneous correlations within the time series, which is a relevant concern for testing the PPP hypothesis. There may be unobserved common factors or spatial spillover effects, which need to be accounted for in the unit root test. Modelling cross section dependence in panel data sets is still an emerging field, but @im suggest that the appropriate test statistic is the T-bar test based on cross-sectional demeaned regressions. This is the approach that I take below (Im-Pesaran-Shin T-bar test), and the test rejects the null hypothesis at a 1% level, both when including and excluding a trend. This supports the results of @Kul [p.173]. I use the same lags as @Kul for the first IPS T-bar test, are for the full sample: Malaysia(l) and Thailand(1), for the Bretton Woods period: Thailand(1), and for the post Bretton Woods period: Malaysia(l) and Thailand(1).  
 
-The first unit root test I employ is the Im-Pesaran-Shin t-bar test to replicate @Kul test. The results below show that the null hypothesis (there exists a unit root)
+The first unit root test I employ is the Im-Pesaran-Shin t-bar test to replicate @Kul test. The results below show that the null hypothesis (there exists a unit root) is rejected at the conventional levels of significance^[I found out this is a fancy way of saying reject at 1% and 5%] \ref{ips}
 
 ```{r IPS, echo = FALSE, include= TRUE, warning =  FALSE, results='asis'}
-
+#pg173
 pdata2 <- pdata %>% select(-ENTRY)
-dm <- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean)
+dm <- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean) #demeaned data
+ 
+dmbret <- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean) %>% slice_head(n =183) #prefloat era bretton woods demeaned data
 
+dmpostbret<- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean) %>% slice_tail(n = 195) #post bretton woods demeaned data
 
 library(xtable)
 list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
- ip <- ips(dm)
-data = ip %>% tibble::as_tibble()
+ full <- ips(dm)
+ bre <- ips(dmbret)
+ post <- ips(dmpostbret)
+ time <- data.frame(Period = c("Full Sample", "", "Bretton Woods","", "Post Bretton Woods", ""))
+ data1 <- bind_rows(full, bre, post)
+ data2 <- bind_cols(time, data1)
+data = data2 %>% tibble::as_tibble()
   addtorow          <- list()
   addtorow$pos      <- list()
   addtorow$pos[[1]] <- c(0)
@@ -287,7 +286,7 @@ data = ip %>% tibble::as_tibble()
                                "{\\footnotesize Continued on next page} \n",
                                "\\endfoot \n",
                                "\\endlastfoot \n",sep=""))
-table <- xtable(data, caption = "IPS Panel Unit Root Tests (Tbar)")
+table <- xtable(data, caption = "IPS Panel Unit Root Tests (Tbar)", label = "ips")
   print.xtable(table,
              tabular.environment = "longtable",
              floating = FALSE, # Leave this as is.
@@ -305,25 +304,27 @@ I then tests for unit roots using LLL test (I used the package by @plm for this)
 
 The function panel_test performs a test on a multivariate (panel) time series by testing the null hypothesis that all series have a unit root. A rejection is typically interpreted as evidence that a ‘significant proportion’ of the series is stationary, although how large that proportion is - or which series are stationary - is not given by the test. The test is based on averaging the individual test statistics, also called the Group-Mean (GM) test in Palm, Smeekes and Urbain (2011).
 
-```{r Panel, echo = FALSE, include= TRUE, warning =  FALSE, results='asis'}
-pdata2 <- pdata %>% select(-ENTRY)
-dm <- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean)
 
-library(xtable)
-list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
- #palm <- panel_test_table(pdata2)
- table <- xtable(palm, caption = "Bootstrapped panel unit root tests \\label{tab1}")
-  print.xtable(table,
-             # tabular.environment = "longtable",
-             floating = TRUE,
-             table.placement = 'H',
-             include.rownames = FALSE,
-             # scalebox = 0.3,
-             comment = FALSE,
-             caption.placement = 'top'
-             )
+```{r Boot, echo = FALSE, include= TRUE, warning =  FALSE, results='asis'}
+# pdata2 <- pdata %>% select(-ENTRY)
+# dm <- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean)
+# 
+# library(xtable)
+# list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+#  palm <- panel(pdata2, dm)
+#  table <- xtable(palm, caption = "Bootstrapped panel unit root tests \\label{tab1}")
+#   print.xtable(table,
+#              # tabular.environment = "longtable",
+#              floating = TRUE,
+#              table.placement = 'H',
+#              include.rownames = FALSE,
+#              # scalebox = 0.3,
+#              comment = FALSE,
+#              caption.placement = 'top'
+#              )
 
 ```
+
 
 # Variance Ratio Test \label{Var}
 
@@ -368,60 +369,6 @@ table <- xtable(data, caption = "Variance Ratio Test for Full Sample Up to month
 
 ```
 
-# Math section
-
-\begin{align}
-\beta = \sum_{i = 1}^{\infty}\frac{\alpha^2}{\sigma_{t-1}^2} \label{eq1} \\
-\int_{x = 1}^{\infty}x_{i} = 1 \notag
-\end{align}
-
-
-
-\hfill
-
-
-## Huxtable
-
-
-```{r, results = 'asis'}
-
-if(!require(huxtable)) install.packages(huxtable)
-library(huxtable)
-data(diamonds, package = 'ggplot2')
-Title <- "Regression Output"
-Label <- "Reg01"
-lm1 <- lm(price ~ carat, diamonds)
-lm2 <- lm(price ~ depth, diamonds)
-lm3 <- lm(price ~ carat + depth, diamonds)
-htab <-
-huxreg(lm1, lm2, lm3,
-                statistics = c(N = "nobs", R2 = "r.squared"),
-                note = "%stars%.") %>%
-  set_caption(Title) %>%
-  set_label(Label)
-# More settings:
-font_size(htab) <- 12
-# Let's change regression names: this is slightly hacky, but works. Comment out this section to see what the default looks like:
-  Names <- c( "Reg1", "Reg2", "Reg3")
-  for(i in 1:length(Names)) {
-    htab[1,][[1+i]] <- Names[i]
-  }
-# Now simply call the table:
-htab
-
-```
-
-
-# Lists
-
-To add lists, simply using the following notation
-
-* This is really simple
-
-    + Just note the spaces here - writing in R you have to sometimes be pedantic about spaces...
-
-* Note that Rmarkdown notation removes the pain of defining \LaTeX environments!
-
 # Conclusion
 
 
@@ -433,10 +380,7 @@ To add lists, simply using the following notation
 
 \newpage
 
-# Appendix {-}
-
-## Appendix A: \label{A} {-}
-
+# Appendix: \label{A} {-}
 
 ```{r Vtab2, results = 'asis'}
 
@@ -500,5 +444,4 @@ table <- xtable(data, caption = "Variance Ratio Test for post Bretton Woods peri
 ```
 
 
-## Appendix B {-}
 

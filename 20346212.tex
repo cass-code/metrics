@@ -135,20 +135,6 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 
 %%% Include extra packages specified by user
-\usepackage{array}
-\usepackage{caption}
-\usepackage{graphicx}
-\usepackage{siunitx}
-\usepackage[normalem]{ulem}
-\usepackage{colortbl}
-\usepackage{multirow}
-\usepackage{hhline}
-\usepackage{calc}
-\usepackage{tabularx}
-\usepackage{threeparttable}
-\usepackage{wrapfig}
-\usepackage{adjustbox}
-\usepackage{hyperref}
 
 %%% Hard setting column skips for reports - this ensures greater consistency and control over the length settings in the document.
 %% page layout
@@ -262,6 +248,8 @@ Robustness Check\par}}
 
 
 
+\newpage
+
 \hypertarget{introduction}{%
 \section{\texorpdfstring{Introduction
 \label{Introduction}}{Introduction }}\label{introduction}}
@@ -272,14 +260,19 @@ answers and a number of tools have been developed within the field to
 this end. One of these tools is the Purchasing Power Parity (PPP)
 theory, which uses a basket of goods to compare the currencies of
 different countries. This theory has been widely tested using data, and
-the results have been divisive and somewhat puzzling.@puz.
+the results have been divisive and somewhat puzzling
+(\protect\hyperlink{ref-puz}{El-Gamal \& Ryu}
+(\protect\hyperlink{ref-puz}{2006})).
 
 In this essay, I replicate\footnote{More accurately, try my best to
   replicate} the paper ``Real Exchange Rate Behaviour: Evidence from
 Black Markets'' by \protect\hyperlink{ref-Kul}{Luintel}
-(\protect\hyperlink{ref-Kul}{2000}), which tests the PPP hypothesis. I
-include some other tests in addition to those in the paper as a
-robustness check on the results.
+(\protect\hyperlink{ref-Kul}{2000}), which tests the PPP hypothesis.
+\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000})
+finds that the behaviour of the real exchange rate is mean-reverting in
+the long-run, which suggests that the PPP theory is empirically
+supported. I include some other tests in addition to those presented in
+the paper as a robustness check on these results.
 
 This essay\footnote{This essay was written in R using the package by
   \protect\hyperlink{ref-Texevier}{Katzke}
@@ -288,22 +281,12 @@ Section \ref{Context} contextualises Luintel's paper and discusses the
 robustness checks. Section \ref{Data} discusses the data and reports the
 results of the Wald-Wolfowitz tests. Section \ref{Unit} deals with the
 unit root tests. Section \ref{Var} reports the results of the variance
-ratio test and section \ref{Struc} presents the structural break
-tests.The code for this replication can be found on Github
-\href{https://github.com/cass-code/metrics.git}{here:}.
+ratio test.The code for this replication can be found on Github
+\href{https://github.com/cass-code/metrics.git}{here}.
 
 \hypertarget{context-and-evaluation}{%
 \section{\texorpdfstring{Context and Evaluation
 \label{Context}}{Context and Evaluation }}\label{context-and-evaluation}}
-
-provide a brief section that outlines the context and questions of the
-replicated study: The first part should outline what the authors do, how
-they motivate the question as of economic interest and/or importance,
-how they motivate their methods and how they argue that their
-contribution is novel
-
-The second part can be a critical evaluation of their approach and
-choices which leads to your choices of robustness checks/extensions
 
 \protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000})
 investigates whether the PPP hypothesis holds empirically. To test this
@@ -311,60 +294,38 @@ theory, \protect\hyperlink{ref-Kul}{Luintel}
 (\protect\hyperlink{ref-Kul}{2000}) uses monthly black market real
 exchange rates (in terms of the US dollar) from eight developing Asian
 countries: India, Sri Lanka, Myanmar, Malaysia, Pakistan, Philippines,
-Taiwan and Thailand. The paper finds that
+Taiwan and Thailand. Using data from developing countries (rather than
+from developed countries) was a novel approach for its time. The black
+market rates are used as a proxy for the float rates of developing
+countries.
 
-The behaviour of real exchange rates (relative to the US dollar) is
-examined using monthly from the black markets for foreign exchange of
-eight Asian developing countries. The data The black market real
-exchange rates do not show excess volatility during the recent float
-contrast to the results reported elsewhere. Unit root tests in
-heterogeneous panels and variance confirm their stationarity. Thus, we
-find support for PPP but not for the `survivorship' Rogoff, 1995). There
-is little evidence of segmented trends. Issues raised by Rogoff (1996)
-would hold across countries with differing growth experience-and Lothian
-and Taylor whether the degree of relative price volatility may bias
-results in favour of mean reverting rates -are addressed. Copyright ©
-2000 John Wiley \&
+Practically, the paper has two main aims: the first is to determine
+whether there are segmented trends in the data, and the second is to
+test whether the panel data is stationary. At the time that this paper
+was written (early 2000s), the puzzle of PPP was that tests for unit
+roots failed to reject the null hypothesis. The null hypothesis in these
+cases was the presence of unit roots; these tests implied
+non-stationarity and discredited PPP, despite the support from economic
+theory(\protect\hyperlink{ref-puz}{El-Gamal \& Ryu}
+(\protect\hyperlink{ref-puz}{2006})).
 
-Over the past decade, the purchasing-power parity (PPP) puzzle has taken
-two forms. Its early form arose from early tests of unit roots in real
-exchange rates, which failed to reject the null hypothesis, thus casting
-doubts on the long-term PPP hypothesis of real exchange rates' mean
-reversion. Following the development of more powerful tests that
-resulted in rejections of unit roots, the PPP-puzzle re-surfaced in the
-form of surprisingly slow rates of convergence of real exchange rates to
-their long-run means. Rogoff (1996) expressed this puzzle in terms of
-the estimated ``half-life'' of real exchange rate shocks being 3 to 5
-years. Recent research has attempted to solve that second form of the
-puzzle by adopting non-linear stochastic models of real exchange rates.
-Despite this introduction of non-linearities, the literature has
-continued to focus on the notion of ``half-life'' as a measure of
-persistence.
+\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000})
+makes use of (more) powerful unit root tests for heterogeneous panels,
+and finds that real exchange rates are mean-reverting. This was novel
+for the time as most time-series studies rejected PPP and concluded that
+the real exchange rate followed a random walk. This suggested that any
+shocks to the real exchange rate were persistent and there was no
+mean-reversion either in the short or long term
+(\protect\hyperlink{ref-rog}{Rogoff}
+(\protect\hyperlink{ref-rog}{1996})).
+\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000})
+finds that the black market real exchange rates do not behave in an
+excessively volatile manner, which conflicted with the findings of the
+literature at that time. Additionally, the findings of the study implied
+that such empirical investigation may not necessarily suffer from
+survivorship bias.
 
-The theory of purchasing power parity (PPP) is one of the most widely
-tested economics. The overall findings can be summarized as follows.
-Studies based data wholly reject PPP.1 Rogoff (1996, p.~644) calls this
-set of evidence `the abject law of one price. Time-series studies based
-on aggregate price indices for also largely reject PPP and suggest that
-the real exchange rate behaves as random walk hypothesis implies that
-shocks to the real exchange rate are persistent is no tendency for PPP
-to hold in the short run or in the long run. Rogoff summarizes this set
-of findings as 'something of an embarrassment' to the argues that every
-`reasonable' theoretical model suggests a mean reverting real the long
-run.3
-
-The behaviour of real exchange rates (relative to the US dollar) is
-examined using monthly from the black markets for foreign exchange of
-eight Asian developing countries. The data The black market real
-exchange rates do not show excess volatility during the recent float
-contrast to the results reported elsewhere. Unit root tests in
-heterogeneous panels and variance confirm their stationarity. Thus, we
-find support for PPP but not for the `survivorship' Rogoff, 1995). There
-is little evidence of segmented trends. Issues raised by Rogoff (1996)
-would hold across countries with differing growth experience-and Lothian
-and Taylor whether the degree of relative price volatility may bias
-results in favour of mean reverting rates -are addressed. Copyright ©
-2000 John Wiley \& Sons, Ltd.~1. INTRODUCTION
+In order to conclude that
 
 \hypertarget{data}{%
 \section{\texorpdfstring{Data \label{Data}}{Data }}\label{data}}
@@ -398,8 +359,8 @@ International Financial Statistics (which are included in Luintel's
 dataset available in the JAE data archives).
 
 To calculate the real exchange rates, I follow the lead of
-\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000})
-and apply the following formula to the nominal exchange rates:
+\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000:
+165}) and apply the following formula to the nominal exchange rates:
 
 \[
 rex = log(Nominal Exchange Rate) - log(CPI) + log(United States CPI)
@@ -411,11 +372,14 @@ below match those of \protect\hyperlink{ref-Kul}{Luintel}
 exchange rates are trending. Additionally, the graphs show that the
 black market exchange rates are somewhat volatile. As expected, we see
 that after the first oil shock of 1973 the currencies appreciated and
-then slowly reverted. The plots suggest that the trends are segmented. I
-test this hypothesis using formal tests, reported below the plots in
-\ref{Figure3}.
+then slowly reverted. The plots suggest that the trends are segmented.
+\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000:
+169}) tests this hypothesis using formal tests, and I follow suit - the
+results of the Wald-Wolfowitz Tests are reported below the plots in
+\ref{wald}.
 
 \begin{center}\includegraphics{20346212_files/figure-latex/Figure1-1} \end{center}
+
 \begin{figure}[H]
 
 {\centering \includegraphics{20346212_files/figure-latex/Figure2-1} 
@@ -424,6 +388,10 @@ test this hypothesis using formal tests, reported below the plots in
 
 \caption{Plot of Real Exchange Rates over Time\label{Figure1}}\label{fig:Figure2}
 \end{figure}
+
+\hypertarget{wald-wolfowitz-tests}{%
+\subsection{\texorpdfstring{Wald-Wolfowitz Tests
+\label{wald}}{Wald-Wolfowitz Tests }}\label{wald-wolfowitz-tests}}
 
 \begin{table}[H]
 \centering
@@ -443,7 +411,7 @@ Wald-Wolfowitz & -16.07 & -18.54 & -17.10 & -18.23 & -16.27 & -17.10 & -15.96 \\
 
 First, I employed the Augmented Dickey-Fuller test for the individual
 exchange rates to see whether there was a unit root present. The test
-results show
+results show that the individual time series are all non-stationary.
 
 \begingroup\fontsize{11pt}{12pt}\selectfont
 \begin{longtable}{lrrr}
@@ -473,26 +441,33 @@ India (Rupee) & -2.70 & -2.07 & -3.66 \\
 
 As noted by \protect\hyperlink{ref-pes}{Breitung \& Pesaran}
 (\protect\hyperlink{ref-pes}{2005: 18}), when using country data for
-macroeconomic applications, there are often time series contemporaneous
-correlations, which is a relevant concern for testing the PPP
+macroeconomic applications, there are often contemporaneous correlations
+within the time series, which is a relevant concern for testing the PPP
 hypothesis. There may be unobserved common factors or spatial spillover
 effects, which need to be accounted for in the unit root test. Modelling
 cross section dependence in panel data sets is still an emerging field,
 but \protect\hyperlink{ref-im}{Pasaran, Im \& Shin}
 (\protect\hyperlink{ref-im}{1997}) suggest that the appropriate test
 statistic is the T-bar test based on cross-sectional demeaned
-regressions. This is the
+regressions. This is the approach that I take below (Im-Pesaran-Shin
+T-bar test), and the test rejects the null hypothesis at a 1\% level,
+both when including and excluding a trend. This supports the results of
+\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000:
+173}). I use the same lags as \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000})
 
 The first unit root test I employ is the Im-Pesaran-Shin t-bar test to
 replicate \protect\hyperlink{ref-Kul}{Luintel}
 (\protect\hyperlink{ref-Kul}{2000}) test. The results below show that
-the null hypothesis (there exists a unit root)
+the null hypothesis (there exists a unit root) is rejected at the
+conventional levels of significance\footnote{I found out this is a fancy
+  way of saying reject at 1\% and 5\%} \ref{ips} also \ref{IPS}
 
 \begingroup\fontsize{12pt}{13pt}\selectfont
-\begin{longtable}{lrll}
+\begin{longtable}{llrll}
 \caption{IPS Panel Unit Root Tests (Tbar)} \\ 
   \toprule
-Test & T-statistic & Trend & Outcome \\ 
+Period & Test & T-statistic & Trend & Outcome \\ 
   \hline 
 \endhead 
 \hline 
@@ -500,15 +475,28 @@ Test & T-statistic & Trend & Outcome \\
 \endfoot 
 \endlastfoot 
  \midrule
-IPS & -2.97 & Yes & Reject H0 \\ 
-  IPS & -2.56 & No & Reject H0 \\ 
+Full Sample & IPS & -2.97 & Yes & Reject H0 \\ 
+   & IPS & -2.56 & No & Reject H0 \\ 
+  Bretton Woods & IPS & -2.47 & Yes & Reject H0 \\ 
+   & IPS & -1.74 & No & Reject H0 \\ 
+  Post Bretton Woods & IPS & -2.53 & Yes & Reject H0 \\ 
+   & IPS & -2.65 & No & Reject H0 \\ 
    \bottomrule
+\label{ips}
 \end{longtable}
 \endgroup
 
 I then tests for unit roots using LLL test (I used the package by
 \protect\hyperlink{ref-plm}{Millo} (\protect\hyperlink{ref-plm}{2017})
 for this).
+
+The function panel\_test performs a test on a multivariate (panel) time
+series by testing the null hypothesis that all series have a unit root.
+A rejection is typically interpreted as evidence that a `significant
+proportion' of the series is stationary, although how large that
+proportion is - or which series are stationary - is not given by the
+test. The test is based on averaging the individual test statistics,
+also called the Group-Mean (GM) test in Palm, Smeekes and Urbain (2011).
 
 \hypertarget{variance-ratio-test}{%
 \section{\texorpdfstring{Variance Ratio Test
@@ -577,150 +565,6 @@ Months & India & SriLanka & Malaysia & Myanmar & Pakistan & Philippines & Thaila
 \end{longtable}
 \endgroup
 
-\hypertarget{math-section}{%
-\section{Math section}\label{math-section}}
-
-\begin{align}
-\beta = \sum_{i = 1}^{\infty}\frac{\alpha^2}{\sigma_{t-1}^2} \label{eq1} \\
-\int_{x = 1}^{\infty}x_{i} = 1 \notag
-\end{align}
-
-\hfill
-
-\hypertarget{huxtable}{%
-\subsection{Huxtable}\label{huxtable}}
-
- 
-  \providecommand{\huxb}[2]{\arrayrulecolor[RGB]{#1}\global\arrayrulewidth=#2pt}
-  \providecommand{\huxvb}[2]{\color[RGB]{#1}\vrule width #2pt}
-  \providecommand{\huxtpad}[1]{\rule{0pt}{#1}}
-  \providecommand{\huxbpad}[1]{\rule[-#1]{0pt}{#1}}
-
-\begin{table}[ht]
-\begin{centerbox}
-\begin{threeparttable}
-\captionsetup{justification=centering,singlelinecheck=off}
-\caption{Regression Output}
- \label{Reg01}
-\setlength{\tabcolsep}{0pt}
-\begin{tabular}{l l l l}
-
-
-\hhline{>{\huxb{0, 0, 0}{0.8}}->{\huxb{0, 0, 0}{0.8}}->{\huxb{0, 0, 0}{0.8}}->{\huxb{0, 0, 0}{0.8}}-}
-\arrayrulecolor{black}
-
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\centering \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont } \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\centering \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont Reg1} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\centering \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont Reg2} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{c!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\centering \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont Reg3} \hspace{6pt}\huxbpad{6pt}} \tabularnewline[-0.5pt]
-
-
-\hhline{>{\huxb{255, 255, 255}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}-}
-\arrayrulecolor{black}
-
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedright \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont (Intercept)} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont -2256.361 ***} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont 5763.668 ***} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont 4045.333 ***} \hspace{6pt}\huxbpad{6pt}} \tabularnewline[-0.5pt]
-
-
-\hhline{}
-\arrayrulecolor{black}
-
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedright \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont } \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont (13.055)~~~} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont (740.556)~~~} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont (286.205)~~~} \hspace{6pt}\huxbpad{6pt}} \tabularnewline[-0.5pt]
-
-
-\hhline{}
-\arrayrulecolor{black}
-
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedright \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont carat} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont 7756.426 ***} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont ~~~~~~~~} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont 7765.141 ***} \hspace{6pt}\huxbpad{6pt}} \tabularnewline[-0.5pt]
-
-
-\hhline{}
-\arrayrulecolor{black}
-
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedright \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont } \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont (14.067)~~~} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont ~~~~~~~~} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont (14.009)~~~} \hspace{6pt}\huxbpad{6pt}} \tabularnewline[-0.5pt]
-
-
-\hhline{}
-\arrayrulecolor{black}
-
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedright \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont depth} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont ~~~~~~~~} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont -29.650 *~~} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont -102.165 ***} \hspace{6pt}\huxbpad{6pt}} \tabularnewline[-0.5pt]
-
-
-\hhline{}
-\arrayrulecolor{black}
-
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedright \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont } \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont ~~~~~~~~} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont (11.990)~~~} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont (4.635)~~~} \hspace{6pt}\huxbpad{6pt}} \tabularnewline[-0.5pt]
-
-
-\hhline{>{\huxb{255, 255, 255}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}->{\huxb{0, 0, 0}{0.4}}-}
-\arrayrulecolor{black}
-
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedright \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont N} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont 53940~~~~~~~~} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont 53940~~~~~~~~} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont 53940~~~~~~~~} \hspace{6pt}\huxbpad{6pt}} \tabularnewline[-0.5pt]
-
-
-\hhline{}
-\arrayrulecolor{black}
-
-\multicolumn{1}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedright \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont R2} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont 0.849~~~~} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont 0.000~~~~} \hspace{6pt}\huxbpad{6pt}} &
-\multicolumn{1}{r!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedleft \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont 0.851~~~~} \hspace{6pt}\huxbpad{6pt}} \tabularnewline[-0.5pt]
-
-
-\hhline{>{\huxb{0, 0, 0}{0.8}}->{\huxb{0, 0, 0}{0.8}}->{\huxb{0, 0, 0}{0.8}}->{\huxb{0, 0, 0}{0.8}}-}
-\arrayrulecolor{black}
-
-\multicolumn{4}{!{\huxvb{0, 0, 0}{0}}l!{\huxvb{0, 0, 0}{0}}}{\huxtpad{6pt + 1em}\raggedright \hspace{6pt} {\fontsize{12pt}{14.4pt}\selectfont  *** p $<$ 0.001;  ** p $<$ 0.01;  * p $<$ 0.05.} \hspace{6pt}\huxbpad{6pt}} \tabularnewline[-0.5pt]
-
-
-\hhline{}
-\arrayrulecolor{black}
-\end{tabular}
-\end{threeparttable}\par\end{centerbox}
-
-\end{table}
- 
-
-\hypertarget{lists}{%
-\section{Lists}\label{lists}}
-
-To add lists, simply using the following notation
-
-\begin{itemize}
-\item
-  This is really simple
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Just note the spaces here - writing in R you have to sometimes be
-    pedantic about spaces\ldots{}
-  \end{itemize}
-\item
-  Note that Rmarkdown notation removes the pain of defining
-  \LaTeX environments!
-\end{itemize}
-
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}
 
@@ -736,6 +580,12 @@ To add lists, simply using the following notation
 Breitung, J. \& Pesaran, M.H. 2005. \emph{Unit roots and cointegration
 in panels}. Deutsche Bundesbank. {[}Online{]}, Available:
 \url{https://ideas.repec.org/p/zbw/bubdp1/4236.html}.
+
+\leavevmode\hypertarget{ref-puz}{}%
+El-Gamal, M.A. \& Ryu, D. 2006. Short-memory and the PPP hypothesis.
+\emph{Journal of Economic Dynamics and Control}. 30(3):361--391.
+{[}Online{]}, Available:
+\url{http://www.sciencedirect.com/science/article/B6V85-4HD8B3Y-1/1/b7865989592c6f1ee4b79a80036183c9}.
 
 \leavevmode\hypertarget{ref-Texevier}{}%
 Katzke, N.F. 2017. \emph{{Texevier}: {P}ackage to create elsevier
@@ -757,18 +607,18 @@ in heterogeneous panels}. Faculty of Economics, University of Cambridge.
 {[}Online{]}, Available:
 \url{https://EconPapers.repec.org/RePEc:cam:camdae:9526}.
 
+\leavevmode\hypertarget{ref-rog}{}%
+Rogoff, K. 1996. The purchasing power parity puzzle. \emph{Journal of
+Economic Literature}. 34:647--68.
+
 \end{CSLReferences}
 
 \newpage
 
 \hypertarget{appendix}{%
-\section*{Appendix}\label{appendix}}
-\addcontentsline{toc}{section}{Appendix}
-
-\hypertarget{appendix-a}{%
-\subsection*{\texorpdfstring{Appendix A:
-\label{A}}{Appendix A: }}\label{appendix-a}}
-\addcontentsline{toc}{subsection}{Appendix A: \label{A}}
+\section*{\texorpdfstring{Appendix:
+\label{A}}{Appendix: }}\label{appendix}}
+\addcontentsline{toc}{section}{Appendix: \label{A}}
 
 \begingroup\fontsize{12pt}{13pt}\selectfont
 \begin{longtable}{lrrrrrrr}
@@ -881,10 +731,6 @@ Months & India & SriLanka & Malaysia & Myanmar & Pakistan & Philippines & Thaila
    \bottomrule
 \end{longtable}
 \endgroup
-
-\hypertarget{appendix-b}{%
-\subsection*{Appendix B}\label{appendix-b}}
-\addcontentsline{toc}{subsection}{Appendix B}
 
 \bibliography{Tex/ref}
 
