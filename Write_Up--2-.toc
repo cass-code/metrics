@@ -1,0 +1,16 @@
+\contentsline {section}{\numberline {1}Introduction }{3}{section.1}%
+\contentsline {section}{\numberline {2}Context and Evaluation }{3}{section.2}%
+\contentsline {section}{\numberline {3}Data }{4}{section.3}%
+\contentsline {section}{\numberline {4}Unit Root Tests }{8}{section.4}%
+\contentsline {section}{\numberline {5}Variance Ratio Test }{8}{section.5}%
+\contentsline {section}{\numberline {6}Structural Break Test }{10}{section.6}%
+\contentsline {section}{\numberline {7}Splitting a page}{10}{section.7}%
+\contentsline {section}{\numberline {8}Math section}{10}{section.8}%
+\contentsline {section}{\numberline {9}Results}{11}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Huxtable}{12}{subsection.9.1}%
+\contentsline {section}{\numberline {10}Lists}{12}{section.10}%
+\contentsline {section}{\numberline {11}Conclusion}{12}{section.11}%
+\contentsline {section}{References}{13}{section*.6}%
+\contentsline {section}{Appendix}{14}{section*.7}%
+\contentsline {subsection}{Appendix A: }{14}{section*.8}%
+\contentsline {subsection}{Appendix B}{16}{section*.9}%

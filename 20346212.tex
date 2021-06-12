@@ -135,26 +135,18 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 
 %%% Include extra packages specified by user
-\usepackage{booktabs}
-\usepackage{longtable}
 \usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
 \usepackage{caption}
 \usepackage{graphicx}
 \usepackage{siunitx}
+\usepackage[normalem]{ulem}
+\usepackage{colortbl}
+\usepackage{multirow}
 \usepackage{hhline}
 \usepackage{calc}
 \usepackage{tabularx}
+\usepackage{threeparttable}
+\usepackage{wrapfig}
 \usepackage{adjustbox}
 \usepackage{hyperref}
 
@@ -298,7 +290,7 @@ results of the Wald-Wolfowitz tests. Section \ref{Unit} deals with the
 unit root tests. Section \ref{Var} reports the results of the variance
 ratio test and section \ref{Struc} presents the structural break
 tests.The code for this replication can be found on Github
-(here:){[}\url{https://github.com/cass-code/metrics.git}{]}.
+\href{https://github.com/cass-code/metrics.git}{here:}.
 
 \hypertarget{context-and-evaluation}{%
 \section{\texorpdfstring{Context and Evaluation
@@ -312,6 +304,27 @@ contribution is novel
 
 The second part can be a critical evaluation of their approach and
 choices which leads to your choices of robustness checks/extensions
+
+\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000})
+investigates whether the PPP hypothesis holds empirically. To test this
+theory, \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000}) uses monthly black market real
+exchange rates (in terms of the US dollar) from eight developing Asian
+countries: India, Sri Lanka, Myanmar, Malaysia, Pakistan, Philippines,
+Taiwan and Thailand. The paper finds that
+
+The behaviour of real exchange rates (relative to the US dollar) is
+examined using monthly from the black markets for foreign exchange of
+eight Asian developing countries. The data The black market real
+exchange rates do not show excess volatility during the recent float
+contrast to the results reported elsewhere. Unit root tests in
+heterogeneous panels and variance confirm their stationarity. Thus, we
+find support for PPP but not for the `survivorship' Rogoff, 1995). There
+is little evidence of segmented trends. Issues raised by Rogoff (1996)
+would hold across countries with differing growth experience-and Lothian
+and Taylor whether the degree of relative price volatility may bias
+results in favour of mean reverting rates -are addressed. Copyright ©
+2000 John Wiley \&
 
 Over the past decade, the purchasing-power parity (PPP) puzzle has taken
 two forms. Its early form arose from early tests of unit roots in real
@@ -411,26 +424,27 @@ then slowly reverted. The plots suggest that the trends are segmented. I
 test this hypothesis using formal tests, reported below the plots in
 \ref{Figure3}.
 
-\begin{center}\includegraphics{Write_Up--2-_files/figure-latex/Figure1-1} \end{center}
+\begin{center}\includegraphics{20346212_files/figure-latex/Figure1-1} \end{center}
 \begin{figure}[H]
 
-{\centering \includegraphics{Write_Up--2-_files/figure-latex/Figure2-1} 
+{\centering \includegraphics{20346212_files/figure-latex/Figure2-1} 
 
 }
 
 \caption{Plot of Real Exchange Rates over Time\label{Figure1}}\label{fig:Figure2}
 \end{figure}
 
-\begin{longtable}[]{@{}lrrrrrrr@{}}
-\toprule
-Test/Country & India & SriLanka & Malasia & Myanmar & Pakistan &
-Philippines & Thailand \\
-\midrule
-\endhead
-Wald-Wolfowitz & -16.065 & -18.54 & -17.097 & -18.231 & -16.272 &
--17.097 & -15.962 \\
-\bottomrule
-\end{longtable}
+\begin{table}[H]
+\centering
+\caption{Wald-Wolfowitz tests \label{tab1}} 
+\begin{tabular}{lrrrrrrr}
+  \hline
+Test/Country & India & SriLanka & Malaysia & Myanmar & Pakistan & Philippines & Thailand \\ 
+  \hline
+Wald-Wolfowitz & -16.07 & -18.54 & -17.10 & -18.23 & -16.27 & -17.10 & -15.96 \\ 
+   \hline
+\end{tabular}
+\end{table}
 
 \hypertarget{unit-root-tests}{%
 \section{\texorpdfstring{Unit Root Tests
@@ -440,25 +454,58 @@ First, I employed the Augmented Dickey-Fuller test for the individual
 exchange rates to see whether there was a unit root present. The test
 results show
 
-\begin{tabular}{l|r|r|r}
-\hline
-Countries & Full Sample & Bretton Woods (1958:1-1973:3) & Post-Bretton Woods (1973:4-1989:6)\\
-\hline
-India (Rupee) & -2.695892 & -2.065067 & -3.6562004\\
-\hline
-Sri Lanka (Rupee) & -3.221138 & -2.114240 & -2.4449256\\
-\hline
-Malaysia (Ringgit) & -1.469487 & -2.160595 & -3.7735890\\
-\hline
-Myanmar (Kyat) & -1.528096 & -1.713724 & -0.1574589\\
-\hline
-Pakistan (Rupee) & -3.354481 & -2.969905 & -5.9078684\\
-\hline
-Phillipines (Peso) & -3.094185 & -2.068390 & -3.3811039\\
-\hline
-Thailand (Baht) & -2.439860 & -3.360884 & -3.9291658\\
-\hline
-\end{tabular}
+\begingroup\fontsize{11pt}{12pt}\selectfont
+\begin{longtable}{lrrr}
+\caption{Augmented Dickey-Fuller Tests} \\ 
+  \toprule
+Countries & Full Sample & Bretton Woods (1958:1-1973:3) & Post-Bretton Woods (1973:4-1989:6) \\ 
+  \hline 
+\endhead 
+\hline 
+{\footnotesize Continued on next page} 
+\endfoot 
+\endlastfoot 
+ \midrule
+India (Rupee) & -2.70 & -2.07 & -3.66 \\ 
+  Sri Lanka (Rupee) & -3.22 & -2.11 & -2.44 \\ 
+  Malaysia (Ringgit) & -1.47 & -2.16 & -3.77 \\ 
+  Myanmar (Kyat) & -1.53 & -1.71 & -0.16 \\ 
+  Pakistan (Rupee) & -3.35 & -2.97 & -5.91 \\ 
+  Phillipines (Peso) & -3.09 & -2.07 & -3.38 \\ 
+  Thailand (Baht) & -2.44 & -3.36 & -3.93 \\ 
+   \bottomrule
+\end{longtable}
+\endgroup
+
+\hypertarget{panel-unit-root-tests}{%
+\subsection{Panel Unit Root Tests}\label{panel-unit-root-tests}}
+
+The first unit root test I employ is the Im-Pesaran-Shin t-bar test to
+replicate \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000}) test. The results below show that
+the null hyothesis (there exists a unit root)
+\begingroup\fontsize{12pt}{13pt}\selectfont
+
+\begin{longtable}{lrll}
+\caption{IPS Panel Unit Root Tests (Tbar)} \\ 
+  \toprule
+Test & T-statistic & Trend & Outcome \\ 
+  \hline 
+\endhead 
+\hline 
+{\footnotesize Continued on next page} 
+\endfoot 
+\endlastfoot 
+ \midrule
+IPS & -0.11 & Yes & Reject H0 \\ 
+  IPS & -2.56 & No & Reject H0 \\ 
+   \bottomrule
+\end{longtable}
+\endgroup
+
+I then tests for unit roots using LLL test (I used the package by
+\protect\hyperlink{ref-plm}{Millo} (\protect\hyperlink{ref-plm}{2017})
+for this).
 
 \hypertarget{variance-ratio-test}{%
 \section{\texorpdfstring{Variance Ratio Test
@@ -781,6 +828,10 @@ Economic Research.
 Luintel, K.B. 2000. Real exchange rate behaviour: Evidence from black
 markets. \emph{Journal of Applied Econometrics}. 15(2):161--185.
 {[}Online{]}, Available: \url{http://www.jstor.org/stable/2678529}.
+
+\leavevmode\hypertarget{ref-plm}{}%
+Millo, G. 2017. Robust standard error estimators for panel models: A
+unifying approach. \emph{Journal of Statistical Software}. 82(3):1--27.
 
 \end{CSLReferences}
 

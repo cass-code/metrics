@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.7)  12 JUN 2021 12:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.7)  12 JUN 2021 15:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Write_Up--2-.tex
-(./Write_Up--2-.tex
+**20346212.tex
+(./20346212.tex
 LaTeX2e <2021-06-01>
 L3 programming layer <2021-06-01>
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/elsarticle/els
@@ -100,7 +100,7 @@ File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 \@enLab=\toks18
 \@sep=\skip49
 \@@sep=\skip50
-(./Write_Up--2-.spl)
+(./20346212.spl)
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/natbib/natbib.
 sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
@@ -110,7 +110,7 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count198
 )
 \splwrite=\write3
-\openout3 = `Write_Up--2-.spl'.
+\openout3 = `20346212.spl'.
 
 \appnamewidth=\dimen145
 )
@@ -666,123 +666,38 @@ Package: ltcaption 2020/05/30 v1.4b longtable captions (AR)
 ))
 \cslhangindent=\skip80
 
-(c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfi
-g.sty
-\wrapoverhang=\dimen260
-\WF@size=\dimen261
-\c@WF@wrappedlines=\count317
-\WF@box=\box75
-\WF@everypar=\toks40
-Package: wrapfig 2003/01/31  v 3.6
+(c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ulem/ulem.st
+y
+\UL@box=\box75
+\UL@hyphenbox=\box76
+\UL@skip=\skip81
+\UL@hook=\toks40
+\UL@height=\dimen260
+\UL@pe=\count317
+\UL@pixel=\dimen261
+\ULC@box=\box77
+Package: ulem 2019/11/18
+\ULdepth=\dimen262
 )
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/colortbl/color
 tbl.sty
 Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
 \everycr=\toks41
-\minrowclearance=\skip81
-)
-(c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdflscape/pdfl
-scape.sty
-Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
-
-(c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/lscap
-e.sty
-Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
-)
-Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
-) (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tabu/tabu.st
-y
-Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
-
-(c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/varwidth/varwi
-dth.sty
-Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box76
-\sift@deathcycles=\count318
-\@vwid@loff=\dimen262
-\@vwid@roff=\dimen263
-)
-\c@taburow=\count319
-\tabu@nbcols=\count320
-\tabu@cnt=\count321
-\tabu@Xcol=\count322
-\tabu@alloc=\count323
-\tabu@nested=\count324
-\tabu@target=\dimen264
-\tabu@spreadtarget=\dimen265
-\tabu@naturalX=\dimen266
-\tabucolX=\dimen267
-\tabu@Xsum=\dimen268
-\extrarowdepth=\dimen269
-\abovetabulinesep=\dimen270
-\belowtabulinesep=\dimen271
-\tabustrutrule=\dimen272
-\tabu@thebody=\toks42
-\tabu@footnotes=\toks43
-\tabu@box=\box77
-\tabu@arstrutbox=\box78
-\tabu@hleads=\box79
-\tabu@vleads=\box80
-\tabu@cellskip=\skip82
+\minrowclearance=\skip82
 )
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttable
 /threeparttable.sty
 Package: threeparttable 2003/06/13  v 3.0
-\@tempboxb=\box81
+\@tempboxb=\box78
 )
-(c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttable
-x/threeparttablex.sty
-Package: threeparttablex 2013/07/23 v0.3 by daleif
-
-(c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/environ/enviro
-n.sty
-Package: environ 2014/05/04 v0.3 A new way to define environments
-
-(c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/trimspaces/tri
-mspaces.sty
-Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-))
-\TPTL@width=\skip83
-)
-(c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ulem/ulem.st
-y
-\UL@box=\box82
-\UL@hyphenbox=\box83
-\UL@skip=\skip84
-\UL@hook=\toks44
-\UL@height=\dimen273
-\UL@pe=\count325
-\UL@pixel=\dimen274
-\ULC@box=\box84
-Package: ulem 2019/11/18
-\ULdepth=\dimen275
-)
-(c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/makecell/makec
-ell.sty
-Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen276
-\c@nlinenum=\count326
-\TeXr@lab=\toks45
-)
-(c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.
-sty
-Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
-
-(c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/c
-olor.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package xcolor Info: Driver file: pdftex.def on input line 225.
-LaTeX Info: Redefining \color on input line 709.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
-Package xcolor Info: Model `RGB' extended on input line 1364.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+(c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfi
+g.sty
+\wrapoverhang=\dimen263
+\WF@size=\dimen264
+\c@WF@wrappedlines=\count318
+\WF@box=\box79
+\WF@everypar=\toks42
+Package: wrapfig 2003/01/31  v 3.6
 )
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/adjustbox/adju
 stbox.sty
@@ -796,10 +711,10 @@ Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
 val.tex
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvu
 tils.tex
-\XKV@toks=\toks46
-\XKV@tempa@toks=\toks47
+\XKV@toks=\toks43
+\XKV@tempa@toks=\toks44
 )
-\XKV@depth=\count327
+\XKV@depth=\count319
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/adjustbox/adjc
@@ -814,47 +729,59 @@ Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/collectbox/col
 lectbox.sty
 Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
-\collectedbox=\box85
+\collectedbox=\box80
 )
-\tc@llx=\dimen277
-\tc@lly=\dimen278
-\tc@urx=\dimen279
-\tc@ury=\dimen280
+\tc@llx=\dimen265
+\tc@lly=\dimen266
+\tc@urx=\dimen267
+\tc@ury=\dimen268
 Package trimclip Info: Using driver 'tc-pdftex.def'.
 
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/adjustbox/tc-p
 dftex.def
 File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
 ))
-\adjbox@Width=\dimen281
-\adjbox@Height=\dimen282
-\adjbox@Depth=\dimen283
-\adjbox@Totalheight=\dimen284
-\adjbox@pwidth=\dimen285
-\adjbox@pheight=\dimen286
-\adjbox@pdepth=\dimen287
-\adjbox@ptotalheight=\dimen288
-) (./Write_Up--2-.aux)
-\openout1 = `Write_Up--2-.aux'.
+\adjbox@Width=\dimen269
+\adjbox@Height=\dimen270
+\adjbox@Depth=\dimen271
+\adjbox@Totalheight=\dimen272
+\adjbox@pwidth=\dimen273
+\adjbox@pheight=\dimen274
+\adjbox@pdepth=\dimen275
+\adjbox@ptotalheight=\dimen276
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
+(c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/varwidth/varwi
+dth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box81
+\sift@deathcycles=\count320
+\@vwid@loff=\dimen277
+\@vwid@roff=\dimen278
+)) (./20346212.aux
+
+LaTeX Warning: Label `tab1' multiply defined.
+
+)
+\openout1 = `20346212.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 180.
+LaTeX Font Info:    ... okay on input line 180.
 
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/e
 pstopdf-base.sty
@@ -901,7 +828,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 188.
+Package hyperref Info: Link coloring ON on input line 180.
 
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/namer
 ef.sty
@@ -915,58 +842,58 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ng/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count328
+\c@section@level=\count321
 )
-LaTeX Info: Redefining \ref on input line 188.
-LaTeX Info: Redefining \pageref on input line 188.
-LaTeX Info: Redefining \nameref on input line 188.
-(./Write_Up--2-.out) (./Write_Up--2-.out)
+LaTeX Info: Redefining \ref on input line 180.
+LaTeX Info: Redefining \pageref on input line 180.
+LaTeX Info: Redefining \nameref on input line 180.
+(./20346212.out) (./20346212.out)
 \@outlinefile=\write4
-\openout4 = `Write_Up--2-.out'.
+\openout4 = `20346212.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: threeparttable package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-<Tex/Logo.png, id=68, 289.08pt x 289.08pt>
+<Tex/Logo.png, id=72, 289.08pt x 289.08pt>
 File: Tex/Logo.png Graphic file (type png)
 <use Tex/Logo.png>
-Package pdftex.def Info: Tex/Logo.png  used on input line 206.
+Package pdftex.def Info: Tex/Logo.png  used on input line 198.
 (pdftex.def)             Requested size: 181.27956pt x 181.27885pt.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
-26.
+18.
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
-26.
+18.
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-226.
+218.
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-226.
+218.
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 226.
+(Font)              <10.95> on input line 218.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 226.
+(Font)              <8> on input line 218.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 226.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 226
+(Font)              <6> on input line 218.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 218
 .
 
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.
 fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 226
+LaTeX Font Info:    Trying to load font information for U+msb on input line 218
 .
 
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.
@@ -975,104 +902,118 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/p
-dftex.map} <./Tex/Logo.png>] (./Write_Up--2-.toc [2
+dftex.map} <./Tex/Logo.png>] (./20346212.toc [2
 
 
 ])
 \tf@toc=\write5
-\openout5 = `Write_Up--2-.toc'.
+\openout5 = `20346212.toc'.
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 286.
+(Font)              <9> on input line 278.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 286.
-[3]
+(Font)              <5> on input line 278.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
-53.
+26.
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [4]
+) [3] [4]
 
-LaTeX Warning: Reference `Figure3' on page 5 undefined on input line 412.
+LaTeX Warning: Reference `Figure3' on page 5 undefined on input line 425.
 
-<Write_Up--2-_files/figure-latex/Figure1-1.png, id=152, 433.62pt x 650.43pt>
-File: Write_Up--2-_files/figure-latex/Figure1-1.png Graphic file (type png)
-<use Write_Up--2-_files/figure-latex/Figure1-1.png>
-Package pdftex.def Info: Write_Up--2-_files/figure-latex/Figure1-1.png  used on
- input line 414.
+<20346212_files/figure-latex/Figure1-1.png, id=159, 433.62pt x 650.43pt>
+File: 20346212_files/figure-latex/Figure1-1.png Graphic file (type png)
+<use 20346212_files/figure-latex/Figure1-1.png>
+Package pdftex.def Info: 20346212_files/figure-latex/Figure1-1.png  used on inp
+ut line 427.
 (pdftex.def)             Requested size: 433.61894pt x 650.4284pt.
 [5]
 Overfull \vbox (13.4958pt too high) has occurred while \output is active []
 
-[6 <./Write_Up--2-_files/figure-latex/Figure1-1.png>]
-<Write_Up--2-_files/figure-latex/Figure2-1.png, id=172, 433.62pt x 650.43pt>
-File: Write_Up--2-_files/figure-latex/Figure2-1.png Graphic file (type png)
-<use Write_Up--2-_files/figure-latex/Figure2-1.png>
-Package pdftex.def Info: Write_Up--2-_files/figure-latex/Figure2-1.png  used on
- input line 417.
+[6 <./20346212_files/figure-latex/Figure1-1.png>]
+<20346212_files/figure-latex/Figure2-1.png, id=181, 433.62pt x 650.43pt>
+File: 20346212_files/figure-latex/Figure2-1.png Graphic file (type png)
+<use 20346212_files/figure-latex/Figure2-1.png>
+Package pdftex.def Info: 20346212_files/figure-latex/Figure2-1.png  used on inp
+ut line 430.
 (pdftex.def)             Requested size: 433.61894pt x 650.4284pt.
 
 Overfull \vbox (34.4958pt too high) has occurred while \output is active []
 
-[7 <./Write_Up--2-_files/figure-latex/Figure2-1.png>]
-Overfull \hbox (36.48615pt too wide) in paragraph at lines 443--462
-[][] 
+[7 <./20346212_files/figure-latex/Figure2-1.png>]
+Overfull \hbox (35.91676pt too wide) in alignment at lines 458--463
+ [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 475--480
+Overfull \hbox (35.91676pt too wide) in alignment at lines 463--466
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (35.91676pt too wide) in alignment at lines 466--467
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (35.91676pt too wide) in alignment at lines 467--477
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (24.77626pt too wide) in alignment at lines 522--527
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 480--483
+Overfull \hbox (24.77626pt too wide) in alignment at lines 527--530
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 483--484
+Overfull \hbox (24.77626pt too wide) in alignment at lines 530--531
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 484--527
+Overfull \hbox (24.77626pt too wide) in alignment at lines 531--574
  [] [] [] [] [] [] [] [] 
  []
 
-[8pdfTeX warning (ext4): destination with the same identifier (name{table.1}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.527 \end{longtable}
-                     ] [9]
+[8]pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.574 \end{longtable}
+                      [9]
 
-LaTeX Warning: Reference `Figure2' on page 10 undefined on input line 541.
+LaTeX Warning: Reference `Figure2' on page 10 undefined on input line 588.
 
 
-LaTeX Warning: Reference `Figure2' on page 10 undefined on input line 542.
+LaTeX Warning: Reference `Figure2' on page 10 undefined on input line 589.
 
-[10]
+[10] [11]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14> on input line 726.
+(Font)              <14> on input line 773.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 726.
-[11] [12] [13]
-Overfull \hbox (24.77626pt too wide) in alignment at lines 799--804
+(Font)              <10> on input line 773.
+[12] [13]
+Overfull \hbox (24.77626pt too wide) in alignment at lines 850--855
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 804--807
+Overfull \hbox (24.77626pt too wide) in alignment at lines 855--858
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 807--808
+Overfull \hbox (24.77626pt too wide) in alignment at lines 858--859
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 808--851
+Overfull \hbox (24.77626pt too wide) in alignment at lines 859--902
  [] [] [] [] [] [] [] [] 
  []
 
@@ -1080,47 +1021,52 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.851 \end{longtable}
+l.902 \end{longtable}
                       [14]
-Overfull \hbox (24.77626pt too wide) in alignment at lines 855--860
+Overfull \hbox (24.77626pt too wide) in alignment at lines 906--911
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 860--863
+Overfull \hbox (24.77626pt too wide) in alignment at lines 911--914
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 863--864
+Overfull \hbox (24.77626pt too wide) in alignment at lines 914--915
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (24.77626pt too wide) in alignment at lines 864--907
+Overfull \hbox (24.77626pt too wide) in alignment at lines 915--958
  [] [] [] [] [] [] [] [] 
  []
 
-[15]
-No file Write_Up--2-.bbl.
-[16] (./Write_Up--2-.aux)
+pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.958 \end{longtable}
+                      [15]
+No file 20346212.bbl.
+[16] (./20346212.aux)
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `Write_Up--2-.out' has not changed.
-(rerunfilecheck)             Checksum: D901FD337BCA0D81ED92FBB0A5B97A89;1780.
+Package rerunfilecheck Info: File `20346212.out' has not changed.
+(rerunfilecheck)             Checksum: 19A86CCC8BAF6913A7460FB88651C246;1953.
  ) 
 Here is how much of TeX's memory you used:
- 17914 strings out of 480496
- 310923 string characters out of 5897570
- 634420 words of memory out of 5000000
- 35195 multiletter control sequences out of 15000+600000
- 468016 words of font info for 77 fonts, out of 8000000 for 9000
+ 16600 strings out of 480496
+ 292117 string characters out of 5897570
+ 606508 words of memory out of 5000000
+ 33910 multiletter control sequences out of 15000+600000
+ 471015 words of font info for 78 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 72i,15n,80p,280b,911s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 72i,15n,80p,276b,911s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-
 mathit.enc}{c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvi
 ps/lm/lm-rm.enc}{c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/fonts/en
@@ -1144,10 +1090,10 @@ ata/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/Cassa
 ndra/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Us
 ers/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy8.pf
 b>
-Output written on Write_Up--2-.pdf (16 pages, 568552 bytes).
+Output written on 20346212.pdf (16 pages, 572834 bytes).
 PDF statistics:
- 341 PDF objects out of 1000 (max. 8388607)
- 283 compressed objects within 3 object streams
- 67 named destinations out of 1000 (max. 500000)
- 144 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 357 PDF objects out of 1000 (max. 8388607)
+ 299 compressed objects within 3 object streams
+ 71 named destinations out of 1000 (max. 500000)
+ 152 words of extra memory for PDF output out of 10000 (max. 10000000)
 

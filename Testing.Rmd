@@ -3,6 +3,14 @@ title: "Test doc"
 output: pdf_document
 ---
 
+# Wald
+```{r}
+
+
+#h <- knitr::kable(wald(pdata), digits = 3)
+#h
+```
+
 
 ```{r}
 my.df <- data.frame(num = 1:5, let = letters[1:5])
@@ -68,6 +76,9 @@ A <- purtest(dm, exo = "trend", test = "ips" , lags = c(0, 0, 1, 0, 0, 0, 1), pm
 A
 
 dm <- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean)
+
+
+
 
 adf.test(dm, 0)
 
