@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.7)  11 JUN 2021 23:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.7)  12 JUN 2021 12:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -928,7 +928,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: threeparttable package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-<Tex/Logo.png, id=76, 289.08pt x 289.08pt>
+<Tex/Logo.png, id=68, 289.08pt x 289.08pt>
 File: Tex/Logo.png Graphic file (type png)
 <use Tex/Logo.png>
 Package pdftex.def Info: Tex/Logo.png  used on input line 206.
@@ -992,54 +992,132 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
 (c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [4]
-<Write_Up--2-_files/figure-latex/Figure1-1.png, id=161, 433.62pt x 650.43pt>
+
+LaTeX Warning: Reference `Figure3' on page 5 undefined on input line 410.
+
+<Write_Up--2-_files/figure-latex/Figure1-1.png, id=151, 433.62pt x 650.43pt>
 File: Write_Up--2-_files/figure-latex/Figure1-1.png Graphic file (type png)
 <use Write_Up--2-_files/figure-latex/Figure1-1.png>
 Package pdftex.def Info: Write_Up--2-_files/figure-latex/Figure1-1.png  used on
- input line 418.
+ input line 412.
 (pdftex.def)             Requested size: 433.61894pt x 650.4284pt.
 [5]
 Overfull \vbox (13.4958pt too high) has occurred while \output is active []
 
 [6 <./Write_Up--2-_files/figure-latex/Figure1-1.png>]
-<Write_Up--2-_files/figure-latex/Figure2-1.png, id=181, 433.62pt x 650.43pt>
+<Write_Up--2-_files/figure-latex/Figure2-1.png, id=171, 433.62pt x 650.43pt>
 File: Write_Up--2-_files/figure-latex/Figure2-1.png Graphic file (type png)
 <use Write_Up--2-_files/figure-latex/Figure2-1.png>
 Package pdftex.def Info: Write_Up--2-_files/figure-latex/Figure2-1.png  used on
- input line 421.
+ input line 415.
 (pdftex.def)             Requested size: 433.61894pt x 650.4284pt.
 
 Overfull \vbox (34.4958pt too high) has occurred while \output is active []
 
 [7 <./Write_Up--2-_files/figure-latex/Figure2-1.png>]
+Overfull \hbox (36.48615pt too wide) in paragraph at lines 441--460
+[][] 
+ []
 
-LaTeX Warning: Reference `Figure2' on page 8 undefined on input line 478.
+
+Overfull \hbox (24.77626pt too wide) in alignment at lines 473--478
+ [] [] [] [] [] [] [] [] 
+ []
 
 
-LaTeX Warning: Reference `Figure2' on page 8 undefined on input line 479.
+Overfull \hbox (24.77626pt too wide) in alignment at lines 478--481
+ [] [] [] [] [] [] [] [] 
+ []
 
-[8] [9] [10] [11]
+
+Overfull \hbox (24.77626pt too wide) in alignment at lines 481--482
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (24.77626pt too wide) in alignment at lines 482--525
+ [] [] [] [] [] [] [] [] 
+ []
+
+[8pdfTeX warning (ext4): destination with the same identifier (name{table.1}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.525 \end{longtable}
+                     ] [9]
+
+LaTeX Warning: Reference `Figure2' on page 10 undefined on input line 539.
+
+
+LaTeX Warning: Reference `Figure2' on page 10 undefined on input line 540.
+
+[10]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14> on input line 764.
+(Font)              <14> on input line 724.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 764.
-[12] [13]
+(Font)              <10> on input line 724.
+[11] [12] [13]
+Overfull \hbox (24.77626pt too wide) in alignment at lines 797--802
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (24.77626pt too wide) in alignment at lines 802--805
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (24.77626pt too wide) in alignment at lines 805--806
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (24.77626pt too wide) in alignment at lines 806--849
+ [] [] [] [] [] [] [] [] 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.849 \end{longtable}
+                      [14]
+Overfull \hbox (24.77626pt too wide) in alignment at lines 853--858
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (24.77626pt too wide) in alignment at lines 858--861
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (24.77626pt too wide) in alignment at lines 861--862
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (24.77626pt too wide) in alignment at lines 862--905
+ [] [] [] [] [] [] [] [] 
+ []
+
+[15]
 No file Write_Up--2-.bbl.
-[14] (./Write_Up--2-.aux)
+[16] (./Write_Up--2-.aux)
 
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `Write_Up--2-.out' has not changed.
-(rerunfilecheck)             Checksum: 0146FC64BA4C9FE435DAD0C5E4059653;1996.
+(rerunfilecheck)             Checksum: D901FD337BCA0D81ED92FBB0A5B97A89;1780.
  ) 
 Here is how much of TeX's memory you used:
- 17919 strings out of 480496
- 311015 string characters out of 5897570
- 636336 words of memory out of 5000000
- 35197 multiletter control sequences out of 15000+600000
+ 17914 strings out of 480496
+ 310923 string characters out of 5897570
+ 635425 words of memory out of 5000000
+ 35195 multiletter control sequences out of 15000+600000
  468016 words of font info for 77 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 72i,15n,80p,280b,893s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 72i,15n,80p,280b,911s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-
 mathit.enc}{c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvi
 ps/lm/lm-rm.enc}{c:/Users/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/fonts/en
@@ -1063,10 +1141,10 @@ ata/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/Cassa
 ndra/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Us
 ers/Cassandra/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy8.pf
 b>
-Output written on Write_Up--2-.pdf (14 pages, 572015 bytes).
+Output written on Write_Up--2-.pdf (16 pages, 568330 bytes).
 PDF statistics:
- 349 PDF objects out of 1000 (max. 8388607)
- 293 compressed objects within 3 object streams
- 70 named destinations out of 1000 (max. 500000)
- 160 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 340 PDF objects out of 1000 (max. 8388607)
+ 282 compressed objects within 3 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 144 words of extra memory for PDF output out of 10000 (max. 10000000)
 

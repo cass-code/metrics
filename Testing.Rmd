@@ -3,6 +3,18 @@ title: "Test doc"
 output: pdf_document
 ---
 
+
+```{r}
+my.df <- data.frame(num = 1:5, let = letters[1:5])
+
+#and inserting a blank row (NAs row) for each one of my.df rows.
+
+na.df <- data.frame(num = 0, let = 0)
+
+my.df <- do.call(rbind, apply(my.df, 1, function(x) {rbind(x, na.df)}))
+
+```
+
 #Structural break test \label{struc}
 
 http://svitsrv25.epfl.ch/R-doc/library/strucchange/doc/strucchange-intro.pdf

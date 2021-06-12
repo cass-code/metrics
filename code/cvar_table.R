@@ -1,9 +1,9 @@
 cvar_table <- function(pdata){
-  
+
 library(tidyverse)
-  
+
 cvar_ratio <- function(x, max.lag) {
-  
+
   y <- matrix(ncol=2,nrow=max.lag)
   colnames(y) <- c("vr","error")
   N <- length(x)
@@ -22,23 +22,18 @@ cvar_ratio <- function(x, max.lag) {
   return(y)
 }
 
-vIND <- data.frame(cvar_ratio(pdata$rexIND,190))
-vLNK <- data.frame(cvar_ratio(pdata$rexLNK,190))
-vMAL <- data.frame(cvar_ratio(pdata$rexMAL,190))
-vMNR <- data.frame(cvar_ratio(pdata$rexMNR,190))
-vPAK <- data.frame(cvar_ratio(pdata$rexPAK,190))
-vPHL <- data.frame(cvar_ratio(pdata$rexPHL,190))
-vTHI <- data.frame(cvar_ratio(pdata$rexTHI,190))
 
-names <- data.frame("Countries (Currency)" = c("India Rupee", "Sri Lanka Rupee", "Malaysia Ringgit", "Myanmar Kyat", "Pakistan Rupee", "Phillipines Peso", "Thailand Baht"))
+lag <- 190
+vIND <- data.frame(cvar_ratio(pdata$rexIND,lag)) %>% rename(India = vr) %>% rename(e1 = error) # %>%  mutate(error = if_else(row_number() %% 2 != 0, 0, error)) %>% mutate(India = if_else(row_number() %% 2 == 0, error, India))
+vLNK <- data.frame(cvar_ratio(pdata$rexLNK,lag)) %>% rename(SriLanka = vr) %>% rename(e2 = error)
+vMAL <- data.frame(cvar_ratio(pdata$rexMAL,lag)) %>% rename(Malaysia = vr) %>% rename(e3 = error)
+vMNR <- data.frame(cvar_ratio(pdata$rexMNR,lag)) %>% rename(Myanmar = vr) %>% rename(e4 = error)
+vPAK <- data.frame(cvar_ratio(pdata$rexPAK,lag)) %>% rename(Pakistan = vr) %>% rename(e5 = error)
+vPHL <- data.frame(cvar_ratio(pdata$rexPHL,lag)) %>% rename(Philippines = vr) %>% rename(e6 = error)
+vTHI <- data.frame(cvar_ratio(pdata$rexTHI,lag)) %>% rename(Thailand = vr) %>% rename(e7 = error)
 
+VR <- bind_cols(vIND, vLNK, vMAL, vMNR, vPAK, vPHL, vTHI)
 
-VR <- bind_rows(vIND$vr, vIND$error, vLNK$vr, vLNK$error, vMAL$vr, vMAL$error,
-                vMNR$vr, vMNR$error, vPAK$vr, vPAK$error, vPHL$vr, vPHL$error, vTHI$vr, vTHI$error)
-
-VR <- bind_cols(vIND, vIND, vLNK, vMAL, vMNR, vPAK, vPHL, vTHI)
-FullVR <- bind_cols(names, VR)
-
-FullVR
+VR
 
 }
