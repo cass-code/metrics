@@ -280,9 +280,9 @@ This essay\footnote{This essay was written in R using the package by
 Section \ref{Context} contextualises Luintel's paper and discusses the
 robustness checks. Section \ref{Data} discusses the data and reports the
 results of the Wald-Wolfowitz tests. Section \ref{Unit} deals with the
-unit root tests. Section \ref{Var} reports the results of the variance
-ratio test.The code for this replication can be found on Github
-\href{https://github.com/cass-code/metrics.git}{here}.
+unit root tests and section \ref{Var} reports the results of the
+variance ratio test. The code for this replication can be found on
+Github \href{https://github.com/cass-code/metrics.git}{here}.
 
 \hypertarget{context-and-evaluation}{%
 \section{\texorpdfstring{Context and Evaluation
@@ -327,15 +327,13 @@ survivorship bias.
 
 A critical part of Luintel's paper is testing for unit roots in the
 panel data, specifically the paper makes use of the Im-Pesaran-Shin
-T-bar test. In addition to replicating this test, I implement several
-other unit root tests as a robustness check and find that the results
-are mixed. \protect\hyperlink{ref-Kul}{Luintel}
-(\protect\hyperlink{ref-Kul}{2000: 70}) defends the choice of the IPS
+(IPS) T-bar test. In addition to replicating this test, I implement
+several other unit root tests as a robustness check and find that the
+results are mixed. \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000: 170}) defends the choice of the IPS
 tests well, citing that they allow for the dynamics and error variances
-across groups, and the T-bar tests based on meaned regressions are
-valid. Additionally, these tests may have better small sample
-propoerties. I run the IPS tests using
-\protect\hyperlink{ref-Kul}{Luintel}
+across groups and these tests may have better small sample properties. I
+run the IPS tests using \protect\hyperlink{ref-Kul}{Luintel}
 (\protect\hyperlink{ref-Kul}{2000})'s specified lags, and the AIC
 method. I then implement the panel stationarity tests proposed by
 \protect\hyperlink{ref-lev}{Levin, Lin \& James Chu}
@@ -344,7 +342,7 @@ method. I then implement the panel stationarity tests proposed by
 \protect\hyperlink{ref-had}{Hadri} (\protect\hyperlink{ref-had}{2002}),
 as well as a bootstrapped panel unit root test from
 \protect\hyperlink{ref-pal}{Palm, Smeekes \& Urbain}
-(\protect\hyperlink{ref-pal}{2011}).
+(\protect\hyperlink{ref-pal}{2011}) (\ref{Unit}).
 
 \hypertarget{data}{%
 \section{\texorpdfstring{Data \label{Data}}{Data }}\label{data}}
@@ -354,9 +352,9 @@ exchange rates and consumer price indices (CPI) for 8 developing Asian
 countries, namely: India, Sri Lanka, Myanmar, Malaysia, Pakistan,
 Philippines, Taiwan and Thailand. I take a subset of these countries by
 excluding Taiwan\footnote{I excluded Taiwan because there is some data
-  missing from the set and I don't know how to adjust an unbalanced
-  panel. However, it is also interesting to test if the results hold
-  when taking a subset} from the analysis.
+  missing from the set and I don't know how to manage an unbalanced
+  panel. However, it is also interesting to test if the results of the
+  paper hold when taking a subset of the data.} from the analysis.
 \protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000})
 sources data from various issues of \emph{Pick's Currency Year Book} and
 \emph{World Currency Year Book}. The data used for Luintel's paper is
@@ -373,8 +371,8 @@ Myanmar November 1974, there was a value of 1.45, which I replaced with
 1975, there was a value of 0.7 with which I replaced with 7.7 (based on
 interpolation).\footnote{I discovered these mistakes when there was a
   dramatic difference in my plots of the real exchange rates and
-  Luintel's plots.} Luintel sources the CPI figures from issues of
-International Financial Statistics (which are included in Luintel's
+  Luintel's plots.} Luintel sources the CPI figures from various issues
+of International Financial Statistics (which are included in Luintel's
 dataset available in the JAE data archives).
 
 To calculate the real exchange rates, I follow the lead of
@@ -387,15 +385,15 @@ rex = log(Nominal Exchange Rate) - log(CPI) + log(United States CPI)
 
 I plot the real exchange rate series below in \ref{Figure1}. The plots
 below match those of \protect\hyperlink{ref-Kul}{Luintel}
-(\protect\hyperlink{ref-Kul}{2000: 166}) and indicate that the real
-exchange rates are trending. Additionally, the graphs show that the
-black market exchange rates are somewhat volatile. As expected, we see
-that after the first oil shock of 1973 the currencies appreciated and
-then slowly reverted. The plots suggest that the trends are segmented.
-\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000:
-169}) tests this hypothesis using formal tests, and I follow suit - the
-results of the Wald-Wolfowitz Tests are reported below the plots in
-\ref{wald}.
+(\protect\hyperlink{ref-Kul}{2000: 166}) and preliminarily indicate that
+the real exchange rates are trending. Additionally, the graphs show that
+the black market exchange rates are somewhat volatile. As expected, we
+see that after the first oil shock of 1973 the currencies appreciated
+and then slowly reverted. The plots suggest that the trends are
+segmented. \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000: 169}) tests this hypothesis using
+formal tests, and I follow suit - the results of the Wald-Wolfowitz
+Tests are reported below after the plots, in table \ref{wald}.
 
 \begin{center}\includegraphics{20346212_files/figure-latex/Figure1-1} \end{center}
 
@@ -412,9 +410,32 @@ results of the Wald-Wolfowitz Tests are reported below the plots in
 \subsection{\texorpdfstring{Wald-Wolfowitz Tests
 \label{wald}}{Wald-Wolfowitz Tests }}\label{wald-wolfowitz-tests}}
 
+The Wald-Wolfowitz test is a nonparametric test that discriminates
+between the underlying distributions of the Bretton Woods and post
+Bretton Woods real exchange rates. Essentially it tests whether two
+random samples are from populations with the same distribution (this is
+the null hypothesis), or whether the two samples descend from
+populations with different distributions (the alternative
+hypothesis).\footnote{\protect\hyperlink{ref-Kul}{Luintel}
+  (\protect\hyperlink{ref-Kul}{2000: 169}) gives the mathematical
+  details of the test.}
+
+The critical values for this test at 1\% and 5\% are 2.58 and 1.96
+respectively. \ref{Wtable} shows that the tests reject the null
+hypothesis at a 1\% significance level for all the countries. These
+results imply that the Bretton Woods real exchange rates descend from a
+population that follows a distribution that may differ in skewness,
+kurtosis and dispersion from that of the post Bretton Woods real
+exchange rates' population distribution. This suggests that it is
+important to include the Bretton Woods period in our analysis of real
+exchange rates. \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000: 169}) reports smaller test
+statistics, but rejects the null comfortably for all of the countries.
+
 \begin{table}[H]
 \centering
-\caption{Wald-Wolfowitz tests \label{tab1}} 
+\caption{Wald-Wolfowitz tests} 
+\label{Wtable}
 \begin{tabular}{lrrrrrrr}
   \hline
 Test/Country & India & SriLanka & Malaysia & Myanmar & Pakistan & Philippines & Thailand \\ 
@@ -428,9 +449,34 @@ Wald-Wolfowitz & -16.07 & -18.54 & -17.10 & -18.23 & -16.27 & -17.10 & -15.96 \\
 \section{\texorpdfstring{Unit Root Tests
 \label{Unit}}{Unit Root Tests }}\label{unit-root-tests}}
 
-First, I employed the Augmented Dickey-Fuller test for the individual
-exchange rates to see whether there was a unit root present. The test
-results show that the individual time series are all non-stationary.
+We can define relative PPP as: \[
+\Delta s_{t}=\Delta p_{t}-\Delta p_{t}^{*} \label{eq1}
+\] This relationship shows that the percentage change in the nominal
+exchange rate should be equal to the difference in inflation between the
+domestic and foreign country. The real exchange rate
+\(\left(q_{t}\right)\) is given by: \[
+q_{t}=s_{t}-p_{t}+p_{t}^{*} \label{eq2}
+\] From \ref{eq1} we can see that the real exchange rate should be zero
+or a constant if PPP holds continuously. To test whether PPP holds, we
+can test whether the real exchange rate is stationary.
+\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000})
+argues that the power of unit-root tests is significantly higher when
+using a panel data set as opposed to a univariate time series. The first
+panel unit-root test that \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000}) runs is the Augmented Dickey-Fuller
+test, which fails to reject the null hypothesis (there exists a unit
+root, and therefore the process is nonstationary) for all the countries.
+The only exception is for Pakistan in the post Bretton Woods period. My
+replicated test show similar results in \ref{ADF}, with all countries
+failing to reject the null. Both \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000}) and my tests include a time trend,
+but the non-stationary results hold when excluding this trend.
+
+However, the Dickey-Fuller tests are known for their low power, where
+low statistical power means we have a lower probability that the test
+correctly rejects the null hypothesis. Thus,
+\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000})
+proposes
 
 \begingroup\fontsize{11pt}{12pt}\selectfont
 \begin{longtable}{lrrr}
@@ -452,11 +498,9 @@ India (Rupee) & -2.70 & -2.07 & -3.66 \\
   Phillipines (Peso) & -3.09 & -2.07 & -3.38 \\ 
   Thailand (Baht) & -2.44 & -3.36 & -3.93 \\ 
    \bottomrule
+\label{ADF}
 \end{longtable}
 \endgroup
-
-\hypertarget{panel-unit-root-tests}{%
-\subsection{Panel Unit Root Tests}\label{panel-unit-root-tests}}
 
 As noted by \protect\hyperlink{ref-pes}{Breitung \& Pesaran}
 (\protect\hyperlink{ref-pes}{2005: 18}), when using country data for
@@ -483,13 +527,13 @@ replicate \protect\hyperlink{ref-Kul}{Luintel}
 (\protect\hyperlink{ref-Kul}{2000}) test. The results below show that
 the null hypothesis (there exists a unit root) is rejected at the
 conventional levels of significance\footnote{I found out this is a fancy
-  way of saying reject at 1\% and 5\%} \ref{ips}
+  way of saying reject at 1\% and 5\%} \ref{ips} -2.86 5\% -2.66
 
 \begingroup\fontsize{12pt}{13pt}\selectfont
-\begin{longtable}{llrll}
+\begin{longtable}{llrl}
 \caption{IPS Panel Unit Root Tests (Tbar)} \\ 
   \toprule
-Period & Test & T-statistic & Trend & Outcome \\ 
+Period & Test & T-statistic & Trend \\ 
   \hline 
 \endhead 
 \hline 
@@ -497,12 +541,12 @@ Period & Test & T-statistic & Trend & Outcome \\
 \endfoot 
 \endlastfoot 
  \midrule
-Full Sample & IPS & -2.97 & Yes & Reject H0 \\ 
-   & IPS & -2.56 & No & Reject H0 \\ 
-  Bretton Woods & IPS & -2.47 & Yes & Reject H0 \\ 
-   & IPS & -1.74 & No & Reject H0 \\ 
-  Post Bretton Woods & IPS & -2.53 & Yes & Reject H0 \\ 
-   & IPS & -2.65 & No & Reject H0 \\ 
+Full Sample & IPS & -2.97 & Yes \\ 
+   & IPS & -2.56 & No \\ 
+  Bretton Woods & IPS & -2.47 & Yes \\ 
+   & IPS & -1.74 & No \\ 
+  Post Bretton Woods & IPS & -2.53 & Yes \\ 
+   & IPS & -2.65 & No \\ 
    \bottomrule
 \label{ips}
 \end{longtable}
@@ -660,9 +704,9 @@ Economic Literature}. 34:647--68.
 \newpage
 
 \hypertarget{appendix}{%
-\section*{\texorpdfstring{Appendix:
-\label{A}}{Appendix: }}\label{appendix}}
-\addcontentsline{toc}{section}{Appendix: \label{A}}
+\section*{\texorpdfstring{Appendix
+\label{A}}{Appendix }}\label{appendix}}
+\addcontentsline{toc}{section}{Appendix \label{A}}
 
 \begingroup\fontsize{12pt}{13pt}\selectfont
 \begin{longtable}{lrrrrrrr}
