@@ -140,9 +140,7 @@ pdata <- bind_cols(rexIND,rexLNK, rexMAL, rexMNR,  rexPAK,  rexPHL,  rexTHI)
 
 # Introduction \label{Introduction}
 
-How do we compare living standards and economic productivity between countries? This is one of the questions that macroeconomics attempts to answers and a number of tools have been developed within the field to this end. One of these tools is the Purchasing Power Parity (PPP) theory, which uses a basket of goods to compare the currencies of different countries. This theory has been widely tested using data, and the results have been divisive and somewhat puzzling (@puz).
-
-In this essay, I replicate^[More accurately, try my best to replicate] the paper "Real Exchange Rate Behaviour: Evidence from Black Markets" by @Kul, which tests the PPP hypothesis. @Kul finds that the behaviour of the real exchange rate is mean-reverting in the long-run, which suggests that the PPP theory is empirically supported. I include some other tests in addition to those presented in the paper as a robustness check on these results. 
+How do we compare living standards and economic productivity between countries? This is one of the questions that macroeconomics attempts to answer, and a number of tools have been developed within the field to this end. One of these tools is the Purchasing Power Parity (PPP) theory, which uses a basket of goods to compare the currencies of different countries. This theory has been widely tested using data, and the results have been divisive and somewhat puzzling (@puz). In this essay, I replicate^[More accurately, try my best to replicate] the paper "Real Exchange Rate Behaviour: Evidence from Black Markets" by @Kul, which tests the PPP hypothesis. @Kul finds that the behaviour of the real exchange rate is mean-reverting in the long-run, which suggests that the PPP theory is empirically supported. I include some other tests in addition to those presented in the paper as a robustness check on these results. 
 
 This essay^[This essay was written in R using the package by @Texevier] is organised as follows. Section \ref{Context} contextualises Luintel's paper and discusses the robustness checks. Section \ref{Data} discusses the data and reports the results of the Wald-Wolfowitz tests. Section \ref{Unit} deals with the unit root tests and section \ref{Var} reports the results of the variance ratio test. The code for this replication can be found on Github [here](https://github.com/cass-code/metrics.git).
 
@@ -153,9 +151,9 @@ This essay^[This essay was written in R using the package by @Texevier] is organ
 
 Practically, the paper has two main aims: the first is to determine whether there are segmented trends in the data, and the second is to test whether the panel data is stationary. At the time that this paper was written (early 2000s), the puzzle of PPP was that tests for unit roots failed to reject the null hypothesis. The null hypothesis in these cases was the presence of unit roots; these tests implied non-stationarity and discredited PPP, despite the support from economic theory(@puz). 
 
-@Kul makes use of (more) powerful unit root tests for heterogeneous panels, and finds that real exchange rates are mean-reverting. This was novel for the time as most time-series studies rejected PPP and concluded that the real exchange rate followed a random walk. This suggested that any shocks to the real exchange rate were persistent and there was no mean-reversion either in the short or long term (@rog). @Kul finds that the black market real exchange rates do not behave in an excessively volatile manner, which conflicted with the findings of the literature at that time. Additionally, the findings of the study implied that such empirical investigation may not necessarily suffer from survivorship bias.
+@Kul makes use of (more) powerful unit root tests for heterogeneous panels, and finds that real exchange rates are mean-reverting. This was novel for the time as most time-series studies rejected PPP and concluded that the real exchange rate followed a random walk. This suggested that any shocks to the real exchange rate were persistent and there was no mean-reversion either in the short or long term (@rog). @Kul finds that the black market real exchange rates do not behave in an excessively volatile manner, which conflicted with the findings of the literature at that time. Additionally, the findings of the study implied that such empirical investigations may not necessarily suffer from survivorship bias.
 
-A critical part of Luintel's paper is testing for unit roots in the panel data, specifically the paper makes use of the Im-Pesaran-Shin (IPS) T-bar test. In addition to replicating this test, I implement several other unit root tests as a robustness check and find that the results are mixed. @Kul [p.170] defends the choice of the IPS tests well, citing that they allow for the dynamics and error variances across groups and these tests may have better small sample properties. I run the IPS tests using @Kul's specified lags, and the AIC method. I then implement the panel stationarity tests proposed by @lev, @wu, @had, as well as a bootstrapped panel unit root test from @pal (\ref{Unit}). 
+A critical part of Luintel's paper is testing for unit roots in the panel data; specifically, the paper makes use of the Im-Pesaran-Shin (IPS) T-bar test. In addition to replicating this test, I implement several other unit root tests as a robustness check and find that the results are mixed. @Kul [p.170] defends the choice of the IPS tests well, citing that they allow for the dynamics and error variances across groups and these tests may have better small sample properties. I run the IPS tests using @Kul's specified lags, and the AIC method. I then implement the panel stationarity tests proposed by @lev, @wu, @had, as well as a bootstrapped panel unit root test from @pal.. 
 
 # Data \label{Data}
 
@@ -188,9 +186,9 @@ h <- rex_plots_combined1(pdata)
 
 ## Wald-Wolfowitz Tests \label{wald}
 
-The Wald-Wolfowitz test is a nonparametric test that discriminates between the underlying distributions of the Bretton Woods and post Bretton Woods real exchange rates. Essentially it tests whether two random samples are from populations with the same distribution (this is the null hypothesis), or whether the two samples descend from populations with different distributions (the alternative hypothesis).^[@Kul [p. 169] gives the mathematical details of the test.] 
+The Wald-Wolfowitz test is a nonparametric test that discriminates between the underlying distributions of the Bretton Woods and post Bretton Woods real exchange rates. Essentially, it tests whether two random samples are from populations with the same distribution (this is the null hypothesis), or whether the two samples descend from populations with different distributions (the alternative hypothesis).^[@Kul [p. 169] gives the mathematical details of the test.] 
 
-The critical values for this test at 1% and 5% are 2.58 and 1.96 respectively. \ref{Wtable} shows that the tests reject the null hypothesis at a 1% significance level for all the countries. These results imply that the Bretton Woods real exchange rates descend from a population that follows a distribution that may differ in skewness, kurtosis and dispersion from that of the post Bretton Woods real exchange rates' population distribution. This suggests that it is important to include the Bretton Woods period in our analysis of real exchange rates. @Kul [p. 169] reports smaller test statistics, but rejects the null comfortably for all of the countries.
+The critical values for this test at 1% and 5% are 2.58 and 1.96 respectively. \ref{Wtable} shows that the tests reject the null hypothesis at a 1% significance level for all the countries. These results imply that the Bretton Woods real exchange rates descend from a population that follows a distribution that may differ in skewness, kurtosis and dispersion from that of the post Bretton Woods. This suggests that it is important to include the Bretton Woods period in our analysis of real exchange rates. @Kul [p. 169] reports smaller test statistics, but rejects the null comfortably for all of the countries.
 
 ```{r Figure3, echo = FALSE, include= TRUE, warning =  FALSE, fig.height= 5, fig.align = 'center', fig.ext = 'png', results='asis'}
 
@@ -222,9 +220,10 @@ This relationship shows that the percentage change in the nominal exchange rate 
 $$
 q_{t}=s_{t}-p_{t}+p_{t}^{*} \label{eq2}
 $$
-From \ref{eq1} we can see that the real exchange rate should be zero or a constant if PPP holds continuously. To test whether PPP holds, we can test whether the real exchange rate is stationary. @Kul argues that the power of unit-root tests is significantly higher when using a panel data set as opposed to a univariate time series. The first panel unit-root test that @Kul runs is the Augmented Dickey-Fuller test, which fails to reject the null hypothesis (there exists a unit root, and therefore the process is nonstationary) for all the countries. The only exception is for Pakistan in the post Bretton Woods period. My replicated test show similar results in \ref{ADF}, with all countries failing to reject the null. Both @Kul and my tests include a time trend, but the non-stationary results hold when excluding this trend. 
+From \ref{eq1} we can see that the real exchange rate should be zero or a constant if PPP holds continuously. To test whether PPP holds, we can test whether the real exchange rate is stationary. @Kul argues that the power of unit-root tests is significantly higher when using a panel data set as opposed to a univariate time series. The first panel unit-root test that @Kul runs is the Augmented Dickey-Fuller test, which fails to reject the null hypothesis (there exists a unit root, and therefore the process is nonstationary) for all the countries. The only exception is for Pakistan in the post Bretton Woods period. My replicated tests show similar results in \ref{ADF}, with most countries failing to reject the null (with the exceptions occurring at a 5% level for four countries post Bretton Woods^[India, Malaysia, Pakistan and Thailand]). Both @Kul and my tests include a time trend, but the non-stationary results hold when excluding this trend. 
 
-However, the Dickey-Fuller tests are known for their low power, where low statistical power means we have a lower probability that the test correctly rejects the null hypothesis. Thus, @Kul proposes   
+However, the Dickey-Fuller tests are known for their low power. Low statistical power means we have a higher probability of committing a type 2 error: failing to reject the null hypothesis when the alternative hypothesis is true. In our context, this means we may be incorrectly concluding that real exchange rates are nonstationary. Thus, we need to consider other tests when testing for stationarity, which are discussed below.
+
 
 ```{r ADF, echo = FALSE, include= TRUE, warning =  FALSE, results='asis'}
 library(tidyverse)
@@ -233,8 +232,8 @@ list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~sourc
 
 bret <- pdata %>% slice_head(n =183) #prefloat era bretton woods
 postbret <- pdata %>% slice_tail(n = 195) # float era post bretton woods
-B1 <- (ADF(bret)) %>% select(-Countries) %>% rename("Bretton Woods (1958:1-1973:3)" = "Dickey-Fuller")
-B2<- (ADF(postbret)) %>% select(-Countries) %>% rename("Post-Bretton Woods (1973:4-1989:6)" = "Dickey-Fuller")
+B1 <- (ADF1(bret)) %>% select(-Countries) %>% rename("Bretton Woods (1958:1-1973:3)" = "Dickey-Fuller")
+B2<- (ADF2(postbret)) %>% select(-Countries) %>% rename("Post-Bretton Woods (1973:4-1989:6)" = "Dickey-Fuller")
 A <- ADF(pdata) %>% rename("Full Sample" = "Dickey-Fuller")
 
 fullADF <- bind_cols(A, B1, B2)
@@ -258,13 +257,12 @@ table <- xtable(data, caption = "Augmented Dickey-Fuller Tests", label = "ADF")
              add.to.row = addtorow, # For adding the Continued on next page part...
              comment = FALSE,
              caption.placement = 'top',  # Where do you want the caption?
-             size="\\fontsize{11pt}{12pt}\\selectfont"  # Size of text in table..
+             size="\\fontsize{10pt}{11pt}\\selectfont"  # Size of text in table..
              )
 ```
+As noted by @pes [p.18], when using country data for macroeconomic applications, there are often contemporaneous correlations within the time series, which is a relevant concern for testing the PPP hypothesis. There may be unobserved common factors or spatial spillover effects, which need to be accounted for in the unit root test. Modelling cross section dependence in panel data sets is still an emerging field, but @im suggest that the appropriate test statistic is the T-bar test based on cross-sectional demeaned regressions. This is the approach that I take below (Im-Pesaran-Shin T-bar test). I use the same lags as @Kul for the first IPS T-bar test. For the full sample: Malaysia(l) and Thailand(1), for the Bretton Woods period: Thailand(1), and for the post Bretton Woods period: Malaysia(l) and Thailand(1). The IPS test is run on the cross-sectionally demeaned data.
 
-As noted by @pes [p.18], when using country data for macroeconomic applications, there are often contemporaneous correlations within the time series, which is a relevant concern for testing the PPP hypothesis. There may be unobserved common factors or spatial spillover effects, which need to be accounted for in the unit root test. Modelling cross section dependence in panel data sets is still an emerging field, but @im suggest that the appropriate test statistic is the T-bar test based on cross-sectional demeaned regressions. This is the approach that I take below (Im-Pesaran-Shin T-bar test), and the test rejects the null hypothesis at a 1% level, both when including and excluding a trend. This supports the results of @Kul [p.173]. I use the same lags as @Kul for the first IPS T-bar test, are for the full sample: Malaysia(l) and Thailand(1), for the Bretton Woods period: Thailand(1), and for the post Bretton Woods period: Malaysia(l) and Thailand(1).  
-
-The first unit root test I employ is the Im-Pesaran-Shin t-bar test to replicate @Kul test. The results below show that the null hypothesis (there exists a unit root) is rejected at the conventional levels of significance^[I found out this is a fancy way of saying reject at 1% and 5%] \ref{ips} -2.86 5% -2.66 
+The results (\ref{ips}) of the first IPS tests show that the null hypothesis is rejected at a 1% level of significance for the full sample. This supports a stationary real exchange rate and therefore is evidence towards the PPP. @Kul [p.173] finds similar results. However, for the Bretton Woods and Post Bretton Woods, my test fails to reject the null hypothesis, whereas @Kul rejects the null at 1%. This difference could be due to a difference in how the data was demeaned or because I am testing a subset of currencies.
 
 ```{r IPS, echo = FALSE, include= TRUE, warning =  FALSE, results='asis'}
 #pg173
@@ -277,12 +275,14 @@ dmpostbret<- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexI
 
 library(xtable)
 list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
- full <- ips(dm)
- bre <- ips(dmbret)
- post <- ips(dmpostbret)
+ # full <- ips(dm)
+ # bre <- ips(dmbret)
+ # post <- ips(dmpostbret)
  time <- data.frame(Period = c("Full Sample", "", "Bretton Woods","", "Post Bretton Woods", ""))
- data1 <- bind_rows(full, bre, post)
- data2 <- bind_cols(time, data1)
+ # data1 <- bind_rows(full, bre, post)
+ try <- ipsall(dm, dmbret, dmpostbret)
+ # data2 <- bind_cols(time, data1)
+ data2 <- bind_cols(time, try)
 data = data2 %>% tibble::as_tibble()
   addtorow          <- list()
   addtorow$pos      <- list()
@@ -307,36 +307,126 @@ table <- xtable(data, caption = "IPS Panel Unit Root Tests (Tbar)", label = "ips
              )
 
 ```
-I then tests for unit roots using LLL test (I used the package by @plm for this).
 
-The function panel_test performs a test on a multivariate (panel) time series by testing the null hypothesis that all series have a unit root. A rejection is typically interpreted as evidence that a ‘significant proportion’ of the series is stationary, although how large that proportion is - or which series are stationary - is not given by the test. The test is based on averaging the individual test statistics, also called the Group-Mean (GM) test in Palm, Smeekes and Urbain (2011).
+Next, I rerun the IPS test and use Akaike's information criterion (AIC) to select the lags as a robustness check on the first IPS test. The results (\ref{ipsAIC}) show that the null hypothesis is rejected at 1% for the full sample and for the post Bretton Woods period. This implies there is no unit root present, and real exchange rates are mean-reverting in the long run. This supports the findings of @Kul. However, the test again fails to reject the null for the Bretton Woods period, which is contrary to @Kul's results. 
 
+```{r, echo = FALSE, include= TRUE, warning =  FALSE, results='asis'}
+#pg173
+pdata2 <- pdata %>% select(-ENTRY)
+dm <- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean) #demeaned data
+ 
+dmbret <- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean) %>% slice_head(n =183) #prefloat era bretton woods demeaned data
+
+dmpostbret<- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean) %>% slice_tail(n = 195) #post bretton woods demeaned data
+
+library(xtable)
+list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+ full <- ips_AIC(dm)
+ bre <- ips_AIC(dmbret)
+ post <- ips_AIC(dmpostbret)
+ time <- data.frame(Period = c("Full Sample", "", "Bretton Woods","", "Post Bretton Woods", ""))
+ data1 <- bind_rows(full, bre, post)
+ data2 <- bind_cols(time, data1)
+data = data2 %>% tibble::as_tibble()
+  addtorow          <- list()
+  addtorow$pos      <- list()
+  addtorow$pos[[1]] <- c(0)
+  addtorow$command  <- c(paste("\\hline \n",
+                               "\\endhead \n",
+                               "\\hline \n",
+                               "{\\footnotesize Continued on next page} \n",
+                               "\\endfoot \n",
+                               "\\endlastfoot \n",sep=""))
+table <- xtable(data, caption = "IPS Panel Unit Root Tests (Tbar)", label = "ipsAIC")
+  print.xtable(table,
+             tabular.environment = "longtable",
+             floating = FALSE, # Leave this as is.
+             table.placement = 'H', # Leave this as is.
+             booktabs = T, # Aesthetics
+             include.rownames = FALSE,  # Typically you don't want this in a table.
+             add.to.row = addtorow, # For adding the Continued on next page part...
+             comment = FALSE,
+             caption.placement = 'top',  # Where do you want the caption?
+             size="\\fontsize{12pt}{13pt}\\selectfont"  # Size of text in table..
+             )
+
+```
+
+As a further robustness check on the results of @Kul, I test the panel for unit roots using the tests proposed by @lev (LL), @wu (MadWu), @had (Hadri). I used the package by @plm to run these tests. For the @lev and @wu tests I again used AIC for the lag selection. The @had test directly tests for stationarity and has as the null hypothesis that all the panels are (trend) stationary. 
+
+The results presented in \ref{uunit} show that all @lev tests fail to reject the null hypothesis (i.e. there are unit roots present). The only @wu test that rejects the null hypothesis is the one for post Bretton Woods when a trend is included. Otherwise this test suggests that the real exchange rate is nonstationary. All @had tests reject the null hypothesis at a 1% level of significance. A rejection of the null here is an indication of nonstationarity. These results can be interpereted in two ways. They can suggest that real exchange rates are nonstationary, the PPP doesn't hold empirically and @Kul's results are not robust. Or these results support @Kul's claim that the IPS test is the correct test to use because other unit root tests are too weak to correctly identify stationary processes.
+
+```{r units, echo = FALSE, include= TRUE, warning =  FALSE, results='asis'}
+pdata2 <- pdata %>% select(-ENTRY)
+bret <- pdata2 %>% slice_head(n =183) #prefloat era bretton woods
+postbret <- pdata2 %>% slice_tail(n = 195) # float era post bretton woods
+
+library(xtable)
+list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+ full <- unit(pdata2)
+ bre <- unit(bret)
+ post <- unit(postbret)
+ time <- data.frame(Period = c("Full Sample", "", "","","","", "Bretton Woods","","","","","", "Post Bretton Woods", "","","","",""))
+ data1 <- bind_rows(full, bre, post)
+ data2 <- bind_cols(time, data1)
+data = data2 %>% tibble::as_tibble()
+  addtorow          <- list()
+  addtorow$pos      <- list()
+  addtorow$pos[[1]] <- c(0)
+  addtorow$command  <- c(paste("\\hline \n",
+                               "\\endhead \n",
+                               "\\hline \n",
+                               "{\\footnotesize Continued on next page} \n",
+                               "\\endfoot \n",
+                               "\\endlastfoot \n",sep=""))
+table <- xtable(data, caption = "Various Panel Unit Root Tests", label = "uunit")
+  print.xtable(table,
+             tabular.environment = "longtable",
+             floating = FALSE, # Leave this as is.
+             table.placement = 'H', # Leave this as is.
+             booktabs = T, # Aesthetics
+             include.rownames = FALSE,  # Typically you don't want this in a table.
+             add.to.row = addtorow, # For adding the Continued on next page part...
+             comment = FALSE,
+             caption.placement = 'top',  # Where do you want the caption?
+             size="\\fontsize{12pt}{13pt}\\selectfont"  # Size of text in table..
+             )
+
+```
+
+As a final check on the stationarity of real exchange rates, I employ a panel bootstrap group-mean union test as proposed by @pal. The test has a null hypothesis that all series have a unit root. If the null is rejected then some proportion of the series is stationary. I also ran the test on the cross-section demeaned data (in addition to the non-demeaned data) for the full sample. The results are shown in \ref{Boot}. The test fails to reject the null for both series, which suggests the panel is non-stationary. This undermines the results of @Kul. However, the number of runs for the test was 1000^[My laptop struggled with runs higher than this unfortunately.], which is quite low for bootstrapping and the test may be giving inaccurate results.
 
 ```{r Boot, echo = FALSE, include= TRUE, warning =  FALSE, results='asis'}
-# pdata2 <- pdata %>% select(-ENTRY)
-# dm <- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean)
-# 
-# library(xtable)
-# list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
-#  palm <- panel(pdata2, dm)
-#  table <- xtable(palm, caption = "Bootstrapped panel unit root tests \\label{tab1}")
-#   print.xtable(table,
-#              # tabular.environment = "longtable",
-#              floating = TRUE,
-#              table.placement = 'H',
-#              include.rownames = FALSE,
-#              # scalebox = 0.3,
-#              comment = FALSE,
-#              caption.placement = 'top'
-#              )
+pdata2 <- pdata %>% select(-ENTRY)
+dm <- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean)
+
+library(xtable)
+load("palm1.Rda")
+list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+ #palm <- panel(pdata2, dm)
+ table <- xtable(palm1, caption = "Bootstrapped panel unit root tests", label = "Boot")
+  print.xtable(table,
+             # tabular.environment = "longtable",
+             floating = TRUE,
+             table.placement = 'H',
+             include.rownames = FALSE,
+             # scalebox = 0.3,
+             comment = FALSE,
+             caption.placement = 'top'
+             )
 
 ```
 
 
 # Variance Ratio Test \label{Var}
 
-The following table shows results of the Variance Ratio test for the full sample for up to 20 months. The results of the variance ratio test for the Bretton Woods period and post Bretton Woods period (for up to 20 months^[The results for 190 months is available upon request; it has been omitted purely to save space]) can be found in the Appendix (\ref{A})
+@Kul [p. 174] makes use of the variance ratio test to examine the persistence in real exchange rates. The variance ratio $V^k$ is defined as: 
 
+$$
+V^k = \frac{Var(y_t - y_{t-k})}{k \times Var(y_t - y_{t-1}) } 
+$$
+
+where k is the lag length, $Var(y_t - y_{t-k})$ and $Var(y_t - y_{t-1})$ are the variances of kth difference and the first difference of a time series $y_t$. @Kul [p.174] goes into detail of the intuition and the interpretation of this test. I replicate this test, and table (\ref{v}) shows results for the full sample for up to 20 months. The results of the variance ratio test for the Bretton Woods period and post Bretton Woods period (for up to 20 months^[The results for 190 months are available upon request; it has been omitted to save space]) can be found in the Appendix (\ref{A}). I find the same variance ratios as @Kul for all the countries. My standard errors (se) were slightly larger because the formula I used for the variance was different^[I tried to replicate the variance formula as it is in the paper but it kept breaking the code of the function I built, unfortunately] but the qualitative results remain similar. For all the countries except Myanmar, the variance ratios are all significantly different from zero for k ranging from 1 - 70, and the cut-off lag length is 70 for all the countries. According to @Kul, this suggests that the real exchange rates (for the countries other than Myanmar) are stationary. The two sub-periods show similar results (\ref{A}).
 
 ```{r Vtab, results = 'asis'}
 
@@ -354,7 +444,7 @@ data = VRtab %>% tibble::as_tibble()
                                "{\\footnotesize Continued on next page} \n",
                                "\\endfoot \n",
                                "\\endlastfoot \n",sep=""))
-table <- xtable(data, caption = "Variance Ratio Test for Full Sample Up to month 20")
+table <- xtable(data, caption = "Variance Ratio Test for Full Sample Up to month 20", label = "v")
   print.xtable(table,
              tabular.environment = "longtable",
              floating = FALSE, # Leave this as is.
@@ -371,6 +461,7 @@ table <- xtable(data, caption = "Variance Ratio Test for Full Sample Up to month
 
 # Conclusion
 
+@Kul performs a number of tests to show that real exchange rates are stationary and thus PPP holds empirically. My replication of the IPS test and variance ratio test support the results of the paper. However, the robustness checks of using other panel unit root tests show that real exchange rates are nonstationary. This undermines the results and conclusions reached by @Kul. An interesting study would be to extend the panel (in terms of the time dimension and include more countries) and apply unit root testing to ascertain whether real exchange rates are stationary.
 
 \newpage
 
@@ -410,7 +501,6 @@ table <- xtable(data, caption = "Variance Ratio Test for Bretton Woods period up
              caption.placement = 'top',  # Where do you want the caption?
              size="\\fontsize{12pt}{13pt}\\selectfont"  # Size of text in table..
              )
-# See https://cran.r-project.org/web/packages/xtable/vignettes/xtableGallery.pdf for table inspiration
 ```
 
 ```{r Vtab3, results = 'asis'}

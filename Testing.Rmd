@@ -3,6 +3,30 @@ title: "Test doc"
 output: pdf_document
 ---
 
+
+```{r Boot, echo = FALSE, include= TRUE, warning =  FALSE, results='asis'}
+ pdata2 <- pdata %>% select(-ENTRY)
+ dm <- pdata2 %>% mutate(mean = rowMeans(pdata2)) %>% mutate(rexIND = rexIND - mean, rexLNK = rexLNK - mean, rexMAL = rexMAL - mean, rexMNR = rexMNR - mean, rexPAK = rexPAK - mean, rexPHL = rexPHL - mean, rexTHI = rexTHI - mean) %>% select(-mean)
+ 
+ library(xtable)
+ list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+  palm1 <- panel(pdata2, dm)
+  palm <- panel(pdata2, dm)
+  table <- xtable(palm, caption = "Bootstrapped panel unit root tests")
+   print.xtable(table,
+              # tabular.environment = "longtable",
+              floating = TRUE,
+              table.placement = 'H',
+              include.rownames = FALSE,
+              # scalebox = 0.3,
+              comment = FALSE,
+              caption.placement = 'top'
+              )
+#saveRDS(palm,file="palm.Rda") then x <- readRDS(file="data.Rda")
+save(palm1,file="palm1.Rda")
+#Then load it with: load("palm.Rda")
+
+```
 # Wald
 ```{r}
 

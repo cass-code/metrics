@@ -256,17 +256,16 @@ Robustness Check\par}}
 
 How do we compare living standards and economic productivity between
 countries? This is one of the questions that macroeconomics attempts to
-answers and a number of tools have been developed within the field to
+answer, and a number of tools have been developed within the field to
 this end. One of these tools is the Purchasing Power Parity (PPP)
 theory, which uses a basket of goods to compare the currencies of
 different countries. This theory has been widely tested using data, and
 the results have been divisive and somewhat puzzling
 (\protect\hyperlink{ref-puz}{El-Gamal \& Ryu}
-(\protect\hyperlink{ref-puz}{2006})).
-
-In this essay, I replicate\footnote{More accurately, try my best to
-  replicate} the paper ``Real Exchange Rate Behaviour: Evidence from
-Black Markets'' by \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-puz}{2006})). In this essay, I
+replicate\footnote{More accurately, try my best to replicate} the paper
+``Real Exchange Rate Behaviour: Evidence from Black Markets'' by
+\protect\hyperlink{ref-Kul}{Luintel}
 (\protect\hyperlink{ref-Kul}{2000}), which tests the PPP hypothesis.
 \protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000})
 finds that the behaviour of the real exchange rate is mean-reverting in
@@ -322,11 +321,11 @@ mean-reversion either in the short or long term
 finds that the black market real exchange rates do not behave in an
 excessively volatile manner, which conflicted with the findings of the
 literature at that time. Additionally, the findings of the study implied
-that such empirical investigation may not necessarily suffer from
+that such empirical investigations may not necessarily suffer from
 survivorship bias.
 
 A critical part of Luintel's paper is testing for unit roots in the
-panel data, specifically the paper makes use of the Im-Pesaran-Shin
+panel data; specifically, the paper makes use of the Im-Pesaran-Shin
 (IPS) T-bar test. In addition to replicating this test, I implement
 several other unit root tests as a robustness check and find that the
 results are mixed. \protect\hyperlink{ref-Kul}{Luintel}
@@ -342,7 +341,7 @@ method. I then implement the panel stationarity tests proposed by
 \protect\hyperlink{ref-had}{Hadri} (\protect\hyperlink{ref-had}{2002}),
 as well as a bootstrapped panel unit root test from
 \protect\hyperlink{ref-pal}{Palm, Smeekes \& Urbain}
-(\protect\hyperlink{ref-pal}{2011}) (\ref{Unit}).
+(\protect\hyperlink{ref-pal}{2011})..
 
 \hypertarget{data}{%
 \section{\texorpdfstring{Data \label{Data}}{Data }}\label{data}}
@@ -412,7 +411,7 @@ Tests are reported below after the plots, in table \ref{wald}.
 
 The Wald-Wolfowitz test is a nonparametric test that discriminates
 between the underlying distributions of the Bretton Woods and post
-Bretton Woods real exchange rates. Essentially it tests whether two
+Bretton Woods real exchange rates. Essentially, it tests whether two
 random samples are from populations with the same distribution (this is
 the null hypothesis), or whether the two samples descend from
 populations with different distributions (the alternative
@@ -425,10 +424,9 @@ respectively. \ref{Wtable} shows that the tests reject the null
 hypothesis at a 1\% significance level for all the countries. These
 results imply that the Bretton Woods real exchange rates descend from a
 population that follows a distribution that may differ in skewness,
-kurtosis and dispersion from that of the post Bretton Woods real
-exchange rates' population distribution. This suggests that it is
-important to include the Bretton Woods period in our analysis of real
-exchange rates. \protect\hyperlink{ref-Kul}{Luintel}
+kurtosis and dispersion from that of the post Bretton Woods. This
+suggests that it is important to include the Bretton Woods period in our
+analysis of real exchange rates. \protect\hyperlink{ref-Kul}{Luintel}
 (\protect\hyperlink{ref-Kul}{2000: 169}) reports smaller test
 statistics, but rejects the null comfortably for all of the countries.
 
@@ -467,18 +465,22 @@ panel unit-root test that \protect\hyperlink{ref-Kul}{Luintel}
 test, which fails to reject the null hypothesis (there exists a unit
 root, and therefore the process is nonstationary) for all the countries.
 The only exception is for Pakistan in the post Bretton Woods period. My
-replicated test show similar results in \ref{ADF}, with all countries
-failing to reject the null. Both \protect\hyperlink{ref-Kul}{Luintel}
+replicated tests show similar results in \ref{ADF}, with most countries
+failing to reject the null (with the exceptions occurring at a 5\% level
+for four countries post Bretton Woods\footnote{India, Malaysia, Pakistan
+  and Thailand}). Both \protect\hyperlink{ref-Kul}{Luintel}
 (\protect\hyperlink{ref-Kul}{2000}) and my tests include a time trend,
 but the non-stationary results hold when excluding this trend.
 
-However, the Dickey-Fuller tests are known for their low power, where
-low statistical power means we have a lower probability that the test
-correctly rejects the null hypothesis. Thus,
-\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000})
-proposes
+However, the Dickey-Fuller tests are known for their low power. Low
+statistical power means we have a higher probability of committing a
+type 2 error: failing to reject the null hypothesis when the alternative
+hypothesis is true. In our context, this means we may be incorrectly
+concluding that real exchange rates are nonstationary. Thus, we need to
+consider other tests when testing for stationarity, which are discussed
+below.
 
-\begingroup\fontsize{11pt}{12pt}\selectfont
+\begingroup\fontsize{10pt}{11pt}\selectfont
 \begin{longtable}{lrrr}
 \caption{Augmented Dickey-Fuller Tests} \\ 
   \toprule
@@ -492,10 +494,10 @@ Countries & Full Sample & Bretton Woods (1958:1-1973:3) & Post-Bretton Woods (19
  \midrule
 India (Rupee) & -2.70 & -2.07 & -3.66 \\ 
   Sri Lanka (Rupee) & -3.22 & -2.11 & -2.44 \\ 
-  Malaysia (Ringgit) & -1.47 & -2.16 & -3.77 \\ 
+  Malaysia (Ringgit) & -1.47 & -2.12 & -3.77 \\ 
   Myanmar (Kyat) & -1.53 & -1.71 & -0.16 \\ 
-  Pakistan (Rupee) & -3.35 & -2.97 & -5.91 \\ 
-  Phillipines (Peso) & -3.09 & -2.07 & -3.38 \\ 
+  Pakistan (Rupee) & -3.35 & -2.63 & -5.91 \\ 
+  Phillipines (Peso) & -3.09 & -2.07 & -3.20 \\ 
   Thailand (Baht) & -2.44 & -3.36 & -3.93 \\ 
    \bottomrule
 \label{ADF}
@@ -513,27 +515,29 @@ but \protect\hyperlink{ref-im}{Pasaran, Im \& Shin}
 (\protect\hyperlink{ref-im}{1997}) suggest that the appropriate test
 statistic is the T-bar test based on cross-sectional demeaned
 regressions. This is the approach that I take below (Im-Pesaran-Shin
-T-bar test), and the test rejects the null hypothesis at a 1\% level,
-both when including and excluding a trend. This supports the results of
-\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000:
-173}). I use the same lags as \protect\hyperlink{ref-Kul}{Luintel}
-(\protect\hyperlink{ref-Kul}{2000}) for the first IPS T-bar test, are
-for the full sample: Malaysia(l) and Thailand(1), for the Bretton Woods
+T-bar test). I use the same lags as \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000}) for the first IPS T-bar test. For
+the full sample: Malaysia(l) and Thailand(1), for the Bretton Woods
 period: Thailand(1), and for the post Bretton Woods period: Malaysia(l)
-and Thailand(1).
+and Thailand(1). The IPS test is run on the cross-sectionally demeaned
+data.
 
-The first unit root test I employ is the Im-Pesaran-Shin t-bar test to
-replicate \protect\hyperlink{ref-Kul}{Luintel}
-(\protect\hyperlink{ref-Kul}{2000}) test. The results below show that
-the null hypothesis (there exists a unit root) is rejected at the
-conventional levels of significance\footnote{I found out this is a fancy
-  way of saying reject at 1\% and 5\%} \ref{ips} -2.86 5\% -2.66
+The results (\ref{ips}) of the first IPS tests show that the null
+hypothesis is rejected at a 1\% level of significance for the full
+sample. This supports a stationary real exchange rate and therefore is
+evidence towards the PPP. \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000: 173}) finds similar results. However,
+for the Bretton Woods and Post Bretton Woods, my test fails to reject
+the null hypothesis, whereas \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000}) rejects the null at 1\%. This
+difference could be due to a difference in how the data was demeaned or
+because I am testing a subset of currencies.
 
 \begingroup\fontsize{12pt}{13pt}\selectfont
-\begin{longtable}{llrl}
+\begin{longtable}{llrrll}
 \caption{IPS Panel Unit Root Tests (Tbar)} \\ 
   \toprule
-Period & Test & T-statistic & Trend \\ 
+Period & Test & T-statistic & P value & Trend & Lags \\ 
   \hline 
 \endhead 
 \hline 
@@ -541,39 +545,191 @@ Period & Test & T-statistic & Trend \\
 \endfoot 
 \endlastfoot 
  \midrule
-Full Sample & IPS & -2.97 & Yes \\ 
-   & IPS & -2.56 & No \\ 
-  Bretton Woods & IPS & -2.47 & Yes \\ 
-   & IPS & -1.74 & No \\ 
-  Post Bretton Woods & IPS & -2.53 & Yes \\ 
-   & IPS & -2.65 & No \\ 
+Full Sample & IPS & -3.00 & 0.00 & No & Luintel \\ 
+   & IPS & -2.14 & 0.02 & Yes & Luintel \\ 
+  Bretton Woods & IPS & -0.76 & 0.22 & No & Luintel \\ 
+   & IPS & -0.76 & 0.22 & Yes & Luintel \\ 
+  Post Bretton Woods & IPS & -0.71 & 0.24 & No & Luintel \\ 
+   & IPS & -0.71 & 0.24 & Yes & Luintel \\ 
    \bottomrule
 \label{ips}
 \end{longtable}
 \endgroup
 
-I then tests for unit roots using LLL test (I used the package by
-\protect\hyperlink{ref-plm}{Millo} (\protect\hyperlink{ref-plm}{2017})
-for this).
+Next, I rerun the IPS test and use Akaike's information criterion (AIC)
+to select the lags as a robustness check on the first IPS test. The
+results (\ref{ipsAIC}) show that the null hypothesis is rejected at 1\%
+for the full sample and for the post Bretton Woods period. This implies
+there is no unit root present, and real exchange rates are
+mean-reverting in the long run. This supports the findings of
+\protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000}). However, the test again fails to
+reject the null for the Bretton Woods period, which is contrary to
+\protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000})'s results.
 
-The function panel\_test performs a test on a multivariate (panel) time
-series by testing the null hypothesis that all series have a unit root.
-A rejection is typically interpreted as evidence that a `significant
-proportion' of the series is stationary, although how large that
-proportion is - or which series are stationary - is not given by the
-test. The test is based on averaging the individual test statistics,
-also called the Group-Mean (GM) test in Palm, Smeekes and Urbain (2011).
+\begingroup\fontsize{12pt}{13pt}\selectfont
+\begin{longtable}{llrrll}
+\caption{IPS Panel Unit Root Tests (Tbar)} \\ 
+  \toprule
+Period & Test & T-statistic & P value & Trend & Lags \\ 
+  \hline 
+\endhead 
+\hline 
+{\footnotesize Continued on next page} 
+\endfoot 
+\endlastfoot 
+ \midrule
+Full Sample & IPS & -2.55 & 0.01 & No & AIC \\ 
+   & IPS & 23.41 & 0.05 & Yes & AIC \\ 
+  Bretton Woods & IPS & -0.33 & 0.37 & No & AIC \\ 
+   & IPS & 11.87 & 0.62 & Yes & AIC \\ 
+  Post Bretton Woods & IPS & -3.36 & 0.00 & No & AIC \\ 
+   & IPS & 23.99 & 0.05 & Yes & AIC \\ 
+   \bottomrule
+\label{ipsAIC}
+\end{longtable}
+\endgroup
+
+As a further robustness check on the results of
+\protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000}), I test the panel for unit roots
+using the tests proposed by \protect\hyperlink{ref-lev}{Levin, Lin \&
+James Chu} (\protect\hyperlink{ref-lev}{2002}) (LL),
+\protect\hyperlink{ref-wu}{Maddala \& Wu}
+(\protect\hyperlink{ref-wu}{1999}) (MadWu),
+\protect\hyperlink{ref-had}{Hadri} (\protect\hyperlink{ref-had}{2002})
+(Hadri). I used the package by \protect\hyperlink{ref-plm}{Millo}
+(\protect\hyperlink{ref-plm}{2017}) to run these tests. For the
+\protect\hyperlink{ref-lev}{Levin, Lin \& James Chu}
+(\protect\hyperlink{ref-lev}{2002}) and
+\protect\hyperlink{ref-wu}{Maddala \& Wu}
+(\protect\hyperlink{ref-wu}{1999}) tests I again used AIC for the lag
+selection. The \protect\hyperlink{ref-had}{Hadri}
+(\protect\hyperlink{ref-had}{2002}) test directly tests for stationarity
+and has as the null hypothesis that all the panels are (trend)
+stationary.
+
+The results presented in \ref{uunit} show that all
+\protect\hyperlink{ref-lev}{Levin, Lin \& James Chu}
+(\protect\hyperlink{ref-lev}{2002}) tests fail to reject the null
+hypothesis (i.e.~there are unit roots present). The only
+\protect\hyperlink{ref-wu}{Maddala \& Wu}
+(\protect\hyperlink{ref-wu}{1999}) test that rejects the null hypothesis
+is the one for post Bretton Woods when a trend is included. Otherwise
+this test suggests that the real exchange rate is nonstationary. All
+\protect\hyperlink{ref-had}{Hadri} (\protect\hyperlink{ref-had}{2002})
+tests reject the null hypothesis at a 1\% level of significance. A
+rejection of the null here is an indication of nonstationarity. These
+results can be interpereted in two ways. They can suggest that real
+exchange rates are nonstationary, the PPP doesn't hold empirically and
+\protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000})'s results are not robust. Or these
+results support \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000})'s claim that the IPS test is the
+correct test to use because other unit root tests are too weak to
+correctly identify stationary processes.
+
+\begingroup\fontsize{12pt}{13pt}\selectfont
+\begin{longtable}{llrrll}
+\caption{Various Panel Unit Root Tests} \\ 
+  \toprule
+Period & Test & T-statistic & P value & Trend & Lags \\ 
+  \hline 
+\endhead 
+\hline 
+{\footnotesize Continued on next page} 
+\endfoot 
+\endlastfoot 
+ \midrule
+Full Sample & LL & -0.51 & 0.31 & No & AIC \\ 
+   & LL & 1.01 & 0.84 & Yes & AIC \\ 
+   & MadWu & 17.47 & 0.23 & No & AIC \\ 
+   & MadWu & 13.90 & 0.46 & Yes & AIC \\ 
+   & Hadri & 233.20 & 0.00 & No & NA \\ 
+   & Hadri & 171.05 & 0.00 & Yes & NA \\ 
+  Bretton Woods & LL & -0.32 & 0.37 & No & AIC \\ 
+   & LL & 1.44 & 0.92 & Yes & AIC \\ 
+   & MadWu & 16.80 & 0.27 & No & AIC \\ 
+   & MadWu & 8.94 & 0.84 & Yes & AIC \\ 
+   & Hadri & 165.47 & 0.00 & No & NA \\ 
+   & Hadri & 100.18 & 0.00 & Yes & NA \\ 
+  Post Bretton Woods & LL & 0.47 & 0.68 & No & AIC \\ 
+   & LL & -0.94 & 0.17 & Yes & AIC \\ 
+   & MadWu & 10.51 & 0.72 & No & AIC \\ 
+   & MadWu & 51.41 & 0.00 & Yes & AIC \\ 
+   & Hadri & 224.04 & 0.00 & No & NA \\ 
+   & Hadri & 108.94 & 0.00 & Yes & NA \\ 
+   \bottomrule
+\label{uunit}
+\end{longtable}
+\endgroup
+
+As a final check on the stationarity of real exchange rates, I employ a
+panel bootstrap group-mean union test as proposed by
+\protect\hyperlink{ref-pal}{Palm, Smeekes \& Urbain}
+(\protect\hyperlink{ref-pal}{2011}). The test has a null hypothesis that
+all series have a unit root. If the null is rejected then some
+proportion of the series is stationary. I also ran the test on the
+cross-section demeaned data (in addition to the non-demeaned data) for
+the full sample. The results are shown in \ref{Boot}. The test fails to
+reject the null for both series, which suggests the panel is
+non-stationary. This undermines the results of
+\protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000}). However, the number of runs for the
+test was 1000\footnote{My laptop struggled with runs higher than this
+  unfortunately.}, which is quite low for bootstrapping and the test may
+be giving inaccurate results.
+
+\begin{table}[H]
+\centering
+\caption{Bootstrapped panel unit root tests} 
+\label{Boot}
+\begin{tabular}{lrr}
+  \hline
+Test & Test Statistic & P value \\ 
+  \hline
+Panel & -0.82 & 0.28 \\ 
+  Panel Demeaned & -0.86 & 0.19 \\ 
+   \hline
+\end{tabular}
+\end{table}
 
 \hypertarget{variance-ratio-test}{%
 \section{\texorpdfstring{Variance Ratio Test
 \label{Var}}{Variance Ratio Test }}\label{variance-ratio-test}}
 
-The following table shows results of the Variance Ratio test for the
+\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000:
+174}) makes use of the variance ratio test to examine the persistence in
+real exchange rates. The variance ratio \(V^k\) is defined as:
+
+\[
+V^k = \frac{Var(y_t - y_{t-k})}{k \times Var(y_t - y_{t-1}) } 
+\]
+
+where k is the lag length, \(Var(y_t - y_{t-k})\) and
+\(Var(y_t - y_{t-1})\) are the variances of kth difference and the first
+difference of a time series \(y_t\).
+\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000:
+174}) goes into detail of the intuition and the interpretation of this
+test. I replicate this test, and table (\ref{v}) shows results for the
 full sample for up to 20 months. The results of the variance ratio test
 for the Bretton Woods period and post Bretton Woods period (for up to 20
-months\footnote{The results for 190 months is available upon request; it
-  has been omitted purely to save space}) can be found in the Appendix
-(\ref{A})
+months\footnote{The results for 190 months are available upon request;
+  it has been omitted to save space}) can be found in the Appendix
+(\ref{A}). I find the same variance ratios as
+\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000})
+for all the countries. My standard errors (se) were slightly larger
+because the formula I used for the variance was different\footnote{I
+  tried to replicate the variance formula as it is in the paper but it
+  kept breaking the code of the function I built, unfortunately} but the
+qualitative results remain similar. For all the countries except
+Myanmar, the variance ratios are all significantly different from zero
+for k ranging from 1 - 70, and the cut-off lag length is 70 for all the
+countries. According to \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000}), this suggests that the real
+exchange rates (for the countries other than Myanmar) are stationary.
+The two sub-periods show similar results (\ref{A}).
 
 \begingroup\fontsize{12pt}{13pt}\selectfont
 \begin{longtable}{lrrrrrrr}
@@ -628,11 +784,24 @@ Months & India & SriLanka & Malaysia & Myanmar & Pakistan & Philippines & Thaila
   20 & 0.90 & 0.87 & 0.62 & 1.08 & 0.52 & 0.75 & 0.36 \\ 
   se & 0.10 & 0.10 & 0.10 & 0.10 & 0.10 & 0.10 & 0.10 \\ 
    \bottomrule
+\label{v}
 \end{longtable}
 \endgroup
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}
+
+\protect\hyperlink{ref-Kul}{Luintel} (\protect\hyperlink{ref-Kul}{2000})
+performs a number of tests to show that real exchange rates are
+stationary and thus PPP holds empirically. My replication of the IPS
+test and variance ratio test support the results of the paper. However,
+the robustness checks of using other panel unit root tests show that
+real exchange rates are nonstationary. This undermines the results and
+conclusions reached by \protect\hyperlink{ref-Kul}{Luintel}
+(\protect\hyperlink{ref-Kul}{2000}). An interesting study would be to
+extend the panel (in terms of the time dimension and include more
+countries) and apply unit root testing to ascertain whether real
+exchange rates are stationary.
 
 \newpage
 

@@ -1,4 +1,4 @@
-unit <- function(dm){
+unit <- function(pdata2){
 
    library(tidyverse)
    library(plm)
@@ -11,52 +11,53 @@ unit <- function(dm){
    #         exo = c("none", "intercept", "trend"),
    #         lags = c("SIC", "AIC", "Hall"), pmax = 10)
 
+
+
+   # Levinlin
+
    lev <- purtest(pdata2, exo = "intercept", test = "levinlin" , lags = "AIC", pmax=10)
-   summary(lev)
-   lev <- data.frame(tidy_stats(lev$statistic))
-   lev1 <- purtest(pdata2, exo = "trend", test = "levinlin" , lags = "AIC", pmax=10)
-  summary(lev)
-   lev1 <- data.frame(tidy_stats(lev$statistic))
+   levp <- data.frame((lev$statistic$p.value)) %>% rename("P value" = X.lev.statistic.p.value.)
+   lev1 <- data.frame(tidy_stats(lev$statistic)) %>% rename("T-statistic" = statistics.statistic.value) %>% mutate(Test = "LL") %>% mutate(Trend = "No") %>%  mutate(Lags = "AIC") %>%  select(Test, "T-statistic", Trend, Lags)
+   levv <- bind_cols(lev1, levp) %>%  select(Test, "T-statistic", "P value", Trend, Lags)
 
-   mad <- purtest(dm, exo = "intercept", test = "madwu" , lags = "AIC", pmax=10)
-   summary(mad)
-   mad1 <- purtest(dm, exo = "trend", test = "madwu" , lags = "AIC", pmax=10)
-   summary(mad1)
+   lev2 <- purtest(pdata2, exo = "trend", test = "levinlin" , lags = "AIC", pmax=10)
+   levp1 <- data.frame((lev2$statistic$p.value)) %>% rename("P value" = X.lev2.statistic.p.value.)
+   lev3 <- data.frame(tidy_stats(lev2$statistic)) %>% rename("T-statistic" = statistics.statistic.value) %>% mutate(Test = "LL") %>% mutate(Trend = "Yes") %>%  mutate(Lags = "AIC") %>%  select(Test, "T-statistic", Trend, Lags)
+   levvv <- bind_cols(lev3, levp1) %>%  select(Test, "T-statistic", "P value", Trend, Lags)
+
+   levf <- bind_rows(levv, levvv)
+
+
+   #Madwu
+
+   mad <- purtest(pdata2, exo = "intercept", test = "madwu" , lags = "AIC", pmax=10)
+   madp <- data.frame((mad$statistic$p.value)) %>% rename("P value" = X.mad.statistic.p.value.)
+   mad1 <- data.frame(tidy_stats(mad$statistic)) %>% rename("T-statistic" = statistics.statistic.value) %>% mutate(Test = "MadWu") %>% mutate(Trend = "No") %>%  mutate(Lags = "AIC") %>%  select(Test, "T-statistic", Trend, Lags)
+   madd <- bind_cols(mad1, madp) %>%  select(Test, "T-statistic", "P value", Trend, Lags)
+
+   mad2 <- purtest(pdata2, exo = "trend", test = "madwu" , lags = "AIC", pmax=10)
+   madp1 <- data.frame((mad2$statistic$p.value)) %>% rename("P value" = X.mad2.statistic.p.value.)
+   mad3 <- data.frame(tidy_stats(mad2$statistic)) %>% rename("T-statistic" = statistics.statistic.value) %>% mutate(Test = "MadWu") %>% mutate(Trend = "Yes") %>%  mutate(Lags = "AIC") %>%  select(Test, "T-statistic", Trend, Lags)
+   maddd <- bind_cols(mad3, madp1) %>%  select(Test, "T-statistic", "P value", Trend, Lags)
+
+   madf <- bind_rows(madd, maddd)
+
+ # Hadri
 
    had <- purtest(pdata2, exo = "intercept", test = "hadri")
-   summary(had)
-   had1 <- purtest(pdata2, exo = "trend", test = "hadri")
-   summary(had1)
+   hadp <- data.frame((had$statistic$p.value)) %>% rename("P value" = X.had.statistic.p.value.)
+   had1 <- data.frame(tidy_stats(had$statistic)) %>% rename("T-statistic" = statistics.statistic.value) %>% mutate(Test = "Hadri") %>% mutate(Trend = "No") %>%  mutate(Lags = "NA") %>%  select(Test, "T-statistic", Trend, Lags)
+   hadd <- bind_cols(had1, hadp) %>%  select(Test, "T-statistic", "P value", Trend, Lags)
 
-   had <- purtest(pdata2, exo = "intercept", test = "hadri")
-   summary(had)
-   had1 <- purtest(pdata2, exo = "trend", test = "hadri")
-   summary(had1)
+   had2 <- purtest(pdata2, exo = "trend", test = "hadri" , lags = "AIC", pmax=10)
+   hadp1 <- data.frame((had2$statistic$p.value)) %>% rename("P value" = X.had2.statistic.p.value.)
+   had3 <- data.frame(tidy_stats(had2$statistic)) %>% rename("T-statistic" = statistics.statistic.value) %>% mutate(Test = "Hadri") %>% mutate(Trend = "Yes") %>%  mutate(Lags = "NA") %>%  select(Test, "T-statistic", Trend, Lags)
+   haddd <- bind_cols(had3, hadp1) %>%  select(Test, "T-statistic", "P value", Trend, Lags)
 
-   choi <- purtest(pdata2, exo = "intercept", test = "Pm", lags = "AIC", pmax=10)
-   summary(choi)
-   choi1 <- purtest(pdata2, exo = "trend", test = "Pm", lags = "AIC", pmax=10)
-   summary(choi1)
+   hadf <- bind_rows(hadd, haddd)
 
 
-   lev <- data.frame(tidy_stats(lev$statistic))
-   had1 <- purtest(pdata2, exo = "trend", test = "levinlin" , lags = "AIC", pmax=10)
-   summary(had1)
-   lev1 <- data.frame(tidy_stats(lev$statistic))
-
-   lev <- data.frame(tidy_stats(lev$statistic))
-
-   IPS <- purtest(dm, test = "ips", exo = "intercept", lags = "AIC", pmax = 5)
-   ip <- purtest(dm, test = "ips", exo = "intercept", lags = "AIC", pmax = 10)
-
-   summary(ip)
-
-   #g <- data.frame(A$statistic$ips.tbar.crit) %>% rename("Critical Value" = A.statistic.ips.tbar.crit) %>% mutate("Significance Level" = c("1%", "5%", "10%")) %>% select("Significance Level", "Critical Value") %>%
-   B <- data.frame(tidy_stats(A$statistic)) %>% rename("T-statistic" = statistics.statistic.value) %>% mutate(Test = "IPS") %>% mutate(Trend = "Yes") %>% mutate(Outcome = "Reject H0") %>%  select(Test, "T-statistic", Trend, Outcome)
-   C <- purtest(dm, exo = "intercept", test = "ips" , lags = 0, ips.stat ="tbar")
-   D <- data.frame(tidy_stats(C$statistic)) %>% rename("T-statistic" = statistics.statistic.value) %>% mutate(Test = "IPS") %>% mutate(Trend = "No") %>% mutate(Outcome = "Reject H0") %>% select(Test, "T-statistic", Trend, Outcome)
-
-
-   table <- bind_rows(B,D)
+  # Final
+   table <- bind_rows(levf, madf, hadf)
    table
  }
